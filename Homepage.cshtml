@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Đặt Tour Du Lịch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .search-bar {
+            background-image: url('https://cdn2.ivivu.com/2019/08/28/10/ivivu-akihabara-yodobashi-akiba-930x520.jpg');
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+        }
+
+            .search-bar input, .search-bar select, .search-bar button {
+                padding: 10px;
+                margin: 5px;
+            }
+
+        .promo {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+            .promo h2 {
+                color: #f39c12;
+            }
+
+        .tour-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .tour-item {
+            background: black;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 300px;
+            text-align: center;
+        }
+
+            .tour-item img {
+                width: 100%;
+                border-radius: 10px;
+            }
+
+            .tour-item h3 {
+                color: cyan;
+            }
+
+            .tour-item p {
+                color: white;
+            }
+
+            .tour-item strong {
+                color: orange;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="text-align:center;">GO TOUR</h1>
+        <h1 style="text-align:center;">Thế Giới Tour Trong Tay Bạn</h1>
+    </header>
+
+    <section class="search-bar">
+        <input type="text" placeholder="Bạn muốn đi đâu?">
+        <select>
+            <option>Ngày khởi hành</option>
+            <option>Linh hoạt</option>
+        </select>
+        <select>
+            <option>Khởi hành từ Hà Nội</option>
+        </select>
+        <button>Tìm</button>
+    </section>
+
+    <h1>Danh sách Tour du lịch</h1>
+    <section class="tour-list">
+        <a href="TourDetail">
+        <div class="tour-item">
+            <img src="https://vietbis.vn/Image/Picture/Hanoi/duong-pho-ha-noi-maps.jpg" alt="Tour Hà Nội">
+            <h3>Tour Hà Nội</h3>
+            <p>3 Ngày 2 Đêm</p>
+            <p>Lăng Bác - Cột cờ Hà Nội - Quốc Tử Giám - Hồ Gươm - Phố Cổ</p>
+            <p><strong>4.990.000 VNĐ</strong></p>
+        </div>
+        </a>
+        <div class="tour-item">
+            <img src="https://file1.dangcongsan.vn/data/0/images/2024/04/11/upload_673/hue-imperial-gate-1024x683-754-17016811818591749547652.png" alt="Tour Huế">
+            <h3>Tour Huế</h3>
+            <p>2 Ngày 1 Đêm</p>
+            <p>Cố đô - Chùa Hương - Lăng Mộ</p>
+            <p><strong>3.990.000 VNĐ</strong></p>
+        </div>
+        <div class="tour-item">
+            <img src="https://cdn11.dienmaycholon.vn/filewebdmclnew/public/userupload/files/Knms/meo-vat/avatar-trai-nghiem-24-dia-diem-du-lich-da-nang.jpg" alt="Tour Đà Nẵng">
+            <h3>Tour Đà Nẵng</h3>
+            <p>5 Ngày 4 Đêm</p>
+            <p>Hải Vân - Sơn Trà - Bà Nà Hill - Hội An</p>
+            <p><strong>10.800.000 VNĐ</strong></p>
+        </div>
+    </section>
+
+    <h1>Promotions</h1>
+    <section class="tour-list">
+        <div class="tour-item">
+            <img src="https://vietbis.vn/Image/Picture/Hanoi/duong-pho-ha-noi-maps.jpg" alt="Tour Hà Nội">
+            <h3>Promotion 01</h3>
+        </div>
+        <div class="tour-item">
+            <img src="https://file1.dangcongsan.vn/data/0/images/2024/04/11/upload_673/hue-imperial-gate-1024x683-754-17016811818591749547652.png" alt="Tour Huế">
+            <h3>Promotion 01</h3>
+        </div>
+        <div class="tour-item">
+            <img src="https://cdn11.dienmaycholon.vn/filewebdmclnew/public/userupload/files/Knms/meo-vat/avatar-trai-nghiem-24-dia-diem-du-lich-da-nang.jpg" alt="Tour Đà Nẵng">
+            <h3>Promotion 01</h3>
+        </div>
+    </section>
+
+    <h1>Blogs</h1>
+    <section class="tour-list">
+        <a href="BlogDetail">
+        <div class="tour-item">
+            <img src="https://vietbis.vn/Image/Picture/Hanoi/duong-pho-ha-noi-maps.jpg" alt="Tour Hà Nội">
+            <h3>Blog Title</h3>
+            <p>Content</p>
+        </div>
+        </a>
+        <div class="tour-item">
+            <img src="https://file1.dangcongsan.vn/data/0/images/2024/04/11/upload_673/hue-imperial-gate-1024x683-754-17016811818591749547652.png" alt="Tour Huế">
+            <h3>Blog Title</h3>
+            <p>Content</p>
+        </div>
+        <div class="tour-item">
+            <img src="https://cdn11.dienmaycholon.vn/filewebdmclnew/public/userupload/files/Knms/meo-vat/avatar-trai-nghiem-24-dia-diem-du-lich-da-nang.jpg" alt="Tour Đà Nẵng">
+            <h3>Blog Title</h3>
+            <p>Content</p>
+        </div>
+    </section>
+</body>
+</html>
