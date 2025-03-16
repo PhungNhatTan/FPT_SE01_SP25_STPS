@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch trình & Giá Tour</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #222;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .tour-box {
+            width: 320px;
+            background: #603a00;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+            .tour-box h2 {
+                text-align: center;
+            }
+
+        .date-selection {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+            .date-selection button {
+                flex: 1;
+                margin: 0 2px;
+                padding: 8px;
+                background: #222;
+                color: white;
+                border: 1px solid white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                .date-selection button.active {
+                    background: #009688;
+                    border: none;
+                }
+
+        .category {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #333;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+            .category span {
+                flex: 1;
+            }
+
+        .controls {
+            display: flex;
+            align-items: center;
+        }
+
+            .controls button {
+                background: #444;
+                border: none;
+                color: white;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+        .price {
+            color: yellow;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .booking-btn {
+            width: 100%;
+            padding: 10px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .back-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+            .back-btn:hover {
+                background: #0056b3;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="tour-box">
+        <h2>Lịch Trình và Giá Tour</h2>
+        <div class="date-selection">
+            <button class="active">18/03</button>
+            <button>24/03</button>
+            <button>07/04</button>
+            <button>📅</button>
+        </div>
+
+        <div class="category">
+            <span>Người lớn x 50.990.000</span>
+            <div class="controls">
+                <button>-</button>
+                <span>2</span>
+                <button>+</button>
+            </div>
+        </div>
+
+        <div class="category">
+            <span>Trẻ em x 30.990.000</span>
+            <div class="controls">
+                <button>-</button>
+                <span>0</span>
+                <button>+</button>
+            </div>
+        </div>
+
+        <div class="category">
+            <span>Trẻ nhỏ x 10.990.000</span>
+            <div class="controls">
+                <button>-</button>
+                <span>0</span>
+                <button>+</button>
+            </div>
+        </div>
+
+        <div class="price">
+            Tổng Giá Tour: <span>101.980.000</span> VND
+        </div>
+
+        <button class="booking-btn">Yêu cầu đặt</button>
+        <a href="TourDetail" class="back-btn">⬅ Quay lại</a>
+    </div>
+
+</body>
+</html>
