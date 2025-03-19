@@ -1,0 +1,6 @@
+@STPS_REACT.Server_HostAddress = http://localhost:5191
+
+GET {{STPS_REACT.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
