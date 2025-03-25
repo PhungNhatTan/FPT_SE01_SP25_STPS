@@ -1,0 +1,246 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+    .profile-button img {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+/* Header Styles */
+header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 4px solid #004d40;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+.profile-menu {
+    position: absolute;
+    top: 35px; /* Adjust based on your layout */
+    left: 79%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+    .profile-menu button {
+        background: #f1f1f1;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+.profile-dropdown {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 185px;
+    display: none;
+    text-align: left;
+}
+
+.profile-menu:hover .profile-dropdown {
+    display: block;
+}
+
+.profile-dropdown li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+    .profile-dropdown li:hover {
+        background: #f1f1f1;
+    }
+
+.profile-dropdown img {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+/* Background Section */
+.background {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+    .background img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    .background-overlay h1 {
+        font-size: 48px;
+        font-weight: bold;
+    }
+
+    .background-overlay p {
+        font-size: 20px;
+    }
+
+/* Search Box */
+.search-box {
+    background-color: rgba(22, 111, 121, 0.2); /* Giảm độ đậm của màu nền */
+    padding: 20px;
+    border-radius: 15px;
+    width: 85%;
+    margin: -50px auto 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px); /* Tăng hiệu ứng mờ nền */
+}
+
+    .search-box .search-input {
+        width: 772px;
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+    }
+
+    .search-box .search-fields {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 10px;
+    }
+
+        .search-box .search-fields div {
+            flex: 1;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+    .search-box button {
+        background-color: #00332b;
+        color: white;
+        cursor: pointer;
+        padding: 15px 25px;
+        font-size: 18px;
+        border-radius: 25px;
+        margin-top: 20px;
+        width: 50%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        border: none;
+    }
+
+        .search-box button:hover {
+            background-color: #00221f;
+        }
+
+/* Tour Section */
+.tours {
+    padding: 30px;
+    text-align: center;
+}
+
+.tour-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.tour-item {
+    width: 160px;
+}
+
+    .tour-item img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+/* Promo Section */
+.promo {
+    padding: 30px;
+    text-align: center;
+}
+
+.promo-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+    .promo-list img {
+        width: 200px;
+    }
+
+/* Blogs Section */
+.blogs {
+    padding: 30px;
+    text-align: center;
+}
+
+.blog-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.blog-item {
+    width: 200px;
+}
+
+    .blog-item img {
+        width: 100%;
+        border-radius: 8px;
+    }
