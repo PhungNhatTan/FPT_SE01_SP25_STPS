@@ -1,99 +1,73 @@
-import React from "react";
-import "./style/tourdetail.css";
-import logo from "../assets/weblogo.jpg";
-import profileImg from "../assets/profileImg.png";
-import profileIcon from "../assets/profile-icon.png";
-import settingsIcon from "../assets/settings-icon.png";
-import logoutIcon from "../assets/logout-icon.png";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import "../../style/tourdetail.css";
+import Header from "./header";
+import hanoi from "../../assets/Hanoi.jpg";
+import danang from "../../assets/Da Nang.jpg";
+import BookingPopup from "./booking";
+
+// Danh sách tour giả lập (Có thể thay bằng API)
+const tours = [
+    { id: 1, name: "Tour Hà Nội", location: "Hà Nội", priceald: "4.990.000", pricechil: "4.990.000", duration: "3 Ngày 2 Đêm", vehicle: "Xe du lịch", highlights: ["Lăng Bác", "Cột cờ Hà Nội", "Hồ Gươm"], image: hanoi },
+    { id: 2, name: "Tour Đà Nẵng", location: "Đà Nẵng", priceald: "4.990.000", pricechil: "4.990.000", duration: "4 Ngày 3 Đêm", vehicle: "Máy bay", highlights: ["Bà Nà Hills", "Cầu Vàng", "Biển Mỹ Khê"], image: danang }
+];
 
 const TourDetail = () => {
+    const navigate = useNavigate();
+    const { id } = useParams(); // ✅ Lấy ID từ URL
+    const tour = tours.find((t) => t.id === parseInt(id)); // ✅ Ép kiểu về số
+    const [showPopup, setShowPopup] = useState(false);
+
+    if (!tour) return <h1>Tour không tồn tại</h1>; // ✅ Nếu không tìm thấy tour
+
     return (
         <div>
-            {/* Header */}
             <header className="header">
-                <div className="logo">
-                    <img src={logo} alt="Go Tour" />
-                    <span style={{ color: "black" }}>GO TOUR</span>
-                </div>
-                <div className="profile-menu" style={{ position: "absolute", zIndex: "1000" }}>
-                    <button className="profile-button">
-                        <img src={profileImg} alt="Profile" />
-                    </button>
-                    <ul className="profile-dropdown">
-                        <li style={{ color: "black" }}>
-                            <img src={profileIcon} alt="Thông tin cá nhân" />
-                            Thông tin cá nhân
-                        </li>
-                        <li style={{ color: "black" }}>
-                            <img src={settingsIcon} alt="Tùy chọn Tour" />
-                            Tùy chọn Tour
-                        </li>
-                        <li style={{ color: "black" }}>
-                            <img src={logoutIcon} alt="Đăng xuất" />
-                            Đăng xuất
-                        </li>
-                    </ul>
-                </div>
+                <Header />
             </header>
 
             {/* Showcase */}
             <section className="showcase">
+                <img src={tour.image} alt={tour.name} className="img-fluid w-100" style={{ height: "300px", objectFit: "cover" }} />
             </section>
-            <h1>Tour Tham quan Hà Nội</h1>
             {/* Nội dung */}
             <div className="container">
+                <h1>{tour.name}</h1>
                 <section className="content">
                     <h2>Giới thiệu</h2>
-                    <p>Content giới thiệu Tour</p>
+                    <p>Khám phá vẻ đẹp của {tour.location} với tour trọn gói.</p>
 
                     <h2>Thông tin tour</h2>
-                        <a>
-                            <strong>Thời gian:</strong> 3 Ngày 2 Đêm
-                        </a><br></br>
-                        <a>
-                            <strong>Phương tiện:</strong> Xe du lịch
-                    </a><br></br>
-                        <a>
-                            <strong>Giá:</strong> 4.990.000 VND
-                    </a><br></br>
+                    <p><strong>Thời gian:</strong> {tour.duration}</p>
+                    <p><strong>Phương tiện:</strong> {tour.vehicle}</p>
+                    <p><strong>Giá vé Người lớn:</strong> {tour.priceald} VND</p>
+                    <p><strong>Giá vé Trẻ em:</strong> {tour.pricechil} VND</p>
 
                     <h2>Điểm nổi bật</h2>
-                    <ul style={{ color: "black" } }>
-                        <li>Tham quan Lăng Chủ tịch Hồ Chí Minh</li>
-                        <li>Tham quan cột cờ Hà Nội</li>
-                        <li>Tham quan Hồ Gươm</li>
-                        <li>Tham quan Quốc Tử Giám</li>
-                        <li>Trải nghiệm phố cổ Hà Nội</li>
+                    <ul style={{ color: "black" }}>
+                        {tour.highlights.map((point, index) => (
+                            <li key={index}>{point}</li>
+                        ))}
                     </ul>
                 </section>
             </div>
 
-            {/* Chương trình tour */}
+            {/* Nút đặt vé */}
             <div className="container">
-                <section className="tour-program">
-                    <h2>Chương trình tour</h2>
-                    <div className="day">
-                        <h3>Ngày 1: Khởi hành - Paris (Pháp)</h3>
-                        <p>Quý khách tập trung tại sân bay để làm thủ tục bay đến Paris.</p>
-                    </div>
-                    <div className="day">
-                        <h3>Ngày 2: Tham quan Paris</h3>
-                        <p>
-                            Tham quan Tháp Eiffel, Khải Hoàn Môn, Nhà thờ Đức Bà, Bảo tàng
-                            Louvre và dòng sông Seine thơ mộng.
-                        </p>
-                    </div>
-                    <div className="day">
-                        <h3>Ngày 3: Paris - Luxembourg</h3>
-                        <p>Di chuyển đến Luxembourg, khám phá Quảng trường D’Armes.</p>
-                    </div>
-
-                    {/* Nút đặt vé */}
-                    <a href="/BookTicket">
-                        <button className="booking-btn">Đặt vé ngay</button>
-                    </a>
-                </section>
+                <button className="booking-btn" onClick={() => setShowPopup(true)}>
+                    Đặt vé ngay
+                </button>
             </div>
+
+            {/* Hiển thị pop-up khi state `showPopup` = true */}
+            {showPopup && (
+                <BookingPopup 
+                    priceAdult={tour.priceald} 
+                    priceChild={tour.pricechil} 
+                    onClose={() => setShowPopup(false)} 
+                />
+            )}
         </div>
     );
 };

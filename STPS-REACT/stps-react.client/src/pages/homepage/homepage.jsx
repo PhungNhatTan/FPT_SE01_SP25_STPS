@@ -1,16 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./style/homepage.css";
-import logo from "../assets/weblogo.jpg";
-import profileImg from "../assets/profileImg.png";
-import banner from "../assets/banner.jpg";
-import hanoi from "../assets/hanoi.jpg";
-import promotion from "../assets/promotion.jpg";
-import profileIcon from "../assets/profile-icon.png";
-import settingsIcon from "../assets/settings-icon.png";
-import logoutIcon from "../assets/logout-icon.png";
+import { Link, useNavigate } from "react-router-dom";
+import "../../style/homepage.css";
+import logo from "../../assets/weblogo.jpg";
+import profileImg from "../../assets/profileImg.png";
+import banner from "../../assets/banner.jpg";
+import hanoi from "../../assets/hanoi.jpg";
+import hue from "../../assets/Hue.jpg";
+import promotion from "../../assets/promotion.jpg";
+import profileIcon from "../../assets/profile-icon.png";
+import settingsIcon from "../../assets/settings-icon.png";
+import logoutIcon from "../../assets/logout-icon.png";
+import Header from "./header";
 
-
+const blogsData = [
+    {
+        id: "1",
+        title: "Khám Phá Hà Nội – Thành phố của tình yêu",
+        image: hanoi,
+        content: "Hà Nội là một điểm đến tuyệt vời với hồ Gươm, phố cổ...",
+    },
+    {
+        id: "2",
+        title: "Khám Phá Huế – Thành phố di sản",
+        image: hue,
+        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ...",
+    },
+    {
+        id: "3",
+        title: "Khám Phá Huế – Thành phố di sản",
+        image: hue,
+        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ...",
+    },
+    {
+        id: "4",
+        title: "Khám Phá Huế – Thành phố di sản",
+        image: hue,
+        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ...",
+    }
+];
 
 const SearchBox = () => {
     return (
@@ -36,32 +63,11 @@ const SearchBox = () => {
 };
 
 const Homepage = () => {
+    const navigate = useNavigate();
     return (
         <div>
             <header className="header">
-                <div className="logo">
-                    <img src={logo} alt="Go Tour" />
-                    <span style={{ color: "black" }}>GO TOUR</span>
-                </div>
-                <div className="profile-menu" style={{ position: "absolute", zIndex: "1000" }}>
-                    <button className="profile-button">
-                        <img src={profileImg} alt="Profile" />
-                    </button>
-                    <ul className="profile-dropdown">
-                        <li style={{ color: "black" }}>
-                            <img src={profileIcon} alt="Thông tin cá nhân" />
-                            Thông tin cá nhân
-                        </li>
-                        <li style={{ color: "black" }}>
-                            <img src={settingsIcon} alt="Tùy chọn Tour" />
-                            Tùy chọn Tour
-                        </li>
-                        <li style={{ color: "black" }}>
-                            <img src={logoutIcon} alt="Đăng xuất" />
-                            Đăng xuất
-                        </li>
-                    </ul>
-                </div>
+                <Header />
             </header>
             <br></br>
             <section className="background">
@@ -73,7 +79,7 @@ const Homepage = () => {
             <br></br>
             <section className="tours">
                 <h2 style={{ color: "black" }}>Danh sách Tour nổi bật</h2>
-                <button onClick={() => ("/tourlist")}>
+                <button onClick={() => navigate("/tourlist")}>
                     Xem thêm
                 </button>
                 <div className="tour-list">
@@ -101,16 +107,19 @@ const Homepage = () => {
             </section>
 
             <section className="blogs">
-                <h2 style={{ color: "black" }}>Blogs</h2>
-                <button onClick={() => ("/tourlist")}>Xem thêm</button>
+                <div className="blogs-header">
+                    <h2>Blogs</h2>
+                    <button onClick={() => navigate("/blogs")}>Xem thêm</button>
+                </div>
+
                 <div className="blog-list">
-                    {[1, 2, 3, 4].map((id) => (
-                        <div className="blog-item" key={id}>
-                            <Link to={`/blog/${id}`}>
-                                <img src={hanoi} alt={`Blog ${id}`} />
+                    {blogsData.map((blog) => (
+                        <div className="blog-item" key={blog.id}>
+                            <Link to={`/blog/${blog.id}`}>
+                                <img src={blog.image} alt={blog.title} />
                             </Link>
-                            <h3 style={{ color: "black" }}>Du lịch Hà Nội {id}</h3>
-                            <p style={{ color: "black" }}>Blog content</p>
+                            <h3 style={{ color: "black" }}>{blog.title}</h3>
+                            <p style={{ color: "black" }}>{blog.content.substring(0, 50)}...</p>
                         </div>
                     ))}
                 </div>

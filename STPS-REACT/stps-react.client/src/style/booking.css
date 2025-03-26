@@ -1,92 +1,109 @@
+/* Popup */
 .popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .popup-content {
-    background: #603a00;
+    background: #663300;
     color: white;
     padding: 20px;
     border-radius: 10px;
-    width: 350px;
+    width: 400px;
     text-align: center;
 }
 
+/* Chọn ngày */
 .date-selection {
     display: flex;
     justify-content: space-between;
-    margin: 10px 0;
+    margin-bottom: 15px;
 }
 
-    .date-selection button {
-        flex: 1;
-        margin: 0 2px;
-        padding: 8px;
-        background: #222;
-        color: white;
-        border: 1px solid white;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+.date-selection button {
+    background: #666;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        .date-selection button.active {
-            background: #009688;
-            border: none;
-        }
+.date-selection .active {
+    background: #008080;
+}
 
-.category {
+/* Ô chọn ngày */
+.date-picker {
+    background: white;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Ticket categories */
+.ticket-category {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #333;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-}
-
-.controls button {
     background: #444;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    cursor: pointer;
+    padding: 10px;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-.price {
-    color: yellow;
+.ticket-category .controls {
+    display: flex;
+    align-items: center;
+}
+
+.ticket-category button {
+    background: #555;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+/* Total price */
+.total-price {
+    font-size: 18px;
     font-weight: bold;
-    text-align: center;
-    margin-top: 10px;
+    color: #FFD700;
+    margin-bottom: 15px;
 }
 
+/* Buttons */
 .booking-btn {
+    background: #FFA500;
+    color: white;
     width: 100%;
     padding: 10px;
-    background: #ff9800;
-    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .close-btn {
+    background: #FF0000;
+    color: white;
     width: 100%;
     padding: 10px;
-    background: #ff0000;
-    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 10px;
 }

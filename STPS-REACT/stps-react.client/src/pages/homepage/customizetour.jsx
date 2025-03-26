@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import banner from "../assets/banner.jpg";
-import "./style/customizetour.css";
+import banner from "../../assets/banner.jpg";
+import "../../style/customizetour.css";
 import Header from "./header";
 
 const Customizetour = () => {

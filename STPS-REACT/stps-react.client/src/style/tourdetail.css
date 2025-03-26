@@ -11,80 +11,9 @@ body {
     overflow: hidden;
 }
 
-header {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    border-bottom: 4px solid #004d40;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-    .logo img {
-        width: 40px;
-        height: 40px;
-        margin-right: 10px;
-    }
-
-.profile-menu {
-    position: absolute;
-    top: 35px; /* Adjust based on your layout */
-    left: 76%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    background: white;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-    .profile-menu button {
-        background: #f1f1f1;
-        padding: 10px;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-.profile-dropdown {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    background: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    width: 185px;
-    display: none;
-    text-align: left;
-}
-
-.profile-menu:hover .profile-dropdown {
-    display: block;
-}
-
-.profile-dropdown li {
-    padding: 10px;
-    cursor: pointer;
-}
-
-    .profile-dropdown li:hover {
-        background: #f1f1f1;
-    }
-
-.profile-dropdown img {
-    width: 15px;
-    height: 15px;
-    margin-right: 10px;
-}
 
 .showcase {
-    background: url("https://gonow.com.vn/wp-content/uploads/2024/05/du-lich-ha-noi-1-ngay-1.jpg") no-repeat center center/cover;
+    
     color: #fff;
     height: 300px;
     text-align: center;
@@ -179,11 +108,11 @@ body {
 
 
 .showcase {
-    background: url("https://gonow.com.vn/wp-content/uploads/2024/05/du-lich-ha-noi-1-ngay-1.jpg") no-repeat center center/cover;
+    
     color: #fff;
     height: 300px;
     text-align: center;
-    padding-top: 50px;
+    padding-top: 0px;
 }
 
     .showcase h1 {

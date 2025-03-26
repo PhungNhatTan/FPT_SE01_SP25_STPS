@@ -1,60 +1,73 @@
-/* Cấu trúc header */
-.header {
-    background-color: white;
-    display: flex;
-    justify-content: space-between; /* Logo bên trái, profile bên phải */
-    align-items: center; /* Căn giữa theo chiều dọc */
-    padding: 15px 20px;
-    border-bottom: 4px solid #004d40;
-    height: 70px; /* Chiều cao cố định */
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
 }
 
-/* Căn chỉnh logo và text "GO TOUR" */
+/* Header */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 4px solid #004d40;
+    position: relative;
+    box-sizing: border-box;
+    overflow: visible;
+    z-index: 100;
+}
+
+/* Logo */
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    z-index: 101;
 }
 
-    .logo img {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
-    }
+.logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
 
-    .logo span {
-        font-size: 20px;
-        font-weight: bold;
-        color: #004d40;
-    }
+.logo span {
+    color: black;
+    font-weight: bold;
+}
 
-/* Profile menu bên phải */
+/* Profile Menu */
 .profile-menu {
-    position: relative;
     display: flex;
     align-items: center;
+    justify-content: flex-end; /* ❌ Xóa dòng này nếu có */
+    right: 20px; /* ✅ Giữ khoảng cách hợp lý */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 101;
 }
 
-/* Nút profile không có viền và nền */
 .profile-button {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    display: flex;
-    align-items: center;
 }
 
-    .profile-button img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-    }
+.profile-button img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
 
-/* Dropdown menu */
+/* Dropdown */
 .profile-dropdown {
     list-style: none;
-    padding: 10px;
+    padding: 0;
     margin: 0;
     position: absolute;
     right: 0;
@@ -62,28 +75,24 @@
     background: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    white-space: nowrap;
+    width: 200px;
+    text-align: left;
+    z-index: 9999;
 }
 
-    /* Các mục trong dropdown */
-    .profile-dropdown li {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
+.profile-dropdown li {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
 
-        .profile-dropdown li:hover {
-            background: #f1f1f1;
-        }
+.profile-dropdown li img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
 
-    /* Kích thước icon trong dropdown */
-    .profile-dropdown img {
-        width: 20px;
-        height: 20px;
-    }
+.profile-dropdown li:hover {
+    background: #f1f1f1;
+}

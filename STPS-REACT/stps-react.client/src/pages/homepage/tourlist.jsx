@@ -1,7 +1,9 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./style/TourList.css";
-import hanoi from "../assets/hanoi.jpg";
+import "../../style/TourList.css";
+import hanoi from "../../assets/hanoi.jpg";
+import danang from "../../assets/Da Nang.jpg";
 import Header from "./header";
 
 const tours = [
@@ -14,10 +16,10 @@ const tours = [
     },
     {
         id: 2,
-        name: "TOUR HÀ NỘI",
+        name: "TOUR ĐÀ NẴNG",
         location: "Mô tả tour",
         price: "Giá: ",
-        image: hanoi,
+        image: danang,
     },
     {
         id: 3,
@@ -36,6 +38,7 @@ const tours = [
 ];
 
 const TourList = () => {
+    const navigate = useNavigate();
     const [adults, setAdults] = useState(1);
     const [children, setChildren] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
@@ -57,7 +60,7 @@ const TourList = () => {
     return (
         <div className="container-fluid">
             <header className="header">
-                <Header/>
+                <Header />
             </header>
             {/* Thanh tìm kiếm */}
             <div className="search-bar d-flex justify-content-between align-items-center p-3">
@@ -168,7 +171,9 @@ const TourList = () => {
                                             <i className="bi bi-geo-alt-fill"></i> {tour.location}
                                         </p>
                                         <p className="card-text">{tour.price}</p>
-                                        <button className="btn btn-primary">Xem thêm</button>
+                                        <button className="btn btn-primary" onClick={() => navigate(`/tour/${tour.id}`)}>
+                                            Xem thêm
+                                        </button>  {/* ✅ Điều hướng khi bấm */}
                                     </div>
                                 </div>
                             </div>

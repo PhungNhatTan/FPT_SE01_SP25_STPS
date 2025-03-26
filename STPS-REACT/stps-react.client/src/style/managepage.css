@@ -1,0 +1,59 @@
+.manage-page {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.sidebar {
+    display: flex; /* Sử dụng flexbox để sắp xếp các phần tử */
+    flex-direction: column; /* Sắp xếp theo chiều dọc */
+}
+
+.sidebar .nav-item {
+    flex: 1; /* Đảm bảo mỗi tab có chiều cao bằng nhau */
+}
+
+.nav-link {
+    white-space: nowrap; /* Ngăn không cho nội dung xuống dòng */
+    text-align: left; /* Căn trái nội dung trong tab */
+    width: 100%; /* Đảm bảo tab chiếm toàn bộ chiều rộng */
+    padding: 10px; /* Thêm khoảng cách cho tab */
+    border: none; /* Bỏ viền cho nút */
+    background: transparent; /* Nền trong suốt */
+    color: blue; /* Màu chữ mặc định */
+}
+
+.nav-link.active {
+    font-weight: bold; /* Chữ in đậm cho tab đang hoạt động */
+    background-color: blue; /* Màu nền cho tab đang hoạt động */
+    color: white; /* Màu chữ cho tab đang hoạt động */
+    border-radius: 5px; /* Bo góc cho tab */
+}
+
+.content {
+    flex: 1;
+    margin-left: 20px;
+    padding: 10px;
+}
+.table {
+    width: 100%; /* Đảm bảo bảng chiếm toàn bộ chiều rộng */
+}
+
+.table th, .table td {
+    vertical-align: middle; /* Căn giữa theo chiều dọc */
+    padding: 12px; /* Thêm khoảng cách cho các ô */
+    white-space: nowrap; /* Ngăn không cho nội dung xuống dòng */
+}
+
+.table th {
+    background-color: #f8f9fa; /* Màu nền cho tiêu đề bảng */
+    font-weight: bold; /* Đậm tiêu đề bảng */
+}
+
+.table td {
+    overflow: hidden; /* Ẩn nội dung tràn ra ngoài */
+    text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung quá dài */
+}
