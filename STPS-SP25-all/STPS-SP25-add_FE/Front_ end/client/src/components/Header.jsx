@@ -198,7 +198,7 @@ export default function Header() {
               </span>
               <span className="block text-sm font-medium truncate">
                 Chức vụ: {" "}
-                {role === "1" ? "Quản trị viên " : role === "2" ? "Người dùng" : role === "3" ? "Người bán" : "Không xác định"}
+               {role === "1" ? "Quản trị viên " : role === "2" ? "Quản lý" : role === "3" ? "Người dùng" : role === "4" ? "Công ty du lịch": "Không xác định"}
               </span>
             </Dropdown.Header>
             <Link
