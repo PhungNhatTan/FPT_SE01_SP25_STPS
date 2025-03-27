@@ -289,11 +289,13 @@ export default function Signup() {
               className="w-full px-3 py-2 rounded-md border focus:outline-none"
             >
               <option value="">-- Chọn vai trò --</option>
-              {rolesList.map((r) => (
-                <option key={r.authenticationId} value={r.authenticationId}>
-                  {r.authenticationName}
-                </option>
-              ))}
+              {rolesList 
+                .filter((r) => r.authenticationId !== 1 && r.authenticationId !== 2)
+                .map((r) => (
+                  <option key={r.authenticationId} value={r.authenticationId}>
+                    {r.authenticationName}
+                  </option>
+                ))}
             </select>
           </div>
 
