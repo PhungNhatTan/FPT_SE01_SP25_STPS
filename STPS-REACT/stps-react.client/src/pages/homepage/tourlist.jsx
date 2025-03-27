@@ -173,7 +173,7 @@ const TourList = () => {
                                         <p className="card-text">{tour.price}</p>
                                         <button className="btn btn-primary" onClick={() => navigate(`/tour/${tour.id}`)}>
                                             Xem thêm
-                                        </button>  {/* ✅ Điều hướng khi bấm */}
+                                        </button>
                                     </div>
                                 </div>
                             </div>

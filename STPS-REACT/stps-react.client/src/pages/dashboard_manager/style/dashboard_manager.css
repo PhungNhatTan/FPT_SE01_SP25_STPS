@@ -1,0 +1,43 @@
+.dashboard-manager {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Đặt chiều cao cho toàn bộ dashboard */
+}
+
+.container {
+    display: flex;
+    flex: 1; /* Chiếm toàn bộ chiều cao còn lại */
+}
+
+.sidebar {
+    width: 250px; /* Chiều rộng của sidebar */
+    background-color: #f8f9fa; /* Màu nền cho sidebar */
+    padding: 20px;
+    border-right: 1px solid #dee2e6; /* Đường viền bên phải */
+}
+
+.nav-link {
+    display: block;
+    padding: 10px 15px;
+    color: #333; /* Màu chữ */
+    text-decoration: none;
+    border-radius: 4px; /* Bo góc */
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #007bff; /* Màu nền khi hover */
+    color: white; /* Màu chữ khi hover */
+}
+
+.active {
+    background-color: #007bff; /* Màu nền cho tab đang hoạt động */
+    color: white; /* Màu chữ cho tab đang hoạt động */
+}
+
+.content {
+    flex: 1; /* Chiếm toàn bộ chiều rộng còn lại */
+    padding: 20px; /* Khoảng cách bên trong */
+    background-color: #ffffff; /* Màu nền cho nội dung */
+    overflow-y: auto; /* Cuộn nếu nội dung vượt quá chiều cao */
+}
