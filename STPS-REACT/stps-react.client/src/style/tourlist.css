@@ -2,15 +2,18 @@
 .search-bar {
     background-color: #f8f9fa;
     border-radius: 8px;
+    padding: 10px; /* Thêm padding cho thanh tìm kiếm */
 }
 
 .search-input {
-    max-width: 180px;
+    width: 100px; /* Đặt chiều rộng hợp lý cho các input */
+    margin: 0 5px; /* Tạo khoảng cách giữa các input */
+    flex: 1; /* Cho phép input mở rộng để chiếm không gian */
 }
 
 /* Bộ lọc bên trái */
 .budget-filter input {
-    width: 48%;
+    width: 48%; /* Đặt chiều rộng cho các input giá tiền */
 }
 
 /* Danh sách tour */
@@ -18,13 +21,14 @@
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-    .tour-card .card-body {
-        text-align: left; /* Căn chữ sang trái */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start; /* Căn tất cả nội dung sang trái */
-    }
+
+.tour-card .card-body {
+    text-align: left; /* Căn chữ sang trái */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Căn tất cả nội dung sang trái */
+}
 
 .tour-image {
     width: 100%;
@@ -40,55 +44,56 @@
 .btn-danger {
     border-radius: 20px;
 }
+
 /* Đảm bảo phần bộ lọc căn trái */
 .filter-section {
     text-align: left; /* Căn trái toàn bộ nội dung */
 }
 
-    /* Căn checkbox và văn bản đi cùng */
-    .filter-section label {
-        display: flex;
-        align-items: center; /* Giữ checkbox và text trên cùng một hàng */
-        gap: 5px; /* Khoảng cách giữa checkbox và văn bản */
-    }
+/* Căn checkbox và văn bản đi cùng */
+.filter-section label {
+    display: flex;
+    align-items: center; /* Giữ checkbox và text trên cùng một hàng */
+    gap: 5px; /* Khoảng cách giữa checkbox và văn bản */
+}
 
-    /* Đảm bảo mỗi nhóm checkbox nằm theo chiều dọc */
-    .filter-section div {
-        display: flex;
-        flex-direction: column;
-        gap: 5px; /* Tạo khoảng cách giữa các dòng checkbox */
-    }
-    .filter-section h5 {
-        font-weight: bold; /* Làm chữ in đậm */
-        margin-top: 20px; /* Tạo khoảng cách phía trên */
-    }
-    /* Tạo checkbox màu trắng */
-    .filter-section input[type="checkbox"] {
-        appearance: none; /* Ẩn giao diện mặc định */
-        width: 16px; /* Đặt kích thước */
-        height: 16px;
-        border: 2px solid #000; /* Viền màu đen */
-        background-color: white; /* Nền trắng */
-        border-radius: 4px; /* Bo góc nhẹ */
-        cursor: pointer; /* Hiển thị con trỏ khi di chuột */
-    }
+/* Đảm bảo mỗi nhóm checkbox nằm theo chiều dọc */
+.filter-section div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Tạo khoảng cách giữa các dòng checkbox */
+}
 
-        /* Khi checkbox được chọn */
-        .filter-section input[type="checkbox"]:checked {
-            background-color: white; /* Giữ nền trắng */
-            border: 2px solid #000; /* Viền vẫn màu đen */
-            position: relative;
-        }
+.filter-section h5 {
+    font-weight: bold; /* Làm chữ in đậm */
+    margin-top: 20px; /* Tạo khoảng cách phía trên */
+}
 
-            /* Thêm dấu tích khi được chọn */
-            .filter-section input[type="checkbox"]:checked::after {
-                content: "✔"; /* Dấu check */
-                font-size: 12px;
-                color: black; /* Màu dấu check */
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
+/* Tạo checkbox màu trắng */
+.filter-section input[type="checkbox"] {
+    appearance: none; /* Ẩn giao diện mặc định */
+    width: 16px; /* Đặt kích thước */
+    height: 16px;
+    border: 2px solid #000; /* Viền màu đen */
+    background-color: white; /* Nền trắng */
+    border-radius: 4px; /* Bo góc nhẹ */
+    cursor: pointer; /* Hiển thị con trỏ khi di chuột */
+}
 
+/* Khi checkbox được chọn */
+.filter-section input[type="checkbox"]:checked {
+    background-color: white; /* Giữ nền trắng */
+    border: 2px solid #000; /* Viền vẫn màu đen */
+    position: relative;
+}
 
+/* Thêm dấu tích khi được chọn */
+.filter-section input[type="checkbox"]:checked::after {
+    content: "✔"; /* Dấu check */
+    font-size: 12px;
+    color: black; /* Màu dấu check */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

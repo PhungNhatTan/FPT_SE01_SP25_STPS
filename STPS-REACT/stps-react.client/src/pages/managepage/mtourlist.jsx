@@ -36,9 +36,6 @@ const MTourList = ({ onAddTour, onEditTour, onViewDetail }) => {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <button className="btn btn-primary rounded-end" type="button">
-                        Tìm kiếm
-                    </button>
                 </div>
                 <button className="btn btn-primary" onClick={onAddTour}>
                     Thêm mới Tour

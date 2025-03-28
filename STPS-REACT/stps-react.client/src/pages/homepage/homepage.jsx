@@ -1,15 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../style/homepage.css";
-import logo from "../../assets/weblogo.jpg";
-import profileImg from "../../assets/profileImg.png";
 import banner from "../../assets/banner.jpg";
 import hanoi from "../../assets/hanoi.jpg";
 import hue from "../../assets/Hue.jpg";
 import promotion from "../../assets/promotion.jpg";
-import profileIcon from "../../assets/profile-icon.png";
-import settingsIcon from "../../assets/settings-icon.png";
-import logoutIcon from "../../assets/logout-icon.png";
 import Header from "./header";
 
 const blogsData = [
@@ -37,6 +32,21 @@ const blogsData = [
         image: hue,
         content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ...",
     }
+];
+
+const tourData = [
+    { id: 1, name: "Hà Nội", image: hanoi },
+    { id: 2, name: "Huế", image: hue },
+    { id: 3, name: "Đà Nẵng", image: hanoi },
+    { id: 4, name: "Nha Trang", image: hanoi },
+    { id: 5, name: "Thành phố Hồ Chí Minh", image: hanoi },
+];
+
+const proData = [
+    { id: 1, image: promotion },
+    { id: 2, image: promotion },
+    { id: 3, image: promotion },
+    { id: 4, image: promotion },
 ];
 
 const SearchBox = () => {
@@ -69,51 +79,64 @@ const Homepage = () => {
             <header className="header">
                 <Header />
             </header>
-            <br></br>
+            <br />
             <section className="background">
                 <img src={banner} alt="Gotour Background" />
                 <div className="background-overlay">
                     <SearchBox />
                 </div>
             </section>
-            <br></br>
+            <br />
+
+            {/* Danh sách Tour nổi bật */}
             <section className="tours">
-                <h2 style={{ color: "black" }}>Danh sách Tour nổi bật</h2>
-                <button onClick={() => navigate("/tourlist")}>
-                    Xem thêm
-                </button>
-                <div className="tour-list">
-                    {["Hanoi", "Hue", "Da Nang", "Nha Trang", "Ho Chi Minh City"].map(
-                        (city) => (
-                            <div style={{ color: "black" }} className="tour-item" key={city}>
-                                <img src={hanoi} alt={city} />
-                                <p>{city}</p>
-                            </div>
-                        )
-                    )}
+                <div className="list-header">
+                    <h2 style={{ color: "black" }}>Danh sách Tour nổi bật</h2>
+                    <button className="btn btn-primary" onClick={() => navigate("/tourlist")}>
+                        Xem thêm
+                    </button>
+                </div>
+                <div className="blog-list tour-list">
+                    {tourData.map(tour => (
+                        <div className="blog-item tour-item" key={tour.id}>
+                            <Link to={`/tour/${tour.id}`}>
+                                <img src={tour.image} alt={tour.name} />
+                            </Link>
+                            <h3 style={{ color: "black" }}>{tour.name}</h3>
+                        </div>
+                    ))}
                 </div>
             </section>
 
+            {/* Khuyến mãi */}
             <section className="promo">
-                <h2 style={{ color: "black" }}>Khuyến mãi</h2><button onClick={() => ("/tourlist")}>
-                    Xem thêm
-                </button>
-                <div className="promo-list">
-                    <img src={promotion} alt="Coming Soon" />
-                    <img src={promotion} alt="Coming Soon" />
-                    <img src={promotion} alt="Coming Soon" />
-                    <img src={promotion} alt="Coming Soon" />
+                <div className="list-header">
+                    <h2 style={{ color: "black" }}>Khuyến mãi</h2>
+                    <button className="btn btn-primary" onClick={() => navigate("/promotionlist")}>
+                        Xem thêm
+                    </button>
+                </div>
+                <div className="blog-list promo-list">
+                    {proData.map(promo => (
+                        <div className="blog-item" key={promo.id}>
+                            <Link to={`/promotion/${promo.id}`}>
+                                <img src={promo.image} alt="Khuyến mãi" />
+                            </Link>
+                        </div>
+                    ))}
                 </div>
             </section>
 
+            {/* Blogs */}
             <section className="blogs">
-                <div className="blogs-header">
+                <div className="list-header">
                     <h2>Blogs</h2>
-                    <button onClick={() => navigate("/blogs")}>Xem thêm</button>
+                    <button className="btn btn-primary" onClick={() => navigate("/bloglist")}>
+                        Xem thêm
+                    </button>
                 </div>
-
                 <div className="blog-list">
-                    {blogsData.map((blog) => (
+                    {blogsData.map(blog => (
                         <div className="blog-item" key={blog.id}>
                             <Link to={`/blog/${blog.id}`}>
                                 <img src={blog.image} alt={blog.title} />

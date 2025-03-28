@@ -149,7 +149,7 @@ body {
     align-items: center; /* Căn giữa theo chiều ngang */
 }
 
-.blogs-header {
+.list-header {
     display: flex;
     justify-content: space-between; /* Căn giữa tiêu đề và nút */
     align-items: center; /* Căn giữa theo chiều dọc */

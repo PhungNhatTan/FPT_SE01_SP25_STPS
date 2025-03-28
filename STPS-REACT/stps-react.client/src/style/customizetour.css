@@ -1,10 +1,11 @@
-/* Tổng thể */
-.container {
-    max-width: 900px;
+.container.mt-4 {
+    max-width: 800px; /* Adjust this value as needed */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Optional: Add padding for better spacing */
 }
-
 /* Box nội dung */
 .content-box {
+    width: 100%;
     background: white;
     padding: 24px;
     border-radius: 12px;

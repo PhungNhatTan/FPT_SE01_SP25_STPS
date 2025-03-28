@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("STPS-25")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fecb4c2817ab27674a1174c4562c7196ac33f560")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08a3fe4dc551700e6b05222b29ba8647db7d741b")]
 [assembly: System.Reflection.AssemblyProductAttribute("STPS-25")]
 [assembly: System.Reflection.AssemblyTitleAttribute("STPS-25")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

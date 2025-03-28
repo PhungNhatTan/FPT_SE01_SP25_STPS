@@ -23,7 +23,7 @@ import DashboardManager from "./pages/dashboard_manager/dashboard_manager";
 function App() {
   return (
     <Routes>
-      <Route path="/manage-page" element={<ManagePage />} />
+      <Route path="/managepage" element={<ManagePage />} />
       <Route path="/mtourlist" element={<MTourList />} />
       <Route path="/add-tour" element={<AddTour />} />
       <Route path="/update-tour/:id" element={<UpdateTour />} />
@@ -32,7 +32,7 @@ function App() {
       <Route path="/update-promotion/:id" element={<UpdatePromotion />} />
       <Route path="/mstatistic" element={<Statistic />} />
 
-      <Route path="/home-page" element={<HomePage />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="/customize-tour" element={<Customizetour />} />
       <Route path="/blog/:blogId" element={<BlogDetail />} />
       <Route path="/tourlist" element={<TourList />} />
@@ -41,7 +41,7 @@ function App() {
 
       <Route path="/dashboard-admin" element={<DashboardAdmin />} />
 
-      <Route path="/" element={<DashboardManager />} />
+      <Route path="/dashboard-manager" element={<DashboardManager />} />
     </Routes>
   );
 }

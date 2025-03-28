@@ -10,7 +10,11 @@ import BookingPopup from "./booking";
 // Danh sách tour giả lập (Có thể thay bằng API)
 const tours = [
     { id: 1, name: "Tour Hà Nội", location: "Hà Nội", priceald: "4.990.000", pricechil: "4.990.000", duration: "3 Ngày 2 Đêm", vehicle: "Xe du lịch", highlights: ["Lăng Bác", "Cột cờ Hà Nội", "Hồ Gươm"], image: hanoi },
-    { id: 2, name: "Tour Đà Nẵng", location: "Đà Nẵng", priceald: "4.990.000", pricechil: "4.990.000", duration: "4 Ngày 3 Đêm", vehicle: "Máy bay", highlights: ["Bà Nà Hills", "Cầu Vàng", "Biển Mỹ Khê"], image: danang }
+    { id: 2, name: "Tour Đà Nẵng", location: "Đà Nẵng", priceald: "4.990.000", pricechil: "4.990.000", duration: "4 Ngày 3 Đêm", vehicle: "Máy bay", highlights: ["Bà Nà Hills", "Cầu Vàng", "Biển Mỹ Khê"], image: danang },
+    { id: 3, name: "Tour Hà Nội", location: "Hà Nội", priceald: "4.990.000", pricechil: "4.990.000", duration: "3 Ngày 2 Đêm", vehicle: "Xe du lịch", highlights: ["Lăng Bác", "Cột cờ Hà Nội", "Hồ Gươm"], image: hanoi },
+    { id: 4, name: "Tour Hà Nội", location: "Hà Nội", priceald: "4.990.000", pricechil: "4.990.000", duration: "3 Ngày 2 Đêm", vehicle: "Xe du lịch", highlights: ["Lăng Bác", "Cột cờ Hà Nội", "Hồ Gươm"], image: hanoi },
+    { id: 5, name: "Tour Thành phố Hồ Chí Minh", location: "Hà Nội", priceald: "4.990.000", pricechil: "4.990.000", duration: "3 Ngày 2 Đêm", vehicle: "Xe du lịch", highlights: ["Lăng Bác", "Cột cờ Hà Nội", "Hồ Gươm"], image: hanoi }
+    
 ];
 
 const TourDetail = () => {
@@ -33,8 +37,9 @@ const TourDetail = () => {
             </section>
             {/* Nội dung */}
             <div className="container">
-                <h1>{tour.name}</h1>
+                
                 <section className="content">
+                <h1><strong>{tour.name}</strong></h1>
                     <h2>Giới thiệu</h2>
                     <p>Khám phá vẻ đẹp của {tour.location} với tour trọn gói.</p>
 

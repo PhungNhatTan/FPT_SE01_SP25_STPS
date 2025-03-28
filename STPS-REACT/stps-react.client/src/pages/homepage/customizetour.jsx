@@ -6,7 +6,7 @@ import Header from "./header";
 
 const Customizetour = () => {
     const [locations, setLocations] = useState([]);
-
+    const [showPopup, setShowPopup] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const locationList = [
         { id: 1, name: "Địa điểm 1", adultPrice: "100.000đ", childPrice: "50.000đ", time: "08:00 - 18:00" },
@@ -18,7 +18,6 @@ const Customizetour = () => {
 
     const addLocation = (loc) => {
         setLocations([...locations, loc]);
-        setShowModal(false);
     };
 
     const removeLocation = (id) => {
@@ -66,7 +65,7 @@ const Customizetour = () => {
                     <p><strong>Phương tiện:</strong> Xe du lịch</p>
                     <p><strong>Giá vé:</strong> {getTotalPrice()}</p>
                     <p><strong>Thời gian:</strong> {getTotalTime()}</p>
-                    
+
 
                     <button className="btn btn-outline-success me-3 mt-3">Lưu</button>
                     <button className="btn btn-success mt-3">Đặt Tour Ngay</button>

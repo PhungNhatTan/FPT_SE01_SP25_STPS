@@ -26,9 +26,6 @@ const MPromotionList = ({ onAddPromotion, onEditPromotion }) => {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <button className="btn btn-primary rounded-end" type="button">
-                        Tìm kiếm
-                    </button>
                 </div>
                 <button className="btn btn-primary" onClick={onAddPromotion}>Thêm khuyến mãi</button>
             </div>

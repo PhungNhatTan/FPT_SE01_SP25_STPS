@@ -1,44 +1,119 @@
-.dashboard-admin {
+.dashboard-manager {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100vh; /* Chiều cao toàn bộ trang */
 }
 
 .container {
     display: flex;
-    flex: 1;
+    flex: 1; /* Chiếm toàn bộ chiều cao còn lại */
+    max-width: 1900px; /* Tăng chiều rộng tối đa của container */
+    margin: 0 auto; /* Căn giữa container */
 }
 
 .sidebar {
-    width: 250px;
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-right: 1px solid #dee2e6;
+    width: 300px; /* Tăng chiều rộng của sidebar */
+    background-color: #f8f9fa; /* Màu nền cho sidebar */
+    padding: 20px;
+    border-right: 1px solid #dee2e6; /* Đường viền bên phải */
 }
 
 .nav-link {
-    width: 100%;
-    text-align: left;
-    padding: 10px;
-    color: #343a40;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s;
+    display: block;
+    padding: 10px 15px;
+    color: #333; /* Màu chữ */
+    text-decoration: none;
+    border-radius: 4px; /* Bo góc */
+    transition: background-color 0.3s;
 }
 
 .nav-link:hover {
-    background-color: #e2e6ea;
+    background-color: #007bff; /* Màu nền khi hover */
+    color: white; /* Màu chữ khi hover */
 }
 
-.nav-link.active {
-    background-color: #007bff;
-    color: white;
+.active {
+    background-color: #007bff; /* Màu nền cho tab đang hoạt động */
+    color: white; /* Màu chữ cho tab đang hoạt động */
 }
 
 .content {
-    flex: 1;
-    padding: 20px;
-    background-color: #ffffff;
-    overflow-y: auto;
+    flex: 1; /* Chiếm toàn bộ chiều rộng còn lại */
+    padding: 20px; /* Khoảng cách bên trong */
+    background-color: #ffffff; /* Màu nền cho nội dung */
+    overflow-y: auto; /* Cuộn nếu nội dung vượt quá chiều cao */
+}
+
+.table {
+    width: 100%; /* Chiều rộng bảng */
+    margin-top: 20px; /* Khoảng cách trên của bảng */
+    table-layout: auto; /* Tự động điều chỉnh kích thước cột */
+}
+
+.table th, .table td {
+    text-align: center; /* Căn giữa nội dung bảng */
+    vertical-align: middle; /* Căn giữa theo chiều dọc */
+    padding: 12px; /* Thêm khoảng cách cho các ô */
+    white-space: nowrap; /* Ngăn không cho nội dung bị ngắt dòng */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2; /* Màu nền cho hàng lẻ */
+}
+
+.table th {
+    background-color: #e9ecef; /* Màu nền cho tiêu đề bảng */
+    font-weight: bold; /* Đậm tiêu đề bảng */
+}
+
+.table td {
+    overflow: hidden; /* Ẩn nội dung tràn ra ngoài */
+    text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung quá dài */
+}
+
+.btn {
+    margin: 0 5px; /* Khoảng cách giữa các nút */
+    border: none; /* Bỏ viền cho nút */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+    color: white; /* Màu chữ khi hover */
+}
+
+.input-group {
+    /* Chiếm toàn bộ chiều rộng */
+    width: 400px; /* Đặt chiều rộng cụ thể cho thanh tìm kiếm */
+}
+
+.input-group .btn {
+    margin-left: 10px; /* Khoảng cách giữa ô tìm kiếm và nút Tìm kiếm */
+}
+
+/* Thêm quy tắc để căn phải cho nút thêm mới */
+.mb-3 {
+    display: flex;
+    justify-content: space-between; /* Để căn đều giữa ô tìm kiếm và nút thêm mới */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+.form-label {
+    display: inline-block; /* Đảm bảo nhãn không xuống dòng */
+    margin-bottom: 0.5rem; /* Khoảng cách dưới nhãn */
+}
+
+.form-control {
+    width: 100%; /* Chiều rộng 100% */
+    max-width: 650px; /* Chiều rộng tối đa để giữ cho form gọn gàng */
+}
+.form-select {
+    width: 100%; /* Chiều rộng 100% */
+    max-width: 650px; /* Chiều rộng tối đa để giữ cho form gọn gàng */
+}
+.status-active {
+    color: green; /* Màu xanh cho trạng thái "Hoạt động" */
+}
+
+.status-inactive {
+    color: red; /* Màu đỏ cho trạng thái "Ngừng hoạt động" */
 }

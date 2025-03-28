@@ -6,42 +6,80 @@ body {
 }
 
 .container {
-    width: 80%;
-    margin: auto;
+    max-width: 800px; /* Giới hạn chiều rộng tối đa cho container */
+    margin: 20px auto; /* Căn giữa container */
     padding: 20px;
     background: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ cho container */
     border-radius: 10px;
-    margin-top: 20px;
 }
 
 .blog-image {
-    width: 100%;
+    width: 80%; /* Giảm kích thước hình ảnh xuống 80% */
+    max-width: 600px; /* Giới hạn chiều rộng tối đa cho hình ảnh */
+    border-radius: 10px;
+    margin: 20px auto; /* Căn giữa hình ảnh */
+    display: block; /* Đảm bảo hình ảnh được căn giữa */
+}
+
+.blog-title {
+    color: #333;
+    text-align: center;
+    font-size: 2em; /* Tăng kích thước chữ cho tiêu đề */
+    margin: 20px 0; /* Khoảng cách trên và dưới tiêu đề */
+}
+
+.blog-content {
+    color: #555;
+    line-height: 1.8; /* Tăng khoảng cách dòng cho dễ đọc */
+    margin-bottom: 20px; /* Khoảng cách dưới nội dung */
+    font-size: 1.1em; /* Tăng kích thước chữ cho nội dung */
+    text-align: center; /* Căn giữa nội dung */
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 20px; /* Khoảng cách trên thông báo lỗi */
+    font-size: 1.2em; /* Tăng kích thước chữ cho thông báo lỗi */
+}
+
+.related-title {
+    margin-top: 40px; /* Khoảng cách trên tiêu đề danh sách blog khác */
+    text-align: center;
+    color: #333;
+    font-size: 1.5em; /* Tăng kích thước chữ cho tiêu đề danh sách */
+}
+
+.related-blogs {
+    width: 80%; /* Optional: Set a max width for larger screens */
+    margin: 0 auto; /* Centers the element horizontally */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Căn giữa các item */
+}
+
+.related-item {
+    width: 22%; /* Chiếm 22% chiều rộng để vừa 4 item trên một hàng */
+    margin-bottom: 20px; /* Khoảng cách dưới các item */
+    cursor: pointer; /* Đổi con trỏ khi hover */
+    transition: transform 0.3s; /* Hiệu ứng chuyển động */
+}
+
+.related-item:hover {
+    transform: scale(1.05); /* Phóng to khi hover */
+}
+
+.related-image {
+    width: 100%; /* Chiều rộng 100% của item */
+    height: 120px; /* Chiều cao cố định để đảm bảo kích thước bằng nhau */
+    object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
     border-radius: 10px;
 }
 
-h1 {
-    color: #333;
+.related-title {
     text-align: center;
-}
-
-p {
     color: #555;
-    line-height: 1.6;
+    font-size: 1.1em; /* Tăng kích thước chữ cho tiêu đề liên quan */
+    margin-top: 10px; /* Khoảng cách trên tiêu đề liên quan */
 }
-
-.back-btn {
-    display: block;
-    width: 150px;
-    margin: 20px auto;
-    text-align: center;
-    padding: 10px;
-    background: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-    .back-btn:hover {
-        background: #0056b3;
-    }

@@ -10,13 +10,25 @@ const blogsData = [
         id: "1",
         title: "Khám Phá Hà Nội – Thành phố của tình yêu",
         image: hanoi,
-        content: "Hà Nội là một điểm đến tuyệt vời với hồ Gươm, phố cổ...",
+        content: "Hà Nội là một điểm đến tuyệt vời với hồ Gươm, phố cổ, và ẩm thực phong phú...",
     },
     {
         id: "2",
         title: "Khám Phá Huế – Thành phố di sản",
         image: hue,
-        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ...",
+        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ, và các món ăn đặc sản...",
+    },
+    {
+        id: "3",
+        title: "Khám Phá Huế – Thành phố di sản",
+        image: hue,
+        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ, và các món ăn đặc sản...",
+    },
+    {
+        id: "4",
+        title: "Khám Phá Huế – Thành phố di sản",
+        image: hue,
+        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ, và các món ăn đặc sản...",
     }
 ];
 
@@ -24,12 +36,7 @@ const BlogDetail = () => {
     const { blogId } = useParams();
     const navigate = useNavigate();
 
-    console.log("Blog ID từ URL:", blogId);
-
-    // So sánh với ID đã được ép kiểu
-    const blog = blogsData.find(item => item.id === blogId);
-    
-    console.log("Blog tìm thấy:", blog);
+    const blog = blogsData.find((item) => item.id === blogId);
 
     if (!blog) {
         return (
@@ -37,23 +44,30 @@ const BlogDetail = () => {
                 <header className="header">
                     <Header />
                 </header>
-                <h2 style={{ color: "red", textAlign: "center" }}>🚫 Bài viết không tồn tại!</h2>
+                <h2 className="error-message">🚫 Bài viết không tồn tại!</h2>
                 <button className="back-btn" onClick={() => navigate("/")}>🏠 Về trang chủ</button>
             </div>
         );
     }
 
     return (
-        <div className="container">
+        <div>
             <header className="header">
                 <Header />
             </header>
 
-            <h1>{blog.title}</h1>
+            <h1 className="blog-title"><strong>{blog.title}</strong></h1>
             <img src={blog.image} alt={blog.title} className="blog-image" />
-            <p>{blog.content}</p>
-
-            <button className="back-btn" onClick={() => navigate(-1)}>⬅ Quay lại</button>
+            <p className="blog-content">{blog.content}</p>
+            <h2 className="related-title"><strong>Các bài viết khác</strong></h2>
+            <div className="related-blogs">
+                {blogsData.map((item) => (
+                    <div key={item.id} className="related-item" onClick={() => navigate(`/blog/${item.id}`)}>
+                        <img src={item.image} alt={item.title} className="related-image" />
+                        <h3 className="related-title">{item.title}</h3>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

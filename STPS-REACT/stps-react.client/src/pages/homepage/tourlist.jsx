@@ -11,28 +11,40 @@ const tours = [
         id: 1,
         name: "TOUR HÀ NỘI",
         location: "Mô tả tour",
-        price: "Giá: ",
+        price1: "10.000.000",
+        price2: "5.000.000",
         image: hanoi,
     },
     {
         id: 2,
         name: "TOUR ĐÀ NẴNG",
         location: "Mô tả tour",
-        price: "Giá: ",
-        image: danang,
+        price1: "10.000.000",
+        price2: "5.000.000",
+        image: hanoi,
     },
     {
         id: 3,
-        name: "TOUR HÀ NỘI",
+        name: "TOUR NHA TRANG",
         location: "Mô tả tour",
-        price: "Giá: ",
+        price1: "10.000.000",
+        price2: "5.000.000",
         image: hanoi,
     },
     {
         id: 4,
         name: "TOUR HÀ NỘI",
         location: "Mô tả tour",
-        price: "Giá: ",
+        price1: "10.000.000",
+        price2: "5.000.000",
+        image: hanoi,
+    },
+    {
+        id: 5,
+        name: "TOUR THÀNH PHỐ HỒ CHÍ MINH",
+        location: "Mô tả tour",
+        price1: "10.000.000",
+        price2: "5.000.000",
         image: hanoi,
     },
 ];
@@ -42,9 +54,9 @@ const TourList = () => {
     const [adults, setAdults] = useState(1);
     const [children, setChildren] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState(""); // State cho từ khóa tìm kiếm
     const dropdownRef = useRef(null);
 
-    // Đóng dropdown khi click bên ngoài
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
             setIsOpen(false);
@@ -57,6 +69,12 @@ const TourList = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
+
+    // Hàm xử lý tìm kiếm
+    const filteredTours = tours.filter(tour =>
+        tour.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="container-fluid">
             <header className="header">
@@ -64,17 +82,20 @@ const TourList = () => {
             </header>
             {/* Thanh tìm kiếm */}
             <div className="search-bar d-flex justify-content-between align-items-center p-3">
-                <input type="text" className="form-control search-input" placeholder="Da Nang" />
+                <input
+                    type="text"
+                    className="form-control search-input"
+                    placeholder="Địa điểm"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)} // Cập nhật state khi nhập
+                />
                 <input type="date" className="form-control search-input" />
                 <input type="date" className="form-control search-input" />
-                <div className="search-input-group d-flex gap-2">
+                <div className="search-input-group d-flex align-items-center gap-2">
                     <div className="position-relative" ref={dropdownRef}>
-                        {/* Nút hiển thị dropdown */}
                         <button className="form-control text-start" onClick={() => setIsOpen(!isOpen)}>
                             {adults} người lớn, {children} trẻ em
                         </button>
-
-                        {/* Nội dung dropdown */}
                         {isOpen && (
                             <div className="dropdown-menu show p-3" style={{ width: "250px" }}>
                                 <div className="d-flex justify-content-between align-items-center mb-2">
@@ -91,7 +112,6 @@ const TourList = () => {
                                         >+</button>
                                     </div>
                                 </div>
-
                                 <div className="d-flex justify-content-between align-items-center">
                                     <span>Trẻ em</span>
                                     <div>
@@ -118,31 +138,25 @@ const TourList = () => {
                 <div className="col-md-3">
                     <h5>Tìm kiếm</h5>
                     <input type="text" className="form-control mb-3" placeholder="Search..." />
-
                     <h5>Giá tiền</h5>
-                    <div className="budget-filter d-flex">
+                    <div className="budget-filter d-flex mb-3">
                         <input type="number" className="form-control me-2" placeholder="Min" />
                         <input type="number" className="form-control" placeholder="Max" />
                     </div>
-
-                    {[1, 2].map((opinion) => (
-                        <div key={opinion} className="filter-section">
-                            <h5>Khu vực</h5>
-                            <div>
-                                <label><input type="checkbox" /> Phước Mỹ <br /></label>
-                                <label><input type="checkbox" /> Hòa Hải <br /></label>
-                                <label><input type="checkbox" /> Hải Châu <br /></label>
-                                <label><input type="checkbox" /> Sơn Trà <br /></label>
-                            </div>
-                            <h5>Loại hình nơi ở</h5>
-                            <div>
-                                <label><input type="checkbox" /> Khách sạn <br /></label>
-                                <label><input type="checkbox" /> Biệt thự nghỉ dưỡng <br /></label>
-                                <label><input type="checkbox" /> Căn hộ <br /></label>
-                                <label><input type="checkbox" /> Resort <br /></label>
-                            </div>
-                        </div>
-                    ))}
+                    <div className="filter-section">
+                        <h5>Khu vực</h5>
+                        <label><input type="checkbox" /> Phước Mỹ <br /></label>
+                        <label><input type="checkbox" /> Hòa Hải <br /></label>
+                        <label><input type="checkbox" /> Hải Châu <br /></label>
+                        <label><input type="checkbox" /> Sơn Trà <br /></label>
+                    </div>
+                    <div className="filter-section">
+                        <h5>Loại hình nơi ở</h5>
+                        <label><input type="checkbox" /> Khách sạn <br /></label>
+                        <label><input type="checkbox" /> Biệt thự nghỉ dưỡng <br /></label>
+                        <label><input type="checkbox" /> Căn hộ <br /></label>
+                        <label><input type="checkbox" /> Resort <br /></label>
+                    </div>
                 </div>
 
                 {/* Danh sách tour bên phải */}
@@ -158,7 +172,7 @@ const TourList = () => {
                         </div>
                     </div>
 
-                    {tours.map((tour) => (
+                    {filteredTours.map((tour) => (
                         <div key={tour.id} className="card mb-3 tour-card">
                             <div className="row g-0">
                                 <div className="col-md-4">
@@ -166,11 +180,12 @@ const TourList = () => {
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
-                                        <h5 className="card-title">{tour.name}</h5>
+                                        <h5 className="card-title"><strong>{tour.name}</strong></h5>
                                         <p className="card-text">
                                             <i className="bi bi-geo-alt-fill"></i> {tour.location}
                                         </p>
-                                        <p className="card-text">{tour.price}</p>
+                                        <p className="card-text">Giá vé người lớn: {tour.price1}</p>
+                                        <p className="card-text">Giá vé trẻ em: {tour.price2}</p>
                                         <button className="btn btn-primary" onClick={() => navigate(`/tour/${tour.id}`)}>
                                             Xem thêm
                                         </button>
