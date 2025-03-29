@@ -134,6 +134,7 @@ public partial class StpsContext : DbContext
             entity.Property(e => e.BlogName)
                 .HasMaxLength(200)
                 .HasColumnName("blogName");
+            entity.Property(e => e.Date).HasColumnName("date");
 
             entity.HasOne(d => d.Account).WithMany(p => p.Blogs)
                 .HasForeignKey(d => d.AccountId)
@@ -326,6 +327,7 @@ public partial class StpsContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("accountID");
+            entity.Property(e => e.Date).HasColumnName("date");
             entity.Property(e => e.FeedbackDetail)
                 .HasMaxLength(500)
                 .HasColumnName("feedbackDetail");

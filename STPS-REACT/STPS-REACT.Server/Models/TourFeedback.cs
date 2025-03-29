@@ -15,6 +15,8 @@ public partial class TourFeedback
 
     public string? FeedbackDetail { get; set; }
 
+    public DateOnly Date { get; set; }
+
     public virtual Account Account { get; set; } = null!;
 
     public virtual Tour Tour { get; set; } = null!;

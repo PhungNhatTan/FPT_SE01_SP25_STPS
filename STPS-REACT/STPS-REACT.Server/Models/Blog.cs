@@ -13,5 +13,7 @@ public partial class Blog
 
     public string BlogContent { get; set; } = null!;
 
+    public DateOnly Date { get; set; }
+
     public virtual Account Account { get; set; } = null!;
 }
