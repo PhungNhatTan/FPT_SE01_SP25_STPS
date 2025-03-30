@@ -31,6 +31,8 @@ public partial class StpsContext : DbContext
 
     public virtual DbSet<PersonalizedTour> PersonalizedTours { get; set; }
 
+    public virtual DbSet<Region> Regions { get; set; }
+
     public virtual DbSet<Tctour> Tctours { get; set; }
 
     public virtual DbSet<Tour> Tours { get; set; }
@@ -158,10 +160,19 @@ public partial class StpsContext : DbContext
                 .HasMaxLength(100)
                 .HasColumnName("locationName");
             entity.Property(e => e.Price).HasColumnName("price");
+            entity.Property(e => e.RegionId)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("regionId");
             entity.Property(e => e.TypeId)
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("typeID");
+
+            entity.HasOne(d => d.Region).WithMany(p => p.Locations)
+                .HasForeignKey(d => d.RegionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Location_Region");
 
             entity.HasOne(d => d.Type).WithMany(p => p.Locations)
                 .HasForeignKey(d => d.TypeId)
@@ -238,6 +249,19 @@ public partial class StpsContext : DbContext
                 .HasForeignKey(d => d.TourId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PersonalizedTour_Tour");
+        });
+
+        modelBuilder.Entity<Region>(entity =>
+        {
+            entity.ToTable("Region");
+
+            entity.Property(e => e.RegionId)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("regionId");
+            entity.Property(e => e.RegionName)
+                .HasMaxLength(100)
+                .HasColumnName("regionName");
         });
 
         modelBuilder.Entity<Tctour>(entity =>

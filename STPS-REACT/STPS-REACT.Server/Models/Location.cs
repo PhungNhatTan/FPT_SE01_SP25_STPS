@@ -15,5 +15,9 @@ public partial class Location
 
     public string? ImgUrl { get; set; }
 
+    public string RegionId { get; set; } = null!;
+
+    public virtual Region Region { get; set; } = null!;
+
     public virtual LocationType Type { get; set; } = null!;
 }
