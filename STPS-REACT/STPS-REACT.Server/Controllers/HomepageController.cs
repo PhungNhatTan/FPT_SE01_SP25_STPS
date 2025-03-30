@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using STPS_REACT.Server.DAO;
+using STPS_REACT.Server.DTO;
 using STPS_REACT.Server.Models;
 
 namespace STPS_REACT.Server.Controllers
@@ -9,39 +10,35 @@ namespace STPS_REACT.Server.Controllers
         private readonly StpsContext _context;
         private readonly LocationDAO _ld;
         private readonly BlogDAO _bd;
-        private readonly TcTourDAO _tcd;
+        private readonly TcTourDAO _tctd;
 
-        public HomepageController(StpsContext context, LocationDAO ld, BlogDAO bd, TcTourDAO tcd)
+        public HomepageController(StpsContext context, LocationDAO ld, BlogDAO bd, TcTourDAO tctd)
         {
             _context = context;
             _ld = ld;
             _bd = bd;
-            _tcd = tcd;
+            _tctd = tctd;
         }
 
-        public IActionResult Homepage()
+        public async Task<IActionResult> Load()
         {
-            LocationLoad();
-            BlogLoad();
-            return View();
+            var loc = _ld.GetHomepageLocation();
+            var bl = _bd.GetHomepageBlog();
+            var t = _tctd.GetHomepageTour();
+            var display = new LoadViewModel
+            {
+                Locations = loc,
+                Blogs = bl,
+                Tours=t
+            };
+            return Ok(display);
         }
+    }
 
-        public async Task<IActionResult> LocationLoad()
-        {
-            var data = _ld.GetHomepageLocation();
-            return Ok(data);
-        }
-
-        public async Task<IActionResult> BlogLoad()
-        {
-            var data = _bd.GetHomepageBlog();
-            return Ok(data);
-        }
-
-        public async Task<IActionResult> TourLoad()
-        {
-            var data = _tcd.GetHomepageTour();
-            return Ok(data);
-        }
+    class LoadViewModel
+    {
+        public List<BlogDTO>? Blogs { get; set; }
+        public List<LocationDTO>? Locations { get; set; }
+        public List<TcTourDTO>? Tours { get; set; }
     }
 }

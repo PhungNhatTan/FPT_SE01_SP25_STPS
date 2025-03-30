@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("STPS-REACT.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8cb9e075d1b790940316db48616a954380a71539")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5cd340cfa8d15210400759a70f9a31e3dabda8d2")]
 [assembly: System.Reflection.AssemblyProductAttribute("STPS-REACT.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("STPS-REACT.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
