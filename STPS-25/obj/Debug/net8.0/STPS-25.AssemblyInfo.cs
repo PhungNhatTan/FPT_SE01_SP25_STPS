@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("STPS-25")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2133147aee9281104385e6c67df9a0696127dbdf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e46a1f2d40ea2085c83f3732728a41cc0c6df878")]
 [assembly: System.Reflection.AssemblyProductAttribute("STPS-25")]
 [assembly: System.Reflection.AssemblyTitleAttribute("STPS-25")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
