@@ -6,6 +6,8 @@ import BlogDetail from "./pages/homepage/blogdetail";
 import TourList from "./pages/homepage/tourlist";
 import TourDetail from "./pages/homepage/tourdetail";
 import Booking from "./pages/homepage/booking";
+import LocationList from "./pages/homepage/locationlist";
+import LocationDetail from "./pages/homepage/locationdetail";
 
 import MTourList from "./pages/managepage/mtourlist";
 import ManagePage from "./pages/managepage/managepage";
@@ -38,6 +40,8 @@ function App() {
       <Route path="/tourlist" element={<TourList />} />
       <Route path="/tour/:id" element={<TourDetail />} />
       <Route path="/booking" element={<Booking />} />
+      <Route path="/locationlist" element={<LocationList />} />
+      <Route path="/location/:locId" element={<LocationDetail />} />
 
       <Route path="/dashboard-admin" element={<DashboardAdmin />} />
 

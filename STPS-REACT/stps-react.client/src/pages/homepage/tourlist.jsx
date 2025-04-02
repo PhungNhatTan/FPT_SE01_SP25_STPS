@@ -19,24 +19,24 @@ const tours = [
         id: 2,
         name: "TOUR ĐÀ NẴNG",
         location: "Mô tả tour",
-        price1: "10.000.000",
-        price2: "5.000.000",
+        price1: "12.000.000",
+        price2: "6.000.000",
         image: hanoi,
     },
     {
         id: 3,
         name: "TOUR NHA TRANG",
         location: "Mô tả tour",
-        price1: "10.000.000",
-        price2: "5.000.000",
+        price1: "8.000.000",
+        price2: "4.000.000",
         image: hanoi,
     },
     {
         id: 4,
         name: "TOUR HÀ NỘI",
         location: "Mô tả tour",
-        price1: "10.000.000",
-        price2: "5.000.000",
+        price1: "15.000.000",
+        price2: "7.500.000",
         image: hanoi,
     },
     {
@@ -55,6 +55,8 @@ const TourList = () => {
     const [children, setChildren] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState(""); // State cho từ khóa tìm kiếm
+    const [minPrice, setMinPrice] = useState(0); // State cho giá tối thiểu
+    const [maxPrice, setMaxPrice] = useState(""); // State cho giá tối đa
     const dropdownRef = useRef(null);
 
     const handleClickOutside = (event) => {
@@ -70,10 +72,22 @@ const TourList = () => {
         };
     }, []);
 
+    // Tính toán giá vé người lớn cao nhất
+    const maxTourPrice = Math.max(...tours.map(tour => parseInt(tour.price1.replace(/\D/g, ""), 10)));
+
     // Hàm xử lý tìm kiếm
-    const filteredTours = tours.filter(tour =>
-        tour.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredTours = tours.filter(tour => {
+        const price1 = parseInt(tour.price1.replace(/\D/g, ""), 10); // Chuyển đổi giá thành số
+        
+        // Kiểm tra nếu tour phù hợp với từ khóa tìm kiếm
+        const matchesSearch = tour.name.toLowerCase().includes(searchTerm.toLowerCase());
+        
+        // Kiểm tra nếu tour nằm trong khoảng giá
+        const matchesPrice = (minPrice ? price1 >= minPrice : true) &&
+                             (maxPrice ? price1 <= maxPrice : true);
+
+        return matchesSearch && matchesPrice;
+    });
 
     return (
         <div className="container-fluid">
@@ -136,12 +150,22 @@ const TourList = () => {
             <div className="row mt-3">
                 {/* Bộ lọc bên trái */}
                 <div className="col-md-3">
-                    <h5>Tìm kiếm</h5>
-                    <input type="text" className="form-control mb-3" placeholder="Search..." />
                     <h5>Giá tiền</h5>
                     <div className="budget-filter d-flex mb-3">
-                        <input type="number" className="form-control me-2" placeholder="Min" />
-                        <input type="number" className="form-control" placeholder="Max" />
+                        <input
+                            type="number"
+                            className="form-control me-2"
+                            placeholder="Min"
+                            value={minPrice}
+                            onChange={(e) => setMinPrice(Math.max(0, e.target.value))} // Cập nhật giá tối thiểu
+                        />
+                        <input
+                            type="number"
+                            className="form-control"
+                            placeholder="Max"
+                            value={maxPrice}
+                            onChange={(e) => setMaxPrice(Math.min(maxTourPrice, e.target.value))} // Cập nhật giá tối đa
+                        />
                     </div>
                     <div className="filter-section">
                         <h5>Khu vực</h5>
