@@ -1,0 +1,13 @@
+.table th, .table td {
+    vertical-align: middle; /* Căn giữa theo chiều dọc */
+    padding: 12px; /* Thêm khoảng cách cho các ô */
+}
+
+.table th {
+    background-color: #f8f9fa; /* Màu nền cho tiêu đề bảng */
+    font-weight: bold; /* Đậm tiêu đề bảng */
+}
+
+.table td {
+    white-space: nowrap; /* Ngăn không cho nội dung xuống dòng */
+}
