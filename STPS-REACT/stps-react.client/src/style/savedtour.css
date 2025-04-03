@@ -1,0 +1,104 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Saved Tour Container */
+.saved-tour-container {
+    max-width: 1000px; /* Tăng chiều rộng container */
+    align-items: flex-start;
+    width: 100%;
+    margin: 20px auto;
+    padding: 15px; /* Padding chung */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Không cần margin-left ở đây */
+}
+
+.mb-3 {
+    display: flex;
+    width: 95% !important;
+    justify-content: space-between;
+    align-items: flex-start !important;
+}
+/* List of Saved Tours */
+.saved-tour-list {
+    width: 100%; /* Chiếm hết chiều rộng */
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Khoảng cách giữa các item */
+    padding-left: 50px; /* Cách mép trái 50px */
+}
+
+/* Individual Tour Item */
+.saved-tour-item {
+    align-items: flex-start;
+    padding: 15px; /* Giảm padding giữa các item */
+    background: #f9f9f9; /* Màu nền cho các item */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0; /* Bỏ margin ngoài */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for tour item */
+.saved-tour-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Thêm hiệu ứng hover */
+}
+
+/* Title in each saved tour item */
+.saved-tour-item h3 {
+    margin: 0 0 10px 0; /* Cải thiện khoảng cách của tiêu đề */
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Text in each saved tour item */
+.saved-tour-item p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Delete button style */
+.delete-button {
+    background: red;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%; /* Làm cho nút xóa chiếm hết chiều rộng */
+}
+
+/* Hover effect for delete button */
+.delete-button:hover {
+    background: darkred;
+}
+
+/* Card body style for saved tours */
+.card-body {
+    padding: 10px; /* Giảm padding trong card-body */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Giảm khoảng trống giữa text và button */
+}
+
+/* Button styles within the card */
+.card-body button {
+    margin-left: 10px; /* Thêm khoảng cách giữa hai nút */
+}
+
+
+/* Row styles */
+.row {
+    margin: 0; /* Loại bỏ margin mặc định của row */
+}

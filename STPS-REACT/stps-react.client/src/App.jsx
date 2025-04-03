@@ -2,12 +2,14 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/homepage/homepage";
 import Customizetour from "./pages/homepage/customizetour";
+import SavedTour from "./pages/homepage/savedtour";
 import BlogDetail from "./pages/homepage/blogdetail";
 import TourList from "./pages/homepage/tourlist";
 import TourDetail from "./pages/homepage/tourdetail";
 import Booking from "./pages/homepage/booking";
 import LocationList from "./pages/homepage/locationlist";
 import LocationDetail from "./pages/homepage/locationdetail";
+import History from "./pages/homepage/history";
 
 import MTourList from "./pages/managepage/mtourlist";
 import ManagePage from "./pages/managepage/managepage";
@@ -36,12 +38,15 @@ function App() {
 
       <Route path="/" element={<HomePage />} />
       <Route path="/customize-tour" element={<Customizetour />} />
+      <Route path="/saved-tour" element={<SavedTour />} />
       <Route path="/blog/:blogId" element={<BlogDetail />} />
       <Route path="/tourlist" element={<TourList />} />
       <Route path="/tour/:id" element={<TourDetail />} />
       <Route path="/booking" element={<Booking />} />
       <Route path="/locationlist" element={<LocationList />} />
       <Route path="/location/:locId" element={<LocationDetail />} />
+      <Route path="/history" element={<History />} />
+      <Route path="/tourdetail/:id" element={<TourDetail />} />
 
       <Route path="/dashboard-admin" element={<DashboardAdmin />} />
 

@@ -5,6 +5,7 @@ import profileImg from "../../assets/profile-icon.png";
 import settingsIcon from "../../assets/settings-icon.png";
 import logoutIcon from "../../assets/logout-icon.png";
 import cartIcon from "../../assets/cart-icon.png";
+import historyIcon from "../../assets/history-icon.png";
 import "../../style/header.css";
 
 const Header = () => {
@@ -54,9 +55,13 @@ const Header = () => {
                             <img src={settingsIcon} alt="Tùy chọn Tour" />
                             Tùy chọn Tour
                         </li>
-                        <li onClick={() => navigate("/customize-tour-saved")}>
+                        <li onClick={() => navigate("/saved-tour")}>
                             <img src={cartIcon} alt="Tour đã lưu" />
                             Tour đã lưu
+                        </li>
+                        <li onClick={() => navigate("/history")}>
+                            <img src={historyIcon} alt="Lịch sử" />
+                            Lịch sử đặt Tour
                         </li>
                         <li>
                             <img src={logoutIcon} alt="Đăng xuất" />

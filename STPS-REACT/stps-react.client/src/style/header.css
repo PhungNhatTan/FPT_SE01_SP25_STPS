@@ -18,6 +18,7 @@ body {
     box-sizing: border-box;
     overflow: visible;
     z-index: 100;
+    border-bottom: 2px solid #004d40 !important;
 }
 
 /* Logo */
@@ -40,6 +41,7 @@ body {
 
 /* Profile Menu */
 .profile-menu {
+    margin-top: 0px;
     display: flex;
     align-items: center;
     right: 20px; /* ✅ Giữ khoảng cách hợp lý */
@@ -49,18 +51,23 @@ body {
 }
 
 .profile-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
+    background: none; /* Không có nền */
+    border: none; /* Không có viền */
+    cursor: pointer; /* Con trỏ thay đổi khi di chuột */
+    padding: 0; /* Không có padding */
+    display: flex; /* Sử dụng flexbox để căn giữa nội dung */
+    justify-content: center !important; /* Căn giữa theo chiều ngang */
+    align-items: center !important; /* Căn giữa theo chiều dọc */
+    height: 40px; /* Đặt chiều cao cho button */
+    width: auto !important; /* Đặt chiều rộng cho button */
 }
 
 .profile-button img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ccc;
+    width: 100%; /* Đặt chiều rộng hình ảnh */
+    height: auto !important; /* Tự động điều chỉnh chiều cao */
+    border-radius: 50%; /* Làm cho hình ảnh tròn */
+    object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
+    margin-top: 35px !important; /* Điều chỉnh vị trí hình ảnh nếu cần */
 }
 
 /* Dropdown */
