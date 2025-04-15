@@ -4,6 +4,7 @@ import HomePage from "./pages/homepage/homepage";
 import Customizetour from "./pages/homepage/customizetour";
 import SavedTour from "./pages/homepage/savedtour";
 import BlogDetail from "./pages/homepage/blogdetail";
+import BlogList from "./pages/homepage/bloglist";
 import TourList from "./pages/homepage/tourlist";
 import TourDetail from "./pages/homepage/tourdetail";
 import Booking from "./pages/homepage/booking";
@@ -40,6 +41,7 @@ function App() {
       <Route path="/customize-tour" element={<Customizetour />} />
       <Route path="/saved-tour" element={<SavedTour />} />
       <Route path="/blog/:blogId" element={<BlogDetail />} />
+      <Route path="/bloglist" element={<BlogList />} />
       <Route path="/tourlist" element={<TourList />} />
       <Route path="/tour/:id" element={<TourDetail />} />
       <Route path="/booking" element={<Booking />} />

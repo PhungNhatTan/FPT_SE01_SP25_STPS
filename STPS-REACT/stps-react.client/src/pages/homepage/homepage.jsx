@@ -46,6 +46,8 @@ const tourData = [
     { id: 3, name: "Đà Nẵng", image: hanoi },
     { id: 4, name: "Nha Trang", image: hanoi },
     { id: 5, name: "Thành phố Hồ Chí Minh", image: hanoi },
+    { id: 6, name: "Thành phố Hồ Chí Minh", image: hanoi },
+    { id: 7, name: "Thành phố Hồ Chí Minh", image: hanoi },
 ];
 
 const locData = [
@@ -103,7 +105,7 @@ const Homepage = () => {
                     </button>
                 </div>
                 <div className="blog-list tour-list">
-                    {tourData.map(tour => (
+                    {tourData.slice(0, 6).map(tour => (
                         <div className="blog-item tour-item" key={tour.id}>
                             <Link to={`/tour/${tour.id}`}>
                                 <img src={tour.image} alt={tour.name} />
