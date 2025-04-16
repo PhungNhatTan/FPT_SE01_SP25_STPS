@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:52329",
+"RedirectUrl": "",
+"LaunchCommand": "npm run dev",
+"WorkingDirectory": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\..\\stps-react.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}
