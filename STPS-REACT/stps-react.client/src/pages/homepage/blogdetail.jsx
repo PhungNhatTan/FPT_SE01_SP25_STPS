@@ -2,35 +2,7 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../../style/blogdetail.css"; 
 import Header from "./header";
-import hanoi from "../../assets/hanoi.jpg";
-import hue from "../../assets/hue.jpg";
-
-const blogsData = [
-    {
-        id: "1",
-        title: "Khám Phá Hà Nội – Thành phố của tình yêu",
-        image: hanoi,
-        content: "Hà Nội là một điểm đến tuyệt vời với hồ Gươm, phố cổ, và ẩm thực phong phú...",
-    },
-    {
-        id: "2",
-        title: "Khám Phá Huế – Thành phố di sản",
-        image: hue,
-        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ, và các món ăn đặc sản...",
-    },
-    {
-        id: "3",
-        title: "Khám Phá Huế – Thành phố di sản",
-        image: hue,
-        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ, và các món ăn đặc sản...",
-    },
-    {
-        id: "4",
-        title: "Khám Phá Huế – Thành phố di sản",
-        image: hue,
-        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ, và các món ăn đặc sản...",
-    }
-];
+import { blogsData } from "./data/blogsData";
 
 const BlogDetail = () => {
     const { blogId } = useParams();
@@ -58,7 +30,7 @@ const BlogDetail = () => {
 
             <h1 className="blog-title"><strong>{blog.title}</strong></h1>
             <img src={blog.image} alt={blog.title} className="blog-image" />
-            <p className="blog-content">{blog.content}</p>
+            <p className="blog-content">{blog.description}</p>
             <h2 className="related-title"><strong>Các bài viết khác</strong></h2>
             <div className="related-blogs">
                 {blogsData.map((item) => (

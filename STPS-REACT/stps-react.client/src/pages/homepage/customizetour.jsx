@@ -4,31 +4,21 @@ import banner from "../../assets/banner.jpg";
 import "../../style/customizetour.css";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
-import BookingPopup from "./booking"; // Import component BookingPopup
+import { locationList } from "./data/locationList";
+import { locationTourList } from "./data/locationTourList";
+import BookingPopup from "./booking";
 
 const Customizetour = () => {
     const [locations, setLocations] = useState([]);
     const [locationTour, setLocationTour] = useState([]);
+    const [selectedProvinceId, setSelectedProvinceId] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [showModal1, setShowModal1] = useState(false);
-    const [showBookingPopup, setShowBookingPopup] = useState(false); // Trạng thái popup
+    const [showBookingPopup, setShowBookingPopup] = useState(false);
+    const [searchTour, setSearchTour] = useState("");
+    const [searchLocation, setSearchLocation] = useState("");
 
     const navigate = useNavigate();
-
-    // Các dữ liệu địa điểm và tour
-    const locationList = [
-        { id: 1, name: "Địa điểm 1", adultPrice: "100.000đ", childPrice: "50.000đ", time: "08:00 - 18:00" },
-        { id: 2, name: "Địa điểm 2", adultPrice: "120.000đ", childPrice: "60.000đ", time: "09:00 - 19:00" },
-        { id: 3, name: "Địa điểm 3", adultPrice: "90.000đ", childPrice: "45.000đ", time: "07:30 - 17:30" },
-        { id: 4, name: "Địa điểm 4", adultPrice: "110.000đ", childPrice: "55.000đ", time: "08:30 - 18:30" },
-        { id: 5, name: "Địa điểm 5", adultPrice: "130.000đ", childPrice: "65.000đ", time: "09:30 - 20:00" }
-    ];
-
-    const locationTourList = [
-        { id: 1, name: "Hà Nội", description: "Mô tả Tour Hà Nội" },
-        { id: 2, name: "Đà Nẵng", description: "Hành trình khám phá thành phố biển Đà Nẵng, phố cổ Hội An với những trải nghiệm đáng nhớ." },
-        { id: 3, name: "Nha Trang", description: "Mô tả Tour Nha Trang" }
-    ];
 
     const addLocation = (loc) => {
         setLocations([...locations, loc]);
@@ -36,6 +26,7 @@ const Customizetour = () => {
 
     const addTourLocation = (loctour) => {
         setLocationTour([...locationTour, loctour]);
+        setSelectedProvinceId(loctour.id); // lưu lại tỉnh đã chọn
     };
 
     const removeLocation = (id) => {
@@ -44,12 +35,25 @@ const Customizetour = () => {
 
     const removeLocationTour = (id) => {
         setLocationTour(locationTour.filter((locationT) => locationT.id !== id));
+        setSelectedProvinceId(null);
+        setLocations([]); // reset địa điểm nếu xóa tour
     };
 
-    // Lọc các địa điểm chưa được thêm vào
-    const availableLocations = locationList.filter(loc => !locations.some(l => l.id === loc.id));
-    // Lọc các địa điểm tour chưa được thêm vào
-    const availableTourLocations = locationTourList.filter(loctour => !locationTour.some(l => l.id === loctour.id));
+    const availableTourLocations = locationTourList.filter(loctour => 
+        !locationTour.some(l => l.id === loctour.id)
+    );
+
+    const availableLocations = locationList.filter(
+        loc => !locations.some(l => l.id === loc.id) && loc.provinceId === parseInt(selectedProvinceId)
+    );
+
+    const filteredTourLocations = availableTourLocations.filter(loctour =>
+        loctour.province.toLowerCase().includes(searchTour.toLowerCase())
+    );
+
+    const filteredLocations = availableLocations.filter(loc =>
+        loc.name.toLowerCase().includes(searchLocation.toLowerCase())
+    );
 
     const getTotalPrice = () => {
         return locations.reduce((total, loc) => {
@@ -84,8 +88,6 @@ const Customizetour = () => {
 
     const handleSaveTour = () => {
         const newTour = { locations, locationTour };
-        
-        // Lưu tour vào localStorage
         const savedTours = JSON.parse(localStorage.getItem("savedTours")) || [];
         savedTours.push(newTour);
         localStorage.setItem("savedTours", JSON.stringify(savedTours));
@@ -115,22 +117,19 @@ const Customizetour = () => {
                     )}
                     {locationTour.map((locationT) => (
                         <div className="location-card" key={locationT.id}>
-                            <h2 className="text-primary">{locationT.name}</h2>
-                            <p><strong>{locationT.description}</strong></p>
-                            <p><strong>Điểm đến: </strong>{locationT.name} </p>
+                            <h2 className="text-primary">{locationT.province}</h2>
+                            <p><strong>Điểm đến: </strong>{locationT.province}</p>
                             <p><strong>Phương tiện: </strong> Xe du lịch</p>
                             <p><strong>Giá vé Người lớn: </strong> {getTotalAdultPrice()}</p>
                             <p><strong>Giá vé Trẻ em: </strong> {getTotalChildPrice()}</p>
                             <p><strong>Thời gian: </strong> {getTotalTime()}</p>
+                            <button className="btn btn-sm btn-outline-danger mt-2" onClick={() => removeLocationTour(locationT.id)}>Xóa tour</button>
                         </div>
                     ))}
                     {locationTour.length > 0 && locations.length > 0 && (
                         <>
-                            {/* Nút Đặt vé ngay */}
                             <button className="btn btn-warning mt-3" onClick={() => setShowBookingPopup(true)}>Đặt vé ngay</button>
-                            
-                            {/* Nút Lưu tour */}
-                            <button className="btn btn-success mt-3" onClick={handleSaveTour}>Lưu Tour</button>
+                            <button className="btn btn-success mt-3 ms-2" onClick={handleSaveTour}>Lưu Tour</button>
                         </>
                     )}
                 </div>
@@ -151,7 +150,9 @@ const Customizetour = () => {
                         </div>
                     ))}
 
-                    <button className="btn btn-primary mt-4" onClick={() => setShowModal(true)}>➕ Thêm địa điểm</button>
+                    {selectedProvinceId && (
+                        <button className="btn btn-primary mt-4" onClick={() => setShowModal(true)}>➕ Thêm địa điểm</button>
+                    )}
                 </div>
             </div>
 
@@ -174,9 +175,16 @@ const Customizetour = () => {
                                 <button type="button" className="btn-close" onClick={() => setShowModal1(false)}></button>
                             </div>
                             <div className="modal-body">
-                                {availableTourLocations.map((loctour) => (
+                                <input
+                                    type="text"
+                                    className="form-control mb-3"
+                                    placeholder="🔍 Tìm tỉnh thành..."
+                                    value={searchTour}
+                                    onChange={(e) => setSearchTour(e.target.value)}
+                                />
+                                {filteredTourLocations.map((loctour) => (
                                     <div key={loctour.id} className="card mb-2 p-2">
-                                        <h6><strong>{loctour.name}</strong></h6>
+                                        <h6><strong>{loctour.province}</strong></h6>
                                         <button className="btn btn-primary" onClick={() => {
                                             addTourLocation(loctour);
                                             setShowModal1(false);
@@ -204,7 +212,14 @@ const Customizetour = () => {
                                 <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
                             </div>
                             <div className="modal-body">
-                                {availableLocations.map((loc) => (
+                                <input
+                                    type="text"
+                                    className="form-control mb-3"
+                                    placeholder="🔍 Tìm địa điểm..."
+                                    value={searchLocation}
+                                    onChange={(e) => setSearchLocation(e.target.value)}
+                                />
+                                {filteredLocations.map((loc) => (
                                     <div key={loc.id} className="card mb-2 p-2">
                                         <h6><strong>{loc.name}</strong></h6>
                                         <button className="btn btn-primary" onClick={() => {

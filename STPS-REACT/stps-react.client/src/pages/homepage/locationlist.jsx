@@ -1,22 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../style/locationlist.css"; // Đảm bảo đường dẫn đúng
 import Header from "./header";
-import bana from "../../assets/banahills.jpg";
-
-const locData = [
-    { id: "1", image: bana, name: "Bà Nà Hills", description: "Mô tả về Bà Nà Hills.", priceAdult: "10.000.000", priceChild: "5.000.000" },
-    { id: "2", image: bana, name: "Địa điểm 2", description: "Mô tả về Địa điểm 2.", priceAdult: "8.000.000", priceChild: "4.000.000" },
-    // Thêm các địa điểm khác
-];
+import { locData } from "./data/locData";
 
 const LocationList = () => {
+    const [searchQuery, setSearchQuery] = useState("");  // State để lưu giá trị tìm kiếm
+
+    // Hàm xử lý thay đổi trong ô tìm kiếm
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    // Lọc danh sách địa điểm theo tên địa điểm
+    const filteredLocations = locData.filter(location =>
+        location.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div className="location-list">
             <header className="header">
-                    <Header />
-                </header>
-            {locData.map(location => (
+                <Header />
+            </header>
+
+            {/* Ô tìm kiếm */}
+            <div className="search-box">
+                <input
+                    type="text"
+                    placeholder="Tìm kiếm địa điểm..."
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                    className="search-input"
+                />
+            </div>
+
+            {/* Hiển thị các địa điểm đã lọc */}
+            {filteredLocations.map(location => (
                 <div key={location.id} className="location-item">
                     <img src={location.image} alt={location.name} className="location-image" />
                     <div className="location-content">

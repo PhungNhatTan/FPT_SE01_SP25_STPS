@@ -3,32 +3,26 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import "../../style/tourdetail.css";
 import Header from "./header";
-import hanoi from "../../assets/Hanoi.jpg";
-import danang from "../../assets/Da Nang.jpg";
+import { tourData } from "./data/tourData";
 import BookingPopup from "./booking";
 
-// Danh sách tour giả lập (Có thể thay bằng API)
-const tours = [
-    { id: 1, name: "Tour Hà Nội", location: "Hà Nội", priceald: "4.990.000", pricechil: "4.990.000", duration: "3 Ngày 2 Đêm", vehicle: "Xe du lịch", highlights: ["Lăng Bác", "Cột cờ Hà Nội", "Hồ Gươm"], image: hanoi },
-    { id: 2, name: "Tour Đà Nẵng", location: "Đà Nẵng", priceald: "4.990.000", pricechil: "4.990.000", duration: "4 Ngày 3 Đêm", vehicle: "Máy bay", highlights: ["Bà Nà Hills", "Cầu Vàng", "Biển Mỹ Khê"], image: danang },
-    // Các tour khác
-];
 
 const TourDetail = () => {
     const navigate = useNavigate();
     const { id } = useParams(); // Lấy ID từ URL
-    const tour = tours.find((t) => t.id === parseInt(id)); // Tìm tour theo ID
+    const tour = tourData.find((t) => t.id === parseInt(id)); // Tìm tour theo ID
     const [showPopup, setShowPopup] = useState(false);
     const [tourFeedbacks, setTourFeedbacks] = useState([]);
 
     useEffect(() => {
-        // Lấy tourHistory từ localStorage và tìm phản hồi cho tour
-        const storedTours = JSON.parse(localStorage.getItem('tourHistory')) || tours;
-        const currentTour = storedTours.find((t) => t.id === parseInt(id));
-        if (currentTour) {
-            setTourFeedbacks(currentTour.feedback || []);
-        }
-    }, [id]);
+    const storedTours = JSON.parse(localStorage.getItem('tourHistory')) || [];
+    console.log(storedTours);  // Kiểm tra xem dữ liệu từ localStorage có đúng không
+    const currentTour = storedTours.find((t) => t.id === parseInt(id));
+    console.log(currentTour);  // Kiểm tra tour đang tìm kiếm
+    if (currentTour) {
+        setTourFeedbacks(currentTour.feedback || []);
+    }
+}, [id]);
 
     if (!tour) return <h1>Tour không tồn tại</h1>; // Nếu không tìm thấy tour
 
@@ -55,7 +49,7 @@ const TourDetail = () => {
                     <p><strong>Giá vé Người lớn:</strong> {tour.priceald} VND</p>
                     <p><strong>Giá vé Trẻ em:</strong> {tour.pricechil} VND</p>
 
-                    <h2>Địa điểm du lịch</h2>
+                    <h2>Địa điểm nổi bật</h2>
                     <ul style={{ color: "black" }}>
                         {tour.highlights.map((point, index) => (
                             <li key={index}>{point}</li>

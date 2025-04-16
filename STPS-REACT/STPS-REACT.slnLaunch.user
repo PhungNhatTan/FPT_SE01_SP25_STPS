@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "stps-react.client\\stps-react.client.esproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "STPS-REACT.Server\\STPS-REACT.Server.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

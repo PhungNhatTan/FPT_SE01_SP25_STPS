@@ -1,40 +1,11 @@
+// history.jsx
+
 import React, { useState } from "react";
 import "../../style/history.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import danang from "../../assets/Da Nang.jpg";
 import Header from "./header";
-import { useNavigate } from "react-router-dom";  // Thêm useNavigate để điều hướng
-
-const tourHistoryData = [
-    {
-        id: 1,
-        name: "Tour Đà Nẵng - Hội An",
-        image: danang,
-        locations: ["Đà Nẵng", "Hội An", "Bà Nà Hills"],
-        startDate: "2024-04-10",
-        endDate: "2024-04-12",
-        adults: 2,
-        children: 1,
-        adultPrice: 1500000,
-        childPrice: 800000,
-        totalPrice: 3800000,
-        feedback: [],
-    },
-    {
-        id: 2,
-        name: "Tour Nha Trang",
-        image: danang,
-        locations: ["Nha Trang", "Vinpearl", "Hòn Mun"],
-        startDate: "2024-05-05",
-        endDate: "2024-05-08",
-        adults: 4,
-        children: 2,
-        adultPrice: 1800000,
-        childPrice: 1000000,
-        totalPrice: 9200000,
-        feedback: [],
-    },
-];
+import { useNavigate } from "react-router-dom";
+import tourHistoryData from "./data/tourHistoryData"; // Default import
 
 const History = () => {
     const [tours, setTours] = useState(tourHistoryData);

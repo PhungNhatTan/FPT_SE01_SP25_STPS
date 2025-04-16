@@ -38,7 +38,7 @@ const SavedTour = () => {
             </header>
 
             <div className="saved-tour-container">
-                <h3 className="text-success">Danh sách các tour đã lưu</h3>
+                <h3 className="text-success">📌 Danh sách các tour đã lưu</h3>
                 <div className="saved-tour-list">
                     {savedTours.length === 0 ? (
                         <p>Chưa có tour nào được lưu.</p>
@@ -49,14 +49,14 @@ const SavedTour = () => {
                                 <div key={index} className="saved-tour-item card shadow-sm mb-3">
                                     <div className="card-body">
                                         <div className="info">
-                                            <h5 className="card-title">Tour {index + 1}</h5>
-                                            <p><strong>Địa điểm:</strong> {tour.locationTour.map(loc => loc.name).join(", ")}</p>
-                                            <p><strong>Chương trình:</strong> {tour.locations.map(loc => loc.name).join(", ")}</p>
+                                            <h5 className="card-title">🗺️ Tour {index + 1}</h5>
+                                            <p><strong>Tỉnh thành:</strong> {tour.locationTour.map(loc => loc.province).join(", ")}</p>
+                                            <p><strong>Chương trình tour:</strong> {tour.locations.map(loc => loc.name).join(", ")}</p>
                                             <p><strong>Giá vé người lớn:</strong> {adultPrice} VNĐ</p>
                                             <p><strong>Giá vé trẻ em:</strong> {childPrice} VNĐ</p>
                                         </div>
-                                        <div className="buttons">
-                                            <button className="btn btn-primary" onClick={() => handleViewTour(tour)}>Xem chi tiết</button>
+                                        <div className="buttons mt-3">
+                                            <button className="btn btn-primary me-2" onClick={() => handleViewTour(tour)}>Xem chi tiết</button>
                                             <button className="btn btn-danger" onClick={() => handleDeleteTour(index)}>Xóa</button>
                                         </div>
                                     </div>

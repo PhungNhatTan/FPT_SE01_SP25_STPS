@@ -107,7 +107,7 @@ body {
 /* Tour Section */
 .tours {
     padding: 30px;
-    text-align: center;
+    text-align: center !important;
 }
 
 .tour-list {
@@ -117,7 +117,7 @@ body {
 }
 
 .tour-item {
-    width: 160px;
+    width: 200px !important;
 }
 
 .tour-item img {

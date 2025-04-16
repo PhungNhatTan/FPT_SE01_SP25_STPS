@@ -1,0 +1,24 @@
+{
+  "Version": 1,
+  "Hash": "/+dhTJt41hX4Ms/Ipi0VUkFPfWNehOe948882zhk+98=",
+  "Source": "STPS-REACT.Server",
+  "BasePath": "_content/STPS-REACT.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\stps-react.client\\stps-react.client.esproj",
+      "Version": 2,
+      "Source": "stps-react.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Release;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Release;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
