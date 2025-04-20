@@ -11,6 +11,8 @@ public partial class Tctour
 
     public double Price { get; set; }
 
+    public double Price2 { get; set; }
+
     public virtual TourismCompany Tc { get; set; } = null!;
 
     public virtual Tour Tour { get; set; } = null!;

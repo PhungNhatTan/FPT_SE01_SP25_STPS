@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../style/TourList.css";
@@ -49,6 +49,20 @@ const tours = [
     },
 ];
 
+//placeholder
+const TcTourList = () => {
+    const [tct, tctl] = useState([]);
+
+    useEffect(() => {
+        fetch("https://localhost:7106/TctourList/tctl")
+            .then(response => response.json())
+            .then(data => setItems(data))
+            .catch(error => console.error("Error fetching data: ",error))
+    }
+    )
+}
+
+//content
 const TourList = () => {
     const navigate = useNavigate();
     const [adults, setAdults] = useState(1);
@@ -56,6 +70,16 @@ const TourList = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState(""); // State cho từ khóa tìm kiếm
     const dropdownRef = useRef(null);
+
+    // fetch tctour data from db
+    const [tct, tctl] = useState([]);
+
+    useEffect(() => {
+        fetch("https://localhost:5001/TctourList/tctl")
+            .then(response => response.json())
+            .then(data => setItems(data))
+            .catch(error => console.error("Error fetching data: ", error))
+    })
 
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -172,21 +196,21 @@ const TourList = () => {
                         </div>
                     </div>
 
-                    {filteredTours.map((tour) => (
-                        <div key={tour.id} className="card mb-3 tour-card">
+                    {tct.map((tour) => (
+                        <div key={tour.TourId} className="card mb-3 tour-card">
                             <div className="row g-0">
                                 <div className="col-md-4">
-                                    <img src={tour.image} className="img-fluid tour-image" alt={tour.name} />
+                                    <img src={tour.image} className="img-fluid tour-image" alt={tour.TourName} />
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
-                                        <h5 className="card-title"><strong>{tour.name}</strong></h5>
+                                        <h5 className="card-title"><strong>{tour.TourName}</strong></h5>
                                         <p className="card-text">
                                             <i className="bi bi-geo-alt-fill"></i> {tour.location}
                                         </p>
-                                        <p className="card-text">Giá vé người lớn: {tour.price1}</p>
-                                        <p className="card-text">Giá vé trẻ em: {tour.price2}</p>
-                                        <button className="btn btn-primary" onClick={() => navigate(`/tour/${tour.id}`)}>
+                                        <p className="card-text">Giá vé người lớn: {tour.price}</p>
+                                        <p className="card-text">Giá vé trẻ em: {tour.price}</p>
+                                        <button className="btn btn-primary" onClick={() => navigate(`/tour/${tour.TourId}`)}>
                                             Xem thêm
                                         </button>
                                     </div>

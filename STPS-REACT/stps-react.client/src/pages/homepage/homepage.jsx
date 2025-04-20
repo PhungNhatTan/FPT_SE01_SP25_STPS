@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../style/homepage.css";
 import banner from "../../assets/banner.jpg";
@@ -73,6 +73,10 @@ const SearchBox = () => {
 };
 
 const Homepage = () => {
+    const [blogs, blogsList] = useState([]);
+    const [tours, toursList] = useState([]);
+    const [locs, locsList] = useState([]);
+
     const navigate = useNavigate();
     return (
         <div>
@@ -97,7 +101,7 @@ const Homepage = () => {
                     </button>
                 </div>
                 <div className="blog-list tour-list">
-                    {tourData.map(tour => (
+                    {tours.map(tour => (
                         <div className="blog-item tour-item" key={tour.id}>
                             <Link to={`/tour/${tour.id}`}>
                                 <img src={tour.image} alt={tour.name} />
@@ -136,7 +140,7 @@ const Homepage = () => {
                     </button>
                 </div>
                 <div className="blog-list">
-                    {blogsData.map(blog => (
+                    {blogs.map(blog => (
                         <div className="blog-item" key={blog.id}>
                             <Link to={`/blog/${blog.id}`}>
                                 <img src={blog.image} alt={blog.title} />

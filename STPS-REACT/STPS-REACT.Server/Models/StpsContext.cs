@@ -23,13 +23,17 @@ public partial class StpsContext : DbContext
 
     public virtual DbSet<Blog> Blogs { get; set; }
 
+    public virtual DbSet<Feedback> Feedbacks { get; set; }
+
     public virtual DbSet<Location> Locations { get; set; }
+
+    public virtual DbSet<LocationFeedback> LocationFeedbacks { get; set; }
 
     public virtual DbSet<LocationType> LocationTypes { get; set; }
 
-    public virtual DbSet<Order> Orders { get; set; }
-
     public virtual DbSet<PersonalizedTour> PersonalizedTours { get; set; }
+
+    public virtual DbSet<Receipt> Receipts { get; set; }
 
     public virtual DbSet<Region> Regions { get; set; }
 
@@ -45,7 +49,7 @@ public partial class StpsContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-U65F98K;Initial Catalog=STPS;Integrated Security=True;Encrypt=False;Trust Server Certificate=True");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-U65F98K;Initial Catalog=STPS;Integrated Security=True;Encrypt=False;Trust Server Certificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -144,6 +148,23 @@ public partial class StpsContext : DbContext
                 .HasConstraintName("FK_Blog_Account");
         });
 
+        modelBuilder.Entity<Feedback>(entity =>
+        {
+            entity.Property(e => e.FeedbackId)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("feedbackId");
+            entity.Property(e => e.AccountId)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("accountId");
+
+            entity.HasOne(d => d.Account).WithMany(p => p.Feedbacks)
+                .HasForeignKey(d => d.AccountId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Feedbacks_Account");
+        });
+
         modelBuilder.Entity<Location>(entity =>
         {
             entity.ToTable("Location");
@@ -152,13 +173,19 @@ public partial class StpsContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("locationID");
+            entity.Property(e => e.Address)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("address");
             entity.Property(e => e.ImgUrl)
                 .HasMaxLength(150)
                 .IsUnicode(false)
                 .HasColumnName("imgUrl");
+            entity.Property(e => e.Lat).HasColumnName("lat");
             entity.Property(e => e.LocationName)
                 .HasMaxLength(100)
                 .HasColumnName("locationName");
+            entity.Property(e => e.Long).HasColumnName("long");
             entity.Property(e => e.Price).HasColumnName("price");
             entity.Property(e => e.RegionId)
                 .HasMaxLength(20)
@@ -180,6 +207,30 @@ public partial class StpsContext : DbContext
                 .HasConstraintName("FK_Location_LocationType");
         });
 
+        modelBuilder.Entity<LocationFeedback>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("LocationFeedback");
+
+            entity.HasIndex(e => e.FeedbackId, "IX_LocationFeedback").IsUnique();
+
+            entity.Property(e => e.FeedbackId)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("feedbackId");
+            entity.Property(e => e.LocationId)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("locationId");
+            entity.Property(e => e.Rating).HasColumnName("rating");
+
+            entity.HasOne(d => d.Location).WithMany()
+                .HasForeignKey(d => d.LocationId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_LocationFeedback_Location");
+        });
+
         modelBuilder.Entity<LocationType>(entity =>
         {
             entity.HasKey(e => e.TypeId);
@@ -193,36 +244,6 @@ public partial class StpsContext : DbContext
             entity.Property(e => e.TypeName)
                 .HasMaxLength(100)
                 .HasColumnName("typeName");
-        });
-
-        modelBuilder.Entity<Order>(entity =>
-        {
-            entity.ToTable("Order");
-
-            entity.Property(e => e.OrderId)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("orderID");
-            entity.Property(e => e.AccountId)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("accountID");
-            entity.Property(e => e.StartDate).HasColumnName("startDate");
-            entity.Property(e => e.Status).HasColumnName("status");
-            entity.Property(e => e.TourId)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("tourID");
-
-            entity.HasOne(d => d.Account).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.AccountId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Order_Account");
-
-            entity.HasOne(d => d.Tour).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.TourId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Order_Tour");
         });
 
         modelBuilder.Entity<PersonalizedTour>(entity =>
@@ -251,6 +272,45 @@ public partial class StpsContext : DbContext
                 .HasConstraintName("FK_PersonalizedTour_Tour");
         });
 
+        modelBuilder.Entity<Receipt>(entity =>
+        {
+            entity.ToTable("Receipt");
+
+            entity.Property(e => e.ReceiptId)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("receiptId");
+            entity.Property(e => e.AccountId)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("accountId");
+            entity.Property(e => e.Amount).HasColumnName("amount");
+            entity.Property(e => e.Date).HasColumnName("date");
+            entity.Property(e => e.LocationId)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasDefaultValueSql("(NULL)")
+                .HasColumnName("locationId");
+            entity.Property(e => e.TourId)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasDefaultValueSql("(NULL)")
+                .HasColumnName("tourId");
+
+            entity.HasOne(d => d.Account).WithMany(p => p.Receipts)
+                .HasForeignKey(d => d.AccountId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Receipt_Account");
+
+            entity.HasOne(d => d.Location).WithMany(p => p.Receipts)
+                .HasForeignKey(d => d.LocationId)
+                .HasConstraintName("FK_Receipt_Location");
+
+            entity.HasOne(d => d.Tour).WithMany(p => p.Receipts)
+                .HasForeignKey(d => d.TourId)
+                .HasConstraintName("FK_Receipt_Tour");
+        });
+
         modelBuilder.Entity<Region>(entity =>
         {
             entity.ToTable("Region");
@@ -271,6 +331,7 @@ public partial class StpsContext : DbContext
                 .ToTable("TCTour");
 
             entity.Property(e => e.Price).HasColumnName("price");
+            entity.Property(e => e.Price2).HasColumnName("price2");
             entity.Property(e => e.TcId)
                 .HasMaxLength(20)
                 .IsUnicode(false)
@@ -339,37 +400,30 @@ public partial class StpsContext : DbContext
 
         modelBuilder.Entity<TourFeedback>(entity =>
         {
-            entity.HasKey(e => e.FeedbackId);
+            entity
+                .HasNoKey()
+                .ToTable("TourFeedback");
 
-            entity.ToTable("TourFeedback");
+            entity.HasIndex(e => e.FeedbackId, "IX_TourFeedback").IsUnique();
 
-            entity.Property(e => e.FeedbackId)
-                .HasMaxLength(30)
-                .IsUnicode(false)
-                .HasColumnName("feedbackID");
-            entity.Property(e => e.AccountId)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("accountID");
             entity.Property(e => e.Date).HasColumnName("date");
             entity.Property(e => e.FeedbackDetail)
                 .HasMaxLength(500)
                 .HasColumnName("feedbackDetail");
+            entity.Property(e => e.FeedbackId)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("feedbackID");
             entity.Property(e => e.Rating).HasColumnName("rating");
             entity.Property(e => e.TourId)
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("tourID");
 
-            entity.HasOne(d => d.Account).WithMany(p => p.TourFeedbacks)
-                .HasForeignKey(d => d.AccountId)
+            entity.HasOne(d => d.Feedback).WithOne()
+                .HasForeignKey<TourFeedback>(d => d.FeedbackId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_TourFeedback_Account");
-
-            entity.HasOne(d => d.Tour).WithMany(p => p.TourFeedbacks)
-                .HasForeignKey(d => d.TourId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_TourFeedback_Tour");
+                .HasConstraintName("FK_TourFeedback_Feedbacks");
         });
 
         modelBuilder.Entity<TourismCompany>(entity =>
