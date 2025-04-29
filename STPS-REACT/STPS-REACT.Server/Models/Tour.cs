@@ -9,7 +9,6 @@ public partial class Tour
 
     public string? TourName { get; set; }
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
-
-    public virtual ICollection<TourFeedback> TourFeedbacks { get; set; } = new List<TourFeedback>();
+    public virtual ICollection<Receipt> Receipts { get; set; } = new List<Receipt>();
+    public virtual ICollection<TourFeedback> TourFeedbacks { get; set; } = new List<TourFeedback>(); 
 }

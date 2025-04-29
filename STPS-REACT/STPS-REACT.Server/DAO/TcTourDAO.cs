@@ -28,8 +28,8 @@ namespace STPS_REACT.Server.DAO
                     TcId = tct.Key.TcId,
                     TcName = tct.Key.TcName,
                     price = tct.Key.Price,
-                    avrRating = tct.Average(a=>a.Tour.TourFeedbacks.Average(tf=>tf.Rating))
-                }).OrderByDescending(a => a.avrRating).Take(5).ToList();
+                    AvrRating = tct.Average(a=>a.Tour.TourFeedbacks.Average(tf=>tf.Rating))
+                }).OrderByDescending(a => a.AvrRating).Take(5).ToList();
         }
 
         public List<TcTourDTO> GetListTctour()
@@ -46,7 +46,7 @@ namespace STPS_REACT.Server.DAO
                     TcId = tct.Key.TcId,
                     TcName = tct.Key.TcName,
                     price = tct.Key.Price,
-                    avrRating = tct.Average(a => a.Tour.TourFeedbacks.Average(tf => tf.Rating))
+                    AvrRating = tct.Average(a => a.Tour.TourFeedbacks.Average(tf => tf.Rating))
                 }).ToList();
         }
 
@@ -64,7 +64,7 @@ namespace STPS_REACT.Server.DAO
                     TcId = tct.Key.TcId,
                     TcName = tct.Key.TcName,
                     price = tct.Key.Price,
-                    avrRating = tct.Average(a => a.Tour.TourFeedbacks.Average(tf => tf.Rating))
+                    AvrRating = tct.Average(a => a.Tour.TourFeedbacks.Average(tf => tf.Rating))
                 }).Where(a => a.TourId == tctourID)
                 .FirstOrDefault();
         }

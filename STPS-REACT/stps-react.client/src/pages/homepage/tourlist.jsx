@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../style/TourList.css";
@@ -25,6 +26,16 @@ const TourList = () => {
     const [sortOrder, setSortOrder] = useState(null); // State cho sắp xếp theo giá
 
     const dropdownRef = useRef(null);
+
+    // fetch tctour data from db
+    const [tct, tctl] = useState([]);
+
+    useEffect(() => {
+        fetch("https://localhost:5001/TctourList/tctl")
+            .then(response => response.json())
+            .then(data => setItems(data))
+            .catch(error => console.error("Error fetching data: ", error))
+    })
 
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -191,11 +202,11 @@ const TourList = () => {
                         </div>
                     </div>
 
-                    {filteredTours.map((tour) => (
-                        <div key={tour.id} className="card mb-3 tour-card">
+                    {tct.map((tour) => (
+                        <div key={tour.TourId} className="card mb-3 tour-card">
                             <div className="row g-0">
                                 <div className="col-md-4">
-                                    <img src={tour.image} className="img-fluid tour-image" alt={tour.name} />
+                                    <img src={tour.image} className="img-fluid tour-image" alt={tour.TourName} />
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">

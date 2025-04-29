@@ -19,9 +19,9 @@ public partial class Account
 
     public virtual ICollection<Blog> Blogs { get; set; } = new List<Blog>();
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+    public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
-    public virtual ICollection<TourFeedback> TourFeedbacks { get; set; } = new List<TourFeedback>();
+    public virtual ICollection<Receipt> Receipts { get; set; } = new List<Receipt>();
 
     public virtual ICollection<TourismCompany> TourismCompanies { get; set; } = new List<TourismCompany>();
 }

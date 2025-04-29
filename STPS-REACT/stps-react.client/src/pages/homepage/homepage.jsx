@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../style/homepage.css";
 import banner from "../../assets/banner.jpg";
@@ -31,6 +31,10 @@ const SearchBox = () => {
 };
 
 const Homepage = () => {
+    const [blogs, blogsList] = useState([]);
+    const [tours, toursList] = useState([]);
+    const [locs, locsList] = useState([]);
+
     const navigate = useNavigate();
     return (
         <div>

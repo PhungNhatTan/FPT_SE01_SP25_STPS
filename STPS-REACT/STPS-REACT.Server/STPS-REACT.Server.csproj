@@ -34,9 +34,4 @@
     </ProjectReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Filter\" />
-    <Folder Include="Utils\" />
-  </ItemGroup>
-
 </Project>
