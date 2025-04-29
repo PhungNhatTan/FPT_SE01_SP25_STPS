@@ -1,0 +1,63 @@
+.location-list {
+    display: flex;
+    flex-direction: column; /* Hiển thị theo chiều dọc */
+    align-items: center; /* Căn giữa các mục */
+    gap: 20px; /* Khoảng cách giữa các địa điểm */
+    padding: 20px; /* Padding cho toàn bộ danh sách */
+}
+
+.location-item {
+    display: flex; /* Sử dụng flexbox */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    width: 80%; /* Chiều rộng linh hoạt */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng cho khối */
+    transition: transform 0.2s;
+}
+
+.location-item:hover {
+    transform: scale(1.02); /* Hiệu ứng phóng to khi hover */
+}
+
+.location-image {
+    width: 300px; /* Chiều rộng hình ảnh */
+    height: 200px; /* Chiều cao cố định cho hình ảnh */
+    object-fit: cover; /* Giữ tỷ lệ khung hình */
+    border-radius: 8px;
+    margin-right: 16px; /* Khoảng cách giữa hình ảnh và nội dung */
+}
+
+.location-content {
+    flex: 1; /* Nội dung sẽ chiếm phần còn lại */
+}
+
+.location-title {
+    font-size: 1.5em; /* Kích thước tiêu đề */
+    margin: 10px 0; /* Khoảng cách giữa tiêu đề và mô tả */
+}
+
+.location-description {
+    font-size: 1em; /* Kích thước mô tả */
+    color: #666; /* Màu chữ mô tả */
+}
+
+.location-price {
+    font-size: 1em; /* Kích thước giá vé */
+    margin: 5px 0; /* Khoảng cách giữa các giá vé */
+}
+
+.view-more-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Màu nền nút */
+    color: white; /* Màu chữ nút */
+    border-radius: 5px;
+    text-decoration: none; /* Bỏ gạch chân */
+}
+
+.view-more-button:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+}

@@ -2,52 +2,10 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../style/homepage.css";
 import banner from "../../assets/banner.jpg";
-import hanoi from "../../assets/hanoi.jpg";
-import hue from "../../assets/Hue.jpg";
-import promotion from "../../assets/promotion.jpg";
+import { tourData } from "./data/tourData";
+import { blogsData } from "./data/blogsData";
+import { locData } from "./data/locData";
 import Header from "./header";
-
-const blogsData = [
-    {
-        id: "1",
-        title: "Khám Phá Hà Nội – Thành phố của tình yêu",
-        image: hanoi,
-        content: "Hà Nội là một điểm đến tuyệt vời với hồ Gươm, phố cổ...",
-    },
-    {
-        id: "2",
-        title: "Khám Phá Huế – Thành phố di sản",
-        image: hue,
-        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ...",
-    },
-    {
-        id: "3",
-        title: "Khám Phá Huế – Thành phố di sản",
-        image: hue,
-        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ...",
-    },
-    {
-        id: "4",
-        title: "Khám Phá Huế – Thành phố di sản",
-        image: hue,
-        content: "Huế có nét đẹp cổ kính với lăng tẩm, chùa Thiên Mụ...",
-    }
-];
-
-const tourData = [
-    { id: 1, name: "Hà Nội", image: hanoi },
-    { id: 2, name: "Huế", image: hue },
-    { id: 3, name: "Đà Nẵng", image: hanoi },
-    { id: 4, name: "Nha Trang", image: hanoi },
-    { id: 5, name: "Thành phố Hồ Chí Minh", image: hanoi },
-];
-
-const proData = [
-    { id: 1, image: promotion },
-    { id: 2, image: promotion },
-    { id: 3, image: promotion },
-    { id: 4, image: promotion },
-];
 
 const SearchBox = () => {
     return (
@@ -79,7 +37,6 @@ const Homepage = () => {
             <header className="header">
                 <Header />
             </header>
-            <br />
             <section className="background">
                 <img src={banner} alt="Gotour Background" />
                 <div className="background-overlay">
@@ -97,7 +54,7 @@ const Homepage = () => {
                     </button>
                 </div>
                 <div className="blog-list tour-list">
-                    {tourData.map(tour => (
+                    {tourData.slice(0, 12).map(tour => (
                         <div className="blog-item tour-item" key={tour.id}>
                             <Link to={`/tour/${tour.id}`}>
                                 <img src={tour.image} alt={tour.name} />
@@ -108,20 +65,21 @@ const Homepage = () => {
                 </div>
             </section>
 
-            {/* Khuyến mãi */}
+            {/* Địa điểm */}
             <section className="promo">
                 <div className="list-header">
-                    <h2 style={{ color: "black" }}>Khuyến mãi</h2>
-                    <button className="btn btn-primary" onClick={() => navigate("/promotionlist")}>
+                    <h2 style={{ color: "black" }}>Danh sách Địa điểm du lịch</h2>
+                    <button className="btn btn-primary" onClick={() => navigate("/locationlist")}>
                         Xem thêm
                     </button>
                 </div>
                 <div className="blog-list promo-list">
-                    {proData.map(promo => (
-                        <div className="blog-item" key={promo.id}>
-                            <Link to={`/promotion/${promo.id}`}>
-                                <img src={promo.image} alt="Khuyến mãi" />
+                    {locData.slice(0, 10).map(location => (
+                        <div className="blog-item" key={location.id}>
+                            <Link to={`/location/${location.id}`}>
+                                <img src={location.image} alt="Khuyến mãi" />
                             </Link>
+                            <p style={{ color: "black" }}>{location.name}</p>
                         </div>
                     ))}
                 </div>
@@ -136,13 +94,15 @@ const Homepage = () => {
                     </button>
                 </div>
                 <div className="blog-list">
-                    {blogsData.map(blog => (
+                    {blogsData.slice(0, 10).map(blog => (
                         <div className="blog-item" key={blog.id}>
                             <Link to={`/blog/${blog.id}`}>
                                 <img src={blog.image} alt={blog.title} />
                             </Link>
                             <h3 style={{ color: "black" }}>{blog.title}</h3>
-                            <p style={{ color: "black" }}>{blog.content.substring(0, 50)}...</p>
+                            <p style={{ color: "black" }}>
+                                {blog.description?.substring(0, 50) || "No description available..."}...
+                            </p>
                         </div>
                     ))}
                 </div>

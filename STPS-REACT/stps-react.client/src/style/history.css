@@ -1,0 +1,53 @@
+.history-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .tour-item {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .tour-item:hover {
+    background: #f8f9fa;
+  }
+  
+  .tour-detail {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .tour-detail img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .feedback-section {
+    margin-top: 20px;
+}
+
+.feedback-list {
+    margin-top: 15px;
+}
+
+.feedback-item {
+    overflow-wrap: break-word;    /* Đảm bảo từ dài không tràn */
+    word-wrap: break-word;        /* Chia từ khi quá dài */
+    word-break: break-word;       /* Chia từ khi cần thiết */
+    white-space: normal;          /* Đảm bảo text có thể xuống dòng */
+    display: block;
+}
+
+.feedback-item .btn {
+    float: right; 
+    margin-left: 0px; /* Thêm khoảng cách giữa nút xóa và comment */
+}
+
+
+  
+  .feedback-section textarea {
+    resize: none;
+  }
+  

@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    width: 80%;
+    width: 100%;
     margin: auto;
     overflow: hidden;
 }
@@ -78,10 +78,11 @@ body {
 .booking-btn {
     display: block;
     width: 200px;
+    height: 50px;
     margin: 20px auto;
     padding: 10px;
     text-align: center;
-    background: #007bff;
+    background: hsl(55, 96%, 50%);
     color: white;
     border: none;
     border-radius: 5px;
@@ -188,3 +189,74 @@ body {
         background: #0056b3;
     }
 
+/* Feedback Section */
+.feedback {
+    width: 100%;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.feedback h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.feedback-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-item h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.feedback-item p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.feedback-item h5 {
+    margin-bottom: 10px;
+}
+
+/* Nếu không có feedback */
+.feedback p {
+    font-size: 1rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feedback {
+        padding: 15px;
+    }
+
+    .feedback h2 {
+        font-size: 1.5rem;
+    }
+
+    .feedback-item {
+        padding: 10px;
+    }
+
+    .feedback-item h5 {
+        font-size: 1rem;
+    }
+
+    .feedback-item p {
+        font-size: 0.9rem;
+    }
+}
