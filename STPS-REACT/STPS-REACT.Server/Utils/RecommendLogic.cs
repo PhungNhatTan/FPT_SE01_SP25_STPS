@@ -9,7 +9,7 @@ namespace STPS_REACT.Server.Utils
         protected double weightPrice = 0.25;
         protected double weightRating = 0.4;
         private GeoUtils gu = new GeoUtils();
-        public List<LocationDTO> RecommendLoc(List<LocationDTO> locs, double anchorLat, double anchorLon, double budget, int maxTime, double maxDistance)
+        public List<LocationDTO> RecommendLoc(List<LocationDTO> locs, double budget)
         {
             foreach (var loc in locs)
             {

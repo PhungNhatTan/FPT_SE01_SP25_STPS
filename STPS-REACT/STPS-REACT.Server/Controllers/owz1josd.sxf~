@@ -1,0 +1,51 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STPS_REACT.Server.DAO;
+using STPS_REACT.Server.DTO;
+using STPS_REACT.Server.Models;
+using STPS_REACT.Server.Utils;
+using System.Linq;
+
+namespace STPS_REACT.Server.Controllers
+{
+    [Route("api/[controller]")]
+    public class CustomizeTourController : Controller
+    {
+        private readonly StpsContext _context;
+        LocationDAO _ld;
+        RecommendLogic _rl;
+
+        public CustomizeTourController(StpsContext context, LocationDAO ld, RecommendLogic rl)
+        {
+            _context = context;
+            this._ld = ld;
+            this._rl = rl;
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost("recommend")]
+        public IActionResult Recommend([FromBody] RecommendationRequest request)
+        {
+            List<String> regionIdList = new List<String>();
+            this.Request.Form.Keys
+                .Where(n => n.Equals("regionId"))
+                .ToList()
+                .ForEach(x => regionIdList.Add(Request.Form[x]));
+            List<LocationDTO> locs = _ld.GetLocationByRegion(regionIdList);
+            double budget = Double.Parse(Request.Form["budget"]);
+            int numLocs = int.Parse(Request.Form["time"])*2;
+            locs = _rl.RecommendLoc(locs, budget);
+            locs = _rl.RegionAdjustment2(locs, numLocs);
+            return Ok(locs);
+        }
+    }
+    public class RecommendationRequest
+    {
+        public List<String> 
+        public double Budget { get; set; }
+        public int ResultCount { get; set; }
+    }
+}
