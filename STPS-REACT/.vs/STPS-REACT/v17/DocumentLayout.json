@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{07CB763C-FA0F-435C-A855-0F464437C844}|STPS-REACT.Server\\STPS-REACT.Server.csproj|c:\\users\\dell\\desktop\\stps\\stps-react\\stps-react.server\\dto\\locationtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07CB763C-FA0F-435C-A855-0F464437C844}|STPS-REACT.Server\\STPS-REACT.Server.csproj|solutionrelative:stps-react.server\\dto\\locationtypedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{07CB763C-FA0F-435C-A855-0F464437C844}|STPS-REACT.Server\\STPS-REACT.Server.csproj|c:\\users\\dell\\desktop\\stps\\stps-react\\stps-react.server\\controllers\\customizetourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{07CB763C-FA0F-435C-A855-0F464437C844}|STPS-REACT.Server\\STPS-REACT.Server.csproj|solutionrelative:stps-react.server\\controllers\\customizetourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07CB763C-FA0F-435C-A855-0F464437C844}|STPS-REACT.Server\\STPS-REACT.Server.csproj|c:\\users\\dell\\desktop\\stps\\stps-react\\stps-react.server\\dao\\regiondao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07CB763C-FA0F-435C-A855-0F464437C844}|STPS-REACT.Server\\STPS-REACT.Server.csproj|solutionrelative:stps-react.server\\dao\\regiondao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{07CB763C-FA0F-435C-A855-0F464437C844}|STPS-REACT.Server\\STPS-REACT.Server.csproj|c:\\users\\dell\\desktop\\stps\\stps-react\\stps-react.server\\dao\\locationdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +42,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "LocationDTO.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\DTO\\LocationDTO.cs",
               "RelativeDocumentMoniker": "STPS-REACT.Server\\DTO\\LocationDTO.cs",
@@ -48,31 +56,55 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "LocationTypeDTO.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\DTO\\LocationTypeDTO.cs",
+              "RelativeDocumentMoniker": "STPS-REACT.Server\\DTO\\LocationTypeDTO.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\DTO\\LocationTypeDTO.cs",
+              "RelativeToolTip": "STPS-REACT.Server\\DTO\\LocationTypeDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T04:45:25.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RegionDAO.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\DAO\\RegionDAO.cs",
+              "RelativeDocumentMoniker": "STPS-REACT.Server\\DAO\\RegionDAO.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\DAO\\RegionDAO.cs",
+              "RelativeToolTip": "STPS-REACT.Server\\DAO\\RegionDAO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T03:21:35.277Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "CustomizeTourController.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\Controllers\\CustomizeTourController.cs",
               "RelativeDocumentMoniker": "STPS-REACT.Server\\Controllers\\CustomizeTourController.cs",
               "ToolTip": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\Controllers\\CustomizeTourController.cs",
               "RelativeToolTip": "STPS-REACT.Server\\Controllers\\CustomizeTourController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAgwCwAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAowIQAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T12:17:18.464Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T12:17:18.464Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "LocationDAO.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\DAO\\LocationDAO.cs",
               "RelativeDocumentMoniker": "STPS-REACT.Server\\DAO\\LocationDAO.cs",
               "ToolTip": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\DAO\\LocationDAO.cs",
               "RelativeToolTip": "STPS-REACT.Server\\DAO\\LocationDAO.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAgwEoAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA1wDEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-19T10:34:23.083Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "GeoUtils.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\Utils\\GeoUtils.cs",
               "RelativeDocumentMoniker": "STPS-REACT.Server\\Utils\\GeoUtils.cs",
@@ -84,7 +116,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "RecommendLogic.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\Utils\\RecommendLogic.cs",
               "RelativeDocumentMoniker": "STPS-REACT.Server\\Utils\\RecommendLogic.cs",
@@ -93,6 +125,10 @@
               "ViewState": "AgIAAAgAAAAAAAAAAAAAwG8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-14T12:08:23.398Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

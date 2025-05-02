@@ -18,7 +18,6 @@ namespace STPS_REACT.Server.DAO
             {
                 RegionId = r.RegionId,
                 RegionName=r.RegionName
-
             }).ToList();
         }
     }

@@ -15,20 +15,31 @@ namespace STPS_REACT.Server.Controllers
         private readonly StpsContext _context;
         LocationDAO _ld;
         RecommendLogic _rl;
+        RegionDAO _rd;
         private IConfiguration _configuration;
 
-        public CustomizeTourController(StpsContext context, LocationDAO ld, RecommendLogic rl, IConfiguration iconfig)
+        public CustomizeTourController(StpsContext context, LocationDAO ld, RecommendLogic rl, IConfiguration iconfig, RegionDAO rd)
         {
             _context = context;
             this._ld = ld;
             this._rl = rl;
             _configuration = iconfig;
+            _rd = rd;
         }
 
         //recommend logic
         public IActionResult Index()
         {
             return View();
+        }
+        
+        [HttpGet]
+        public IActionResult CustomizeTour()
+        {
+            List<RegionDTO> region = _rd.getAll();
+            List<LocationDTO> location = _ld.GeAllLocation();
+            DisplayItems di = new DisplayItems(region, location);
+            return Ok(di);
         }
 
         [HttpPost("recommend")]
@@ -116,5 +127,16 @@ namespace STPS_REACT.Server.Controllers
     {
         public double Budget { get; set; }
         public int ResultCount { get; set; }
+    }
+
+    class DisplayItems
+    {
+        public List<RegionDTO> _regions { get; set; } = null!;
+        public List<LocationDTO> _locations { get; set; } = null!;
+        public DisplayItems(List<RegionDTO> regions, List<LocationDTO> locations)
+        {
+            _regions = regions;
+            _locations = locations;
+        }
     }
 }
