@@ -6,6 +6,7 @@ import hanoi from "../../assets/hanoi.jpg";
 import danang from "../../assets/Da Nang.jpg";
 import Header from "./header";
 
+//placeholder
 const tours = [
     {
         id: 1,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import banner from "../../assets/banner.jpg";
 import "../../style/customizetour.css";
@@ -8,6 +8,8 @@ const Customizetour = () => {
     const [locations, setLocations] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
     const [showModal, setShowModal] = useState(false);
+
+    //placeholder
     const locationList = [
         { id: 1, name: "Địa điểm 1", adultPrice: "100.000đ", childPrice: "50.000đ", time: "08:00 - 18:00" },
         { id: 2, name: "Địa điểm 2", adultPrice: "120.000đ", childPrice: "60.000đ", time: "09:00 - 19:00" },
@@ -15,6 +17,32 @@ const Customizetour = () => {
         { id: 4, name: "Địa điểm 4", adultPrice: "110.000đ", childPrice: "55.000đ", time: "08:30 - 18:30" },
         { id: 5, name: "Địa điểm 5", adultPrice: "130.000đ", childPrice: "65.000đ", time: "09:30 - 20:00" }
     ];
+
+    //fetch location
+    const fetchData = () => {
+        const [fd, sfd] = useState([])
+        useEffect(() => {
+            fetch("https://localhost:7106/CustomizeTour/fetch")
+                .then(response => response.json)
+                .then(data => setItems("data"))
+                .catch(error => console.error("error fetch data: ", error))
+        }
+        )
+    };
+    
+    const locationsList = () => {
+        const [ll, sll] = useState([])
+        useEffect(() => {
+            fetchData.locationList
+        })
+    };
+
+    const regionsList = () => {
+        const [rl, srl] = useState([])
+        useEffect(() => {
+            fetchData.regionList
+        })
+    };
 
     const addLocation = (loc) => {
         setLocations([...locations, loc]);
@@ -24,7 +52,7 @@ const Customizetour = () => {
         setLocations(locations.filter((location) => location.id !== id));
     };
 
-    const availableLocations = locationList.filter(loc => !locations.some(l => l.id === loc.id));
+    const availableLocations = locationLists.filter(loc => !locations.some(l => l.id === loc.id));
     const getTotalPrice = () => {
         return locations.reduce((total, loc) => {
             const adultPrice = parseInt(loc.adultPrice.replace(/\D/g, ""), 10);

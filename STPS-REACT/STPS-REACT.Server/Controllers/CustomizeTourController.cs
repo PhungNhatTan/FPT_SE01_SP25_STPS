@@ -33,7 +33,7 @@ namespace STPS_REACT.Server.Controllers
             return View();
         }
         
-        [HttpGet]
+        [HttpGet("fetch")]
         public IActionResult CustomizeTour()
         {
             List<RegionDTO> region = _rd.getAll();
