@@ -9,5 +9,5 @@ public partial class Region
 
     public string RegionName { get; set; } = null!;
 
-    public virtual ICollection<Location> Locations { get; set; } = new List<Location>();
+    public ICollection<Location> Locations { get; set; } = new List<Location>();
 }
