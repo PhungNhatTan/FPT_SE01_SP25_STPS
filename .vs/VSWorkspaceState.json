@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\STPS-REACT",
+    "\\STPS-REACT\\STPS-REACT.Server",
+    "\\STPS-REACT\\STPS-REACT.Server\\DAO"
   ],
-  "SelectedNode": "\\STPS-REACT.sln",
+  "SelectedNode": "\\STPS-REACT\\STPS-REACT.Server\\DAO\\PersonalizedTourDAO.cs",
   "PreviewInSolutionExplorer": false
 }
