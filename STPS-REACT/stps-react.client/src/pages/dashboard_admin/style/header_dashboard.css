@@ -12,8 +12,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    border-bottom: 4px solid #004d40;
+    padding: 0.75rem 1.5rem;
+    background-color: #ffffff;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
     position: relative;
     box-sizing: border-box;
     overflow: visible;
@@ -31,21 +32,75 @@ body {
     width: 40px;
     height: 40px;
     margin-right: 10px;
+    border-radius: 8px;
 }
 
 .logo span {
-    color: black;
+    color: #4e73df;
     font-weight: bold;
+    font-size: 1.25rem;
+    letter-spacing: 0.5px;
+}
+
+/* Header Right Section */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Notification Icons */
+.notification-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.icon-button {
+    position: relative;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: #5a5c69;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.icon-button:hover {
+    background-color: rgba(78, 115, 223, 0.1);
+    color: #4e73df;
+}
+
+.badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #e74a3b;
+    color: white;
+    font-size: 0.65rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Header Divider */
+.header-divider {
+    height: 2rem;
+    width: 1px;
+    background-color: #e3e6f0;
+    margin: 0 0.5rem;
 }
 
 /* Profile Menu */
 .profile-menu {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* ❌ Xóa dòng này nếu có */
-    right: 20px; /* ✅ Giữ khoảng cách hợp lý */
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
     z-index: 101;
 }
 
@@ -53,7 +108,13 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
+    padding: 0.5rem;
+    transition: all 0.3s;
+    border-radius: 50%;
+}
+
+.profile-button:hover {
+    background-color: rgba(78, 115, 223, 0.1);
 }
 
 .profile-button img {
@@ -61,30 +122,46 @@ body {
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #ccc;
+    border: 2px solid #4e73df;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: all 0.3s;
+}
+
+.profile-button:hover img {
+    transform: scale(1.05);
 }
 
 /* Dropdown */
 .profile-dropdown {
     list-style: none;
-    padding: 0;
+    padding: 0.5rem 0;
     margin: 0;
     position: absolute;
     right: 0;
-    top: 50px;
+    top: 60px;
     background: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    width: 200px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    border-radius: 0.35rem;
+    width: 220px;
     text-align: left;
     z-index: 9999;
+    animation: fadeIn 0.2s ease-in-out;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .profile-dropdown li {
-    padding: 10px;
+    padding: 0.75rem 1.25rem;
     cursor: pointer;
     display: flex;
     align-items: center;
+    color: #5a5c69;
+    font-weight: 500;
+    transition: all 0.2s;
 }
 
 .profile-dropdown li img {
@@ -94,5 +171,6 @@ body {
 }
 
 .profile-dropdown li:hover {
-    background: #f1f1f1;
+    background-color: #f8f9fc;
+    color: #4e73df;
 }

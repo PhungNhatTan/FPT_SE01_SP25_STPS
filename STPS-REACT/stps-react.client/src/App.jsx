@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import "./App.css";
 import HomePage from "./pages/homepage/homepage";
 import Customizetour from "./pages/homepage/customizetour";
 import SavedTour from "./pages/homepage/savedtour";
@@ -11,6 +12,8 @@ import Booking from "./pages/homepage/booking";
 import LocationList from "./pages/homepage/locationlist";
 import LocationDetail from "./pages/homepage/locationdetail";
 import History from "./pages/homepage/history";
+import Profile from "./pages/homepage/profile";
+import ForgotPassword from "./pages/homepage/ForgotPassword";
 
 import MTourList from "./pages/managepage/mtourlist";
 import ManagePage from "./pages/managepage/managepage";
@@ -22,8 +25,11 @@ import AddPromotion from "./pages/managepage/addpromotion";
 import UpdatePromotion from "./pages/managepage/updatepromotion";
 
 import DashboardAdmin from "./pages/dashboard_admin/dashboard_admin";
+import ModernDashboard from "./pages/dashboard_admin/ModernDashboard";
 
 import DashboardManager from "./pages/dashboard_manager/dashboard_manager";
+import Login from "./pages/homepage/Login";
+import Register from "./pages/homepage/register";
 
 function App() {
   return (
@@ -50,7 +56,13 @@ function App() {
       <Route path="/history" element={<History />} />
       <Route path="/tourdetail/:id" element={<TourDetail />} />
 
-      <Route path="/dashboard-admin" element={<DashboardAdmin />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+
+      <Route path="/dashboard-admin" element={<ModernDashboard />} />
+      <Route path="/dashboard-admin-old" element={<DashboardAdmin />} />
 
       <Route path="/dashboard-manager" element={<DashboardManager />} />
     </Routes>

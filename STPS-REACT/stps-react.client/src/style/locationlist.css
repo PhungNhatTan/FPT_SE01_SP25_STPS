@@ -1,63 +1,213 @@
 .location-list {
     display: flex;
-    flex-direction: column; /* Hiển thị theo chiều dọc */
-    align-items: center; /* Căn giữa các mục */
-    gap: 20px; /* Khoảng cách giữa các địa điểm */
-    padding: 20px; /* Padding cho toàn bộ danh sách */
+    flex-direction: column;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    text-align: left;
+}
+
+.location-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #333;
+    margin: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.search-box {
+    display: flex;
+    width: 80%;
+    margin: 10px 0 30px;
+    gap: 10px;
+}
+
+.location-items-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 25px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.search-button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #007bff;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.no-results {
+    text-align: center;
+    color: #6c757d;
+    margin: 40px 0;
+    font-size: 18px;
 }
 
 .location-item {
-    display: flex; /* Sử dụng flexbox */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    width: 80%; /* Chiều rộng linh hoạt */
-    align-items: center; /* Căn giữa theo chiều dọc */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng cho khối */
-    transition: transform 0.2s;
+    display: flex;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: white;
 }
 
 .location-item:hover {
-    transform: scale(1.02); /* Hiệu ứng phóng to khi hover */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .location-image {
-    width: 300px; /* Chiều rộng hình ảnh */
-    height: 200px; /* Chiều cao cố định cho hình ảnh */
-    object-fit: cover; /* Giữ tỷ lệ khung hình */
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
     border-radius: 8px;
-    margin-right: 16px; /* Khoảng cách giữa hình ảnh và nội dung */
+    margin-right: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .location-content {
-    flex: 1; /* Nội dung sẽ chiếm phần còn lại */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .location-title {
-    font-size: 1.5em; /* Kích thước tiêu đề */
-    margin: 10px 0; /* Khoảng cách giữa tiêu đề và mô tả */
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 10px 0;
 }
 
 .location-description {
-    font-size: 1em; /* Kích thước mô tả */
-    color: #666; /* Màu chữ mô tả */
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.location-price {
-    font-size: 1em; /* Kích thước giá vé */
-    margin: 5px 0; /* Khoảng cách giữa các giá vé */
+.location-city {
+    font-size: 1.1em;
+    color: #0066cc;
+    margin: 5px 0;
 }
 
 .view-more-button {
     display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff; /* Màu nền nút */
-    color: white; /* Màu chữ nút */
+    margin-top: 15px;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
     border-radius: 5px;
-    text-decoration: none; /* Bỏ gạch chân */
+    text-decoration: none;
+    font-weight: 500;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+    align-self: flex-start;
 }
 
 .view-more-button:hover {
-    background-color: #0056b3; /* Màu nền khi hover */
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .location-item {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .location-image {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .search-box {
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .search-button {
+        margin-top: 10px;
+    }
 }

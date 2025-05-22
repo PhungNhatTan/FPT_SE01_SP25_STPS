@@ -1,24 +1,38 @@
 import React, { useState } from "react";
+import { BlogService } from "../../services/BlogService";
 
 const AddBlog = ({ onCancel }) => {
     const [newBlog, setNewBlog] = useState({
         title: "",
-        content: "",
-        imageUrl: "",
+        description: "",
         imageFile: null,
     });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const blogService = new BlogService();
 
-    const handleSubmit = (e) => {
-        e.preventDefault(); // Ngăn chặn hành vi mặc định của form
-        console.log("Thêm blog:", newBlog);
-        // Logic để thêm blog vào danh sách
-        onCancel(); // Quay lại danh sách
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError("");
+        try {
+            await blogService.addBlog({
+                title: newBlog.title,
+                description: newBlog.description,
+                imageFile: newBlog.imageFile,
+            });
+            alert("Thêm blog thành công!");
+            onCancel();
+        } catch (err) {
+            setError("Thêm blog thất bại!");
+        }
+        setLoading(false);
     };
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            setNewBlog({ ...newBlog, imageFile: file, imageUrl: URL.createObjectURL(file) });
+            setNewBlog({ ...newBlog, imageFile: file });
         }
     };
 
@@ -41,8 +55,8 @@ const AddBlog = ({ onCancel }) => {
                     <textarea
                         className="form-control"
                         required
-                        value={newBlog.content}
-                        onChange={(e) => setNewBlog({ ...newBlog, content: e.target.value })}
+                        value={newBlog.description}
+                        onChange={(e) => setNewBlog({ ...newBlog, description: e.target.value })}
                     ></textarea>
                 </div>
                 <div className="mb-3">
@@ -54,7 +68,8 @@ const AddBlog = ({ onCancel }) => {
                         onChange={handleImageChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-success me-2">Lưu</button>
+                {error && <p className="text-danger">{error}</p>}
+                <button type="submit" className="btn btn-success me-2" disabled={loading}>{loading ? "Đang lưu..." : "Lưu"}</button>
                 <button type="button" className="btn btn-secondary" onClick={onCancel}>Hủy</button>
             </form>
         </div>

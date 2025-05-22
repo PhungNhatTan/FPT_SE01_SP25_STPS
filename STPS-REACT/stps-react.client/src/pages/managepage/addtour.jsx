@@ -1,27 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { TourServices } from '../../services/TourSevices';
 
 const AddTour = ({ onCancel }) => {
+    const [form, setForm] = useState({
+        tourName: '',
+        duration: '',
+        description: '',
+        adultPrice: '',
+        childPrice: '',
+        transportation: '',
+    });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const tourService = new TourServices();
+
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError('');
+        try {
+            await tourService.addTour({
+                tourName: form.tourName,
+                description: form.description,
+                duration: parseInt(form.duration),
+                transportation: form.transportation,
+                adultPrice: parseFloat(form.adultPrice),
+                childPrice: parseFloat(form.childPrice),
+                isActive: true,
+                isFeatured: false
+            });
+            alert('Thêm tour thành công!');
+            onCancel(); // Quay lại danh sách
+        } catch (err) {
+            setError('Thêm tour thất bại!');
+        }
+        setLoading(false);
+    };
+
     return (
         <div>
             <h2>Thêm mới Tour</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label className="form-label">Tên Tour</label>
-                    <input type="text" className="form-control" required />
+                    <input type="text" className="form-control" name="tourName" value={form.tourName} onChange={handleChange} required />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Thời gian</label>
-                    <input type="text" className="form-control" required />
+                    <label className="form-label">Thời gian (số ngày)</label>
+                    <input type="number" className="form-control" name="duration" value={form.duration} onChange={handleChange} required />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Phương tiện</label>
+                    <input type="text" className="form-control" name="transportation" value={form.transportation} onChange={handleChange} required />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Mô tả</label>
-                    <textarea className="form-control" required></textarea>
+                    <textarea className="form-control" name="description" value={form.description} onChange={handleChange} required></textarea>
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Giá vé</label>
-                    <input type="number" className="form-control" required />
+                    <label className="form-label">Giá vé người lớn</label>
+                    <input type="number" className="form-control" name="adultPrice" value={form.adultPrice} onChange={handleChange} required />
                 </div>
-                <button type="submit" className="btn btn-success me-2">Lưu</button>
+                <div className="mb-3">
+                    <label className="form-label">Giá vé trẻ em</label>
+                    <input type="number" className="form-control" name="childPrice" value={form.childPrice} onChange={handleChange} required />
+                </div>
+                {error && <p className="text-danger">{error}</p>}
+                <button type="submit" className="btn btn-success me-2" disabled={loading}>{loading ? 'Đang lưu...' : 'Lưu'}</button>
                 <button type="button" className="btn btn-secondary" onClick={onCancel}>Hủy</button>
             </form>
         </div>

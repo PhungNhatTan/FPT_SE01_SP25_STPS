@@ -2,13 +2,37 @@
 .search-bar {
     background-color: #f8f9fa;
     border-radius: 8px;
-    padding: 10px; /* Thêm padding cho thanh tìm kiếm */
+    padding: 15px; /* Tăng padding cho thanh tìm kiếm */
+    display: flex !important; /* Sử dụng !important để ghi đè các style khác */
+    flex-direction: row !important; /* Đảm bảo các phần tử nằm ngang */
+    flex-wrap: nowrap !important; /* Không cho phép xuống dòng */
+    gap: 15px; /* Khoảng cách giữa các phần tử */
+    align-items: center !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: flex-start !important; /* Căn trái các phần tử */
+    max-width: 100% !important;
+    width: 100% !important;
 }
 
 .search-input {
-    width: 100px; /* Đặt chiều rộng hợp lý cho các input */
-    margin: 0 5px; /* Tạo khoảng cách giữa các input */
-    flex: 1; /* Cho phép input mở rộng để chiếm không gian */
+    width: 200px !important; /* Chiều rộng cố định */
+    margin: 0 !important; /* Bỏ margin */
+    flex: 0 0 auto !important; /* Không cho phép mở rộng hoặc co lại */
+    min-width: 0 !important; /* Cho phép co lại nếu cần */
+}
+
+.search-input-group {
+    width: 200px !important; /* Chiều rộng cố định */
+    flex: 0 0 auto !important; /* Không cho phép mở rộng hoặc co lại */
+    min-width: 0 !important; /* Cho phép co lại nếu cần */
+}
+
+/* Nút tìm kiếm */
+.search-bar .btn-primary {
+    width: 120px !important; /* Chiều rộng cố định */
+    flex: 0 0 auto !important; /* Không cho phép mở rộng hoặc co lại */
+    margin-left: auto !important; /* Đẩy nút sang phải */
 }
 
 /* Bộ lọc bên trái */
@@ -32,8 +56,9 @@
 
 .tour-image {
     width: 100%;
-    height: 100%;
+    height: 200px;
     object-fit: cover;
+    border-radius: 10px 0 0 10px;
 }
 
 /* Nút sắp xếp */

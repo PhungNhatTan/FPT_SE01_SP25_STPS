@@ -1,7 +1,8 @@
-.dashboard-manager {
+.dashboard-manager, .dashboard-admin {
     display: flex;
     flex-direction: column;
     height: 100vh; /* Chiều cao toàn bộ trang */
+    background-color: #f8f9fc;
 }
 
 .container {
@@ -12,35 +13,65 @@
 }
 
 .sidebar {
-    width: 300px; /* Tăng chiều rộng của sidebar */
-    background-color: #f8f9fa; /* Màu nền cho sidebar */
+    width: 280px; /* Chiều rộng của sidebar */
+    background-color: #4e73df; /* Màu nền cho sidebar - xanh dương */
     padding: 20px;
-    border-right: 1px solid #dee2e6; /* Đường viền bên phải */
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    z-index: 1;
+}
+
+.sidebar-brand {
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.sidebar-brand h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-divider {
+    height: 0;
+    margin: 0 1rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .nav-link {
-    display: block;
-    padding: 10px 15px;
-    color: #333; /* Màu chữ */
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    color: rgba(255, 255, 255, 0.8); /* Màu chữ trắng với độ trong suốt */
     text-decoration: none;
-    border-radius: 4px; /* Bo góc */
-    transition: background-color 0.3s;
+    border-radius: 0.35rem; /* Bo góc */
+    transition: all 0.3s;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.nav-icon {
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
 }
 
 .nav-link:hover {
-    background-color: #007bff; /* Màu nền khi hover */
+    background-color: rgba(255, 255, 255, 0.1); /* Màu nền khi hover */
     color: white; /* Màu chữ khi hover */
+    transform: translateX(5px);
 }
 
 .active {
-    background-color: #007bff; /* Màu nền cho tab đang hoạt động */
+    background-color: rgba(255, 255, 255, 0.2); /* Màu nền cho tab đang hoạt động */
     color: white; /* Màu chữ cho tab đang hoạt động */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
 .content {
     flex: 1; /* Chiếm toàn bộ chiều rộng còn lại */
-    padding: 20px; /* Khoảng cách bên trong */
-    background-color: #ffffff; /* Màu nền cho nội dung */
+    padding: 1.5rem; /* Khoảng cách bên trong */
+    background-color: #f8f9fc; /* Màu nền cho nội dung */
     overflow-y: auto; /* Cuộn nếu nội dung vượt quá chiều cao */
 }
 
@@ -116,4 +147,125 @@
 
 .status-inactive {
     color: red; /* Màu đỏ cho trạng thái "Ngừng hoạt động" */
+}
+
+/* Modal/Popup styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Thêm pointer-events để đảm bảo các sự kiện chuột hoạt động đúng */
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Ensure it's positioned relative for z-index to work */
+    z-index: 10000; /* Higher than the overlay */
+    /* Đảm bảo các sự kiện chuột hoạt động đúng */
+    pointer-events: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.modal-close:hover {
+    color: #343a40;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid #dee2e6;
+    padding-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    /* Đảm bảo input luôn nhận được sự kiện */
+    pointer-events: auto !important;
+    /* Đảm bảo input luôn ở trên cùng */
+    position: relative;
+    z-index: 10001;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    /* Đảm bảo input khi focus luôn nhận được sự kiện */
+    pointer-events: auto !important;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    margin-right: 5px;
 }

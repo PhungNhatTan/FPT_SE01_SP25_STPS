@@ -9,6 +9,14 @@ import "../../style/header.css";
 const Header = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setDropdownOpen(false);
+        window.location.href = '/';
+    };
+
     return (
         <header className="header">
             <div className="logo">
@@ -33,7 +41,7 @@ const Header = () => {
                             <img src={profileImg} alt="Thông tin cá nhân" />
                             Thông tin cá nhân
                         </li>
-                        <li>
+                        <li onClick={handleLogout}>
                             <img src={logoutIcon} alt="Đăng xuất" />
                             Đăng xuất
                         </li>

@@ -5,9 +5,17 @@ import profileImg from "../../assets/profile-icon.png";
 import logoutIcon from "../../assets/logout-icon.png";
 import "./style/header_dashboard.css";
 
-const HeaderDashboard = () => { // Sửa thành HeaderDashboard
+const HeaderDashboard = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setDropdownOpen(false);
+        window.location.href = '/';
+    };
+
     return (
         <header className="header">
             <div className="logo">
@@ -32,7 +40,7 @@ const HeaderDashboard = () => { // Sửa thành HeaderDashboard
                             <img src={profileImg} alt="Thông tin cá nhân" />
                             Thông tin cá nhân
                         </li>
-                        <li>
+                        <li onClick={handleLogout}>
                             <img src={logoutIcon} alt="Đăng xuất" />
                             Đăng xuất
                         </li>
@@ -43,4 +51,4 @@ const HeaderDashboard = () => { // Sửa thành HeaderDashboard
     );
 };
 
-export default HeaderDashboard; // Đảm bảo xuất đúng tên
+export default HeaderDashboard;

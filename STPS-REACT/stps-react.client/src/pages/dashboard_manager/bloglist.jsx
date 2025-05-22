@@ -1,24 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { BlogService } from "../../services/BlogService";
 import "./style/dashboard_manager.css"; // Đảm bảo đường dẫn tới CSS nếu cần
 
-const initialBlogs = [
-    { id: "001", title: "Blog 1", content: "Nội dung blog 1" },
-    { id: "002", title: "Blog 2", content: "Nội dung blog 2" },
-];
-
 const BlogList = ({ onAddBlog, onEditBlog }) => {
-    const [blogList, setBlogList] = useState(initialBlogs);
+    const [blogList, setBlogList] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const blogService = new BlogService();
 
-    const filteredBlogs = blogList.filter((blog) =>
-        blog.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    useEffect(() => {
+        fetchBlogs();
+    }, []);
 
-    const handleDelete = (id) => {
+    const fetchBlogs = async () => {
+        setLoading(true);
+        setError("");
+        try {
+            const res = await blogService.getAllBlogs();
+            setBlogList(res.data.data || []);
+        } catch (err) {
+            setError("Không thể tải danh sách blog");
+        }
+        setLoading(false);
+    };
+
+    const handleDelete = async (id) => {
         if (window.confirm("Bạn có chắc chắn muốn xóa blog này?")) {
-            setBlogList(blogList.filter((blog) => blog.id !== id));
+            try {
+                await blogService.deleteBlog(id);
+                setBlogList(blogList.filter((blog) => blog.id !== id));
+            } catch (err) {
+                alert("Xóa blog thất bại!");
+            }
         }
     };
+
+    const filteredBlogs = blogList.filter((blog) =>
+        blog.title?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return (
         <div>
@@ -37,13 +57,15 @@ const BlogList = ({ onAddBlog, onEditBlog }) => {
                     Thêm mới Blog
                 </button>
             </div>
-
+            {loading && <p>Đang tải...</p>}
+            {error && <p className="text-danger">{error}</p>}
             <table className="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Tiêu đề</th>
                         <th>Nội dung</th>
+                        <th>Ảnh</th>
                         <th className="text-center" style={{ width: "150px" }}>Tùy chọn</th>
                     </tr>
                 </thead>
@@ -52,7 +74,8 @@ const BlogList = ({ onAddBlog, onEditBlog }) => {
                         <tr key={blog.id}>
                             <td>{blog.id}</td>
                             <td>{blog.title}</td>
-                            <td>{blog.content}</td>
+                            <td>{blog.description}</td>
+                            <td>{blog.image && <img src={blog.image} alt="blog" style={{ maxWidth: 80, maxHeight: 60 }} />}</td>
                             <td>
                                 <button className="btn btn-warning me-2" onClick={() => onEditBlog(blog.id)}>Sửa</button>
                                 <button className="btn btn-danger" onClick={() => handleDelete(blog.id)}>Xóa</button>

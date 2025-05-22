@@ -1,11 +1,12 @@
 // history.jsx
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../style/history.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
 import tourHistoryData from "./data/tourHistoryData"; // Default import
+import { TourServices } from "../../services/TourSevices";
 
 const History = () => {
     const [tours, setTours] = useState(tourHistoryData);
@@ -14,7 +15,7 @@ const History = () => {
     const navigate = useNavigate();  // Khởi tạo useNavigate
 
     const handleSelectTour = (tour) => {
-        setSelectedTour(tour);
+        // setSelectedTour(tour);
         setFeedback(""); // Reset feedback khi chọn tour mới
     };
 
@@ -62,6 +63,35 @@ const History = () => {
         navigate(`/tourdetail/${tourId}`);  // Điều hướng đến trang chi tiết tour
     };
 
+    const [hitoryTour, setHitoryTour] = useState([]);
+    const _tourService = new TourServices();
+
+    useEffect(() => {
+        const fetchTourData = async () => {
+            try {
+                // Lấy userId từ localStorage
+                const userId = localStorage.getItem('userId');
+
+                if (!userId) {
+                    console.error("Không tìm thấy userId trong localStorage");
+                    navigate('/login'); // Chuyển hướng đến trang đăng nhập nếu không có userId
+                    return;
+                }
+
+                console.log("Đang lấy lịch sử đặt tour cho userId:", userId);
+
+                const dataResponse = await _tourService.getTourHistory(userId);
+                await setHitoryTour(dataResponse.data.data);
+                console.log("Dữ liệu lịch sử tour:", dataResponse.data.data);
+
+            } catch (error) {
+                console.error("Lỗi khi fetch lịch sử đặt tour:", error);
+            }
+        };
+
+        fetchTourData();
+    }, [navigate]);
+
     return (
         <>
             <header className="header">
@@ -75,7 +105,7 @@ const History = () => {
                 </div>
                 <div className="row">
                     {/* Danh sách tour */}
-                    <div className="col-md-5">
+                    {/* <div className="col-md-5">
                         <div className="list-group">
                             {tours.map((tour) => (
                                 <button
@@ -95,6 +125,35 @@ const History = () => {
                                     </p>
                                     <p>
                                         <strong>Giá vé Trẻ em:</strong> {tour.childPrice.toLocaleString()} VND
+                                    </p>
+                                </button>
+                            ))}
+                        </div>
+                    </div> */}
+
+                    <div className="col-md-5">
+                        <div className="list-group">
+                            {Array.isArray(hitoryTour) && hitoryTour.map((tour) => (
+                                <button
+                                    key={tour.bookingId}
+                                    className={`list-group-item list-group-item-action tour-item ${selectedTour.id === tour.bookingId ? "active" : "active"}`}
+                                    onClick={() => handleSelectTour(tour)}
+                                >
+                                    <h5>{tour.tourName}</h5>
+                                    <p>
+                                        <strong>Ngày đi:</strong> {tour.tourDate} - <strong>Ngày về:</strong> {tour.tourDate}
+                                    </p>
+                                    <p>
+                                        <strong>Người lớn:</strong> {tour.adultCount} | <strong>Trẻ em:</strong> {tour.childCount}
+                                    </p>
+                                    <p>
+                                        <strong>Giá vé Người lớn:</strong> {tour.adultPrice ? tour.adultPrice.toLocaleString() : (tour.totalAmount / tour.adultCount).toLocaleString()} VND
+                                    </p>
+                                    <p>
+                                        <strong>Giá vé Trẻ em:</strong> {tour.childPrice ? tour.childPrice.toLocaleString() : (tour.childCount > 0 ? (tour.totalAmount * 0.7 / tour.childCount).toLocaleString() : "0")} VND
+                                    </p>
+                                    <p>
+                                        <strong>Tổng tiền:</strong> {tour.totalAmount.toLocaleString()} VND
                                     </p>
                                 </button>
                             ))}

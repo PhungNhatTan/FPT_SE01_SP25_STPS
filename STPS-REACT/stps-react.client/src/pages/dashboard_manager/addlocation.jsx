@@ -1,64 +1,119 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { LocationService } from "../../services/LocationService";
+import { CityService } from "../../services/CityService";
 
 const AddLocation = ({ onCancel }) => {
+    const [cities, setCities] = useState([]);
     const [newLocation, setNewLocation] = useState({
-        name: "",
+        destinationName: "",
         description: "",
-        adultPrice: "",
-        childPrice: "",
+        cityId: "",
+        isFeatured: false
     });
+    const locationService = new LocationService();
+    const cityService = new CityService();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault(); // Ngăn chặn hành vi mặc định của form
-        console.log("Thêm địa điểm:", newLocation);
-        // Logic để thêm địa điểm vào danh sách
-        onCancel(); // Quay lại danh sách
+    useEffect(() => {
+        const fetchCities = async () => {
+            try {
+                const res = await cityService.findAll();
+                if (res.data.success) setCities(res.data.data);
+            } catch {}
+        };
+        fetchCities();
+    }, []);
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setNewLocation(prev => ({
+            ...prev,
+            [name]: type === "checkbox" ? checked : value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError("");
+        try {
+            const requestData = {
+                destinationName: newLocation.destinationName,
+                description: newLocation.description,
+                cityId: parseInt(newLocation.cityId),
+                isFeatured: newLocation.isFeatured,
+                images: null,
+                details: null
+            };
+            
+            const response = await locationService.addLocation(requestData);
+            if (response.data.success) {
+                alert("Thêm địa điểm thành công!");
+                onCancel();
+            } else {
+                setError(response.data.message || "Thêm địa điểm thất bại!");
+            }
+        } catch (err) {
+            setError(err.response?.data?.message || "Thêm địa điểm thất bại!");
+        }
+        setLoading(false);
     };
 
     return (
         <div>
             <h2>Thêm mới Địa điểm</h2>
+            {error && <div className="alert alert-danger">{error}</div>}
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label className="form-label">Tên địa điểm</label>
                     <input
                         type="text"
                         className="form-control"
+                        name="destinationName"
                         required
-                        value={newLocation.name}
-                        onChange={(e) => setNewLocation({ ...newLocation, name: e.target.value })}
+                        value={newLocation.destinationName}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Mô tả</label>
                     <textarea
                         className="form-control"
+                        name="description"
                         required
                         value={newLocation.description}
-                        onChange={(e) => setNewLocation({ ...newLocation, description: e.target.value })}
+                        onChange={handleChange}
                     ></textarea>
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Giá người lớn (VNĐ)</label>
-                    <input
-                        type="number"
+                    <label className="form-label">Thành phố</label>
+                    <select
                         className="form-control"
+                        name="cityId"
                         required
-                        value={newLocation.adultPrice}
-                        onChange={(e) => setNewLocation({ ...newLocation, adultPrice: e.target.value })}
-                    />
+                        value={newLocation.cityId}
+                        onChange={handleChange}
+                    >
+                        <option value="">Chọn thành phố</option>
+                        {cities.map(city => (
+                            <option key={city.cityId} value={city.cityId}>{city.cityName}</option>
+                        ))}
+                    </select>
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Giá trẻ em (VNĐ)</label>
-                    <input
-                        type="number"
-                        className="form-control"
-                        required
-                        value={newLocation.childPrice}
-                        onChange={(e) => setNewLocation({ ...newLocation, childPrice: e.target.value })}
-                    />
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            name="isFeatured"
+                            checked={newLocation.isFeatured}
+                            onChange={handleChange}
+                        />
+                        <label className="form-check-label">Nổi bật</label>
+                    </div>
                 </div>
-                <button type="submit" className="btn btn-success me-2">Lưu</button>
+                <button type="submit" className="btn btn-success me-2" disabled={loading}>{loading ? "Đang lưu..." : "Lưu"}</button>
                 <button type="button" className="btn btn-secondary" onClick={onCancel}>Hủy</button>
             </form>
         </div>

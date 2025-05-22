@@ -44,17 +44,24 @@
     overflow-y: auto; /* Cuộn nếu nội dung vượt quá chiều cao */
 }
 
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Cho phép cuộn ngang */
+    margin-top: 20px;
+}
+
 .table {
     width: 100%; /* Chiều rộng bảng */
     margin-top: 20px; /* Khoảng cách trên của bảng */
     table-layout: auto; /* Tự động điều chỉnh kích thước cột */
+    min-width: 1000px; /* Đảm bảo bảng có chiều rộng tối thiểu */
 }
 
 .table th, .table td {
     text-align: center; /* Căn giữa nội dung bảng */
     vertical-align: middle; /* Căn giữa theo chiều dọc */
     padding: 12px; /* Thêm khoảng cách cho các ô */
-    white-space: nowrap; /* Ngăn không cho nội dung bị ngắt dòng */
+    white-space: normal; /* Cho phép nội dung ngắt dòng */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -64,11 +71,14 @@
 .table th {
     background-color: #e9ecef; /* Màu nền cho tiêu đề bảng */
     font-weight: bold; /* Đậm tiêu đề bảng */
+    position: sticky; /* Giữ tiêu đề cố định khi cuộn */
+    top: 0; /* Vị trí cố định ở trên cùng */
+    z-index: 10; /* Đảm bảo hiển thị trên các phần tử khác */
 }
 
 .table td {
-    overflow: hidden; /* Ẩn nội dung tràn ra ngoài */
-    text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung quá dài */
+    max-width: 300px; /* Giới hạn chiều rộng tối đa của ô */
+    overflow: visible; /* Cho phép nội dung hiển thị đầy đủ */
 }
 
 .btn {
