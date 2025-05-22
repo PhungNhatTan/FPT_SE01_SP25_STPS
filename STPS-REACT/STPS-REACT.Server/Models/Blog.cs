@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace STPS_REACT.Server.Models;
-
-public partial class Blog
+namespace BookTour.Models
 {
-    public string AccountId { get; set; } = null!;
+    public class Blog
+    {
+        [Key]
+        public int Id { get; set; }
 
-    public string BlogId { get; set; } = null!;
-
-    public string BlogName { get; set; } = null!;
-
-    public string BlogContent { get; set; } = null!;
-
-    public DateOnly Date { get; set; }
-
-    public virtual Account Account { get; set; } = null!;
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string image {  get; set; }
+    }
 }

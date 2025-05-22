@@ -1,15 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace STPS_REACT.Server.Models;
-
-public partial class Tour
+namespace BookTour.Models
 {
-    public string TourId { get; set; } = null!;
+    public class Tour
+    {
+        [Key]
+        public int TourId { get; set; }
 
-    public string? TourName { get; set; }
+        [StringLength(100)]
+        public string TourName { get; set; }
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+        public string Description { get; set; }
 
-    public virtual ICollection<TourFeedback> TourFeedbacks { get; set; } = new List<TourFeedback>();
+        public int Duration { get; set; }
+
+        [StringLength(100)]
+        public string Transportation { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal AdultPrice { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal ChildPrice { get; set; }
+
+        public bool IsActive { get; set; } = true;
+
+        public bool IsFeatured { get; set; } = false;
+
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+        public virtual ICollection<TourDestination> TourDestinations { get; set; }
+        public virtual ICollection<TourImage> TourImages { get; set; }
+        public virtual ICollection<TourSchedule> TourSchedules { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
+        public virtual ICollection<SavedTour> SavedTours { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
+    }
 }

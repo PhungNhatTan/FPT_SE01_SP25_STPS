@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace STPS_REACT.Server.Models;
-
-public partial class TourismCompany
+namespace BookTour.Models
 {
-    public string TcId { get; set; } = null!;
+    public class TourismCompany
+    {
+        [Key]
+        public int Id { get; set; }
 
-    public string AccountId { get; set; } = null!;
+        public string CompanyName { get; set; }
 
-    public string TcName { get; set; } = null!;
+        public string RepresentativeName { get; set; }
 
-    public virtual Account Account { get; set; } = null!;
+        public string Email { get; set; }
+
+        public string PhoneNumber { get; set; }
+
+        public string TaxCode { get; set; }
+    }
 }
