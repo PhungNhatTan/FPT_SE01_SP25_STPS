@@ -1495,3 +1495,4 @@ C:\Users\Admin\OneDrive\Desktop\STPS_FIN\FPT_SE01_SP25_STPS\STPS-REACT\BookTourA
 C:\Users\Admin\OneDrive\Desktop\STPS_FIN\FPT_SE01_SP25_STPS\STPS-REACT\BookTourApi\obj\Debug\net8.0\BookTour.pdb
 C:\Users\Admin\OneDrive\Desktop\STPS_FIN\FPT_SE01_SP25_STPS\STPS-REACT\BookTourApi\obj\Debug\net8.0\BookTour.genruntimeconfig.cache
 C:\Users\Admin\OneDrive\Desktop\STPS_FIN\FPT_SE01_SP25_STPS\STPS-REACT\BookTourApi\obj\Debug\net8.0\ref\BookTour.dll
+C:\Users\Admin\OneDrive\Desktop\STPS_FIN\FPT_SE01_SP25_STPS\STPS-REACT\BookTourApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

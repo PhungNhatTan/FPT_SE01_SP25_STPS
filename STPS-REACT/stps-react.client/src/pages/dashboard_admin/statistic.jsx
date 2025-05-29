@@ -120,7 +120,7 @@ const Statistic = () => {
                         <div className="card-body">
                             <div className="d-flex justify-content-between">
                                 <div>
-                                    <h6 className="card-title">Doanh thu Admin</h6>
+                                    <h6 className="card-title">Doanh thu GOTOUR</h6>
                                     <h4>{formatCurrency(revenueData?.totalAdminRevenue || 0)}</h4>
                                 </div>
                                 <div className="align-self-center">
@@ -264,7 +264,7 @@ const Statistic = () => {
 
             {/* Top Companies và Recent Transactions */}
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-6" style={{ width: '100%', maxWidth: '1200px' }}>
                     <div className="card">
                         <div className="card-header">
                             <h5>Top 10 Công ty du lịch</h5>
@@ -284,7 +284,7 @@ const Statistic = () => {
                                             revenueData.topCompanies.map((company, index) => (
                                                 <tr key={company.tourismCompanyId}>
                                                     <td>
-                                                        <span className="badge bg-primary me-2">{index + 1}</span>
+                                                        <span className=" bg-primary me-2">{index + 1}</span>
                                                         {company.companyName}
                                                     </td>
                                                     <td className="text-success fw-bold">
@@ -304,7 +304,10 @@ const Statistic = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-6">
+            </div>
+
+            <div className="row">
+                <div className="col-md-6" style={{ width: '100%', maxWidth: '1200px' }}>
                     <div className="card">
                         <div className="card-header">
                             <h5>Giao dịch gần đây</h5>
@@ -328,7 +331,7 @@ const Statistic = () => {
                                                         {transaction.tourName}
                                                     </td>
                                                     <td>
-                                                        <span className={`badge ${transaction.transactionType === 'Revenue' ? 'bg-success' : 'bg-warning'}`}>
+                                                        <span className={` ${transaction.transactionType === 'Revenue' ? 'bg-success' : 'bg-warning'}`}>
                                                             {transaction.transactionType === 'Revenue' ? 'Doanh thu' : 'Hoàn tiền'}
                                                         </span>
                                                     </td>
@@ -336,7 +339,7 @@ const Statistic = () => {
                                                         {formatCurrency(transaction.amount)}
                                                     </td>
                                                     <td>
-                                                        <span className={`badge ${transaction.status === 'Completed' ? 'bg-success' : 'bg-warning'}`}>
+                                                        <span className={` ${transaction.status === 'Completed' ? 'bg-success' : 'bg-warning'}`}>
                                                             {transaction.status === 'Completed' ? 'Hoàn thành' : 'Chờ xử lý'}
                                                         </span>
                                                     </td>

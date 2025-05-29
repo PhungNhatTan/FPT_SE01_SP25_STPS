@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4VAOV6tZBBLhBRw3KfMDDVlsijZsV3hLzHUA8B1bbYM=",
+  "Hash": "o0tO135C1BhyhzHbXfz89ISAGhVM5iaNfpkPBOCHRFw=",
   "Source": "BookTour",
   "BasePath": "_content/BookTour",
   "Mode": "Default",
@@ -120,6 +120,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\5f7819e24cd56b506e6cf4c9aaff4a28_5199373b.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\wwwroot\\uploads\\danang_5015465e.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/danang_5015465e#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "oqy96f113s",
+      "Integrity": "IMqgzzFwPSwzSDWFtvpZk3fALNG/luQ8wJLVUnJDl0A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\danang_5015465e.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\wwwroot\\uploads\\danang_b3227712.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/danang_b3227712#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "oqy96f113s",
+      "Integrity": "IMqgzzFwPSwzSDWFtvpZk3fALNG/luQ8wJLVUnJDl0A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\danang_b3227712.jpg"
     },
     {
       "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\wwwroot\\uploads\\pngtree-graduating-college-student-holding-a-graduation-certificate-picture-image_1494797_3104c091.jpg",
@@ -761,6 +803,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-i/UCfJEl8VrlLt6iYdp7Pshs0VeoV+w6fESiQCp9+5Y="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/danang_5015465e.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\wwwroot\\uploads\\danang_5015465e.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "152025"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IMqgzzFwPSwzSDWFtvpZk3fALNG/luQ8wJLVUnJDl0A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 14:15:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-IMqgzzFwPSwzSDWFtvpZk3fALNG/luQ8wJLVUnJDl0A="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/danang_5015465e.oqy96f113s.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\wwwroot\\uploads\\danang_5015465e.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "152025"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IMqgzzFwPSwzSDWFtvpZk3fALNG/luQ8wJLVUnJDl0A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 14:15:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "oqy96f113s"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/danang_5015465e.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-IMqgzzFwPSwzSDWFtvpZk3fALNG/luQ8wJLVUnJDl0A="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/danang_b3227712.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\wwwroot\\uploads\\danang_b3227712.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "152025"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IMqgzzFwPSwzSDWFtvpZk3fALNG/luQ8wJLVUnJDl0A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 14:13:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-IMqgzzFwPSwzSDWFtvpZk3fALNG/luQ8wJLVUnJDl0A="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/danang_b3227712.oqy96f113s.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\wwwroot\\uploads\\danang_b3227712.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "152025"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IMqgzzFwPSwzSDWFtvpZk3fALNG/luQ8wJLVUnJDl0A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 14:13:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "oqy96f113s"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/danang_b3227712.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-IMqgzzFwPSwzSDWFtvpZk3fALNG/luQ8wJLVUnJDl0A="
         }
       ]
     },

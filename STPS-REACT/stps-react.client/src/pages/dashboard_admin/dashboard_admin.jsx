@@ -93,14 +93,6 @@ const DashboardAdmin = () => {
                     <ul className="nav flex-column">
                         <li className="nav-item">
                             <button
-                                className={`nav-link ${activeTab === 'ManagerAccount' ? 'active' : ''}`}
-                                onClick={() => { setActiveTab('ManagerAccount'); setCurrentPage('ManagerAccountList'); }}
-                            >
-                                <FaUserCog className="nav-icon" /> Tài khoản quản lý
-                            </button>
-                        </li>
-                        <li className="nav-item">
-                            <button
                                 className={`nav-link ${activeTab === 'UserAccount' ? 'active' : ''}`}
                                 onClick={() => { setActiveTab('UserAccount'); setCurrentPage('UserAccountList'); }}
                             >

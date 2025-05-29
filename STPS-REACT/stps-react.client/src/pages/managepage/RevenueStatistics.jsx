@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import RevenueService from '../../services/RevenueService';
 import { getCompanyByUserId } from '../../services/TourismCompanyService';
-import { getUserIdFromToken } from '../../utils/jwtHelper';
+import { getUserIdFromToken } from '../../utils/JwtHelper';
 
 const RevenueStatistics = () => {
     const [revenueData, setRevenueData] = useState(null);
@@ -150,15 +150,6 @@ const RevenueStatistics = () => {
                                     >
                                         {loading ? 'Đang tải...' : 'Cập nhật'}
                                     </button>
-                                    <button
-                                        className="btn btn-success"
-                                        onClick={handleProcessRevenueTransfers}
-                                        disabled={loading}
-                                        title="Xử lý chuyển tiền đang chờ (Test)"
-                                    >
-                                        <i className="fas fa-money-bill-transfer me-1"></i>
-                                        Xử lý chuyển tiền
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -276,7 +267,7 @@ const RevenueStatistics = () => {
                                                         <tr key={transaction.transactionId}>
                                                             <td>{transaction.transactionId}</td>
                                                             <td>
-                                                                <span className={`badge ${
+                                                                <span className={` ${
                                                                     transaction.transactionType === 'Revenue' ? 'bg-success' : 'bg-warning'
                                                                 }`}>
                                                                     {transaction.transactionType === 'Revenue' ? 'Doanh thu' : 'Hoàn tiền'}
@@ -285,7 +276,7 @@ const RevenueStatistics = () => {
                                                             <td>{transaction.tourName}</td>
                                                             <td>{formatCurrency(transaction.amount)}</td>
                                                             <td>
-                                                                <span className={`badge ${
+                                                                <span className={` ${
                                                                     transaction.status === 'Completed' ? 'bg-success' :
                                                                     transaction.status === 'Pending' ? 'bg-warning' : 'bg-danger'
                                                                 }`}>

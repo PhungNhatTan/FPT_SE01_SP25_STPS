@@ -123,16 +123,6 @@ const ManagePage = () => {
                     <ul className="menu-items">
                         <li className="menu-item">
                             <button
-                                className={`menu-link ${activeTab === 'Dashboard' ? 'active' : ''}`}
-                                onClick={() => { setActiveTab('Dashboard'); }}
-                                title="Tổng quan"
-                            >
-                                <span className="menu-icon"><FaTachometerAlt /></span>
-                                <span className="menu-text">Tổng quan</span>
-                            </button>
-                        </li>
-                        <li className="menu-item">
-                            <button
                                 className={`menu-link ${activeTab === 'Tour' ? 'active' : ''}`}
                                 onClick={() => { setActiveTab('Tour'); setCurrentPage('TourList'); }}
                                 title="Quản lý Tour"
@@ -149,16 +139,6 @@ const ManagePage = () => {
                             >
                                 <span className="menu-icon"><FaPercent /></span>
                                 <span className="menu-text">Khuyến mãi</span>
-                            </button>
-                        </li>
-                        <li className="menu-item">
-                            <button
-                                className={`menu-link ${activeTab === 'ThongKe' ? 'active' : ''}`}
-                                onClick={() => setActiveTab('ThongKe')}
-                                title="Thống kê"
-                            >
-                                <span className="menu-icon"><FaChartBar /></span>
-                                <span className="menu-text">Thống kê</span>
                             </button>
                         </li>
                         <li className="menu-item">
@@ -196,15 +176,8 @@ const ManagePage = () => {
 
                     </div>
                     <div className="header-actions">
-                        <div className="search-box">
-                            <FaSearch className="search-icon" />
-                            <input type="text" placeholder="Tìm kiếm..." />
-                        </div>
                         <div className="user-menu">
-                            <button className="notification-btn">
-                                <FaBell />
-                                <span className="badge">2</span>
-                            </button>
+                            <div className="user-role">Tourism Company</div>
                             <div className="avatar">
                                 <FaUserCircle />
                             </div>

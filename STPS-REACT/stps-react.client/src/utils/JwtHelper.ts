@@ -30,23 +30,29 @@ export function parseJwt(token: string) {
  */
 export function getUserIdFromToken() {
     try {
-        // Lấy token từ localStorage
         const token = localStorage.getItem('token');
         if (!token) {
+            console.warn("Không tìm thấy token trong localStorage.");
             return null;
         }
-        
-        // Giải mã token
+
         const decodedToken = parseJwt(token);
+
         if (!decodedToken) {
+            console.warn("Giải mã token thất bại.");
             return null;
         }
-        
-        // Lấy userId từ token (nameid là ClaimTypes.NameIdentifier)
-        const userId = decodedToken.nameid || decodedToken.sub || decodedToken.userId;
+
+        // Trường chuẩn chứa userId trong token
+        const userIdClaim = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier";
+        const userId = decodedToken[userIdClaim];
+
+        console.log("✅ Extracted userId:", userId);
+
         return userId ? parseInt(userId) : null;
     } catch (error) {
-        console.error('Error getting user ID from token:', error);
         return null;
     }
 }
+
+

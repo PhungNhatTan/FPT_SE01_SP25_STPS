@@ -213,13 +213,14 @@ const History = () => {
                                     </p>
                                     <p>
                                         <strong>Trạng thái:</strong>
-                                        <span className={`badge ${
+                                        <span className={` ${
                                             tour.paymentStatus === 'Đã thanh toán' ? 'bg-success' :
                                             tour.paymentStatus === 'Chưa thanh toán' ? 'bg-warning' : 'bg-secondary'
                                         }`}>
+                                            
                                             {tour.paymentStatus}
                                         </span>
-                                        <span className={`badge ms-2 ${
+                                        <span className={` ${
                                             tour.status === 'Đã xác nhận' ? 'bg-success' :
                                             tour.status === 'Đã hủy' ? 'bg-danger' : 'bg-info'
                                         }`}>
@@ -255,15 +256,7 @@ const History = () => {
                                             </button>
                                         )}
 
-                                        <button
-                                            className="btn btn-info btn-sm"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                handleViewTourDetail(tour.tourId || tour.id);
-                                            }}
-                                        >
-                                            Xem chi tiết
-                                        </button>
+                                        
                                     </div>
                                 </div>
                             ))}
@@ -283,7 +276,7 @@ const History = () => {
                                     <p><strong>Tổng tiền:</strong> {selectedTour.totalAmount.toLocaleString()} VND</p>
                                     <p>
                                         <strong>Trạng thái thanh toán:</strong>
-                                        <span className={`badge ms-2 ${
+                                        <span className={` ${
                                             selectedTour.paymentStatus === 'Đã thanh toán' ? 'bg-success' :
                                             selectedTour.paymentStatus === 'Chưa thanh toán' ? 'bg-warning' : 'bg-secondary'
                                         }`}>
@@ -292,7 +285,7 @@ const History = () => {
                                     </p>
                                     <p>
                                         <strong>Trạng thái tour:</strong>
-                                        <span className={`badge ms-2 ${
+                                        <span className={` ${
                                             selectedTour.status === 'Đã xác nhận' ? 'bg-success' :
                                             selectedTour.status === 'Đã hủy' ? 'bg-danger' : 'bg-info'
                                         }`}>
@@ -301,12 +294,7 @@ const History = () => {
                                     </p>
 
                                     <div className="mt-3">
-                                        <button
-                                            className="btn btn-info me-2"
-                                            onClick={() => handleViewTourDetail(selectedTour.tourId || selectedTour.id)}
-                                        >
-                                            Xem thông tin tour
-                                        </button>
+                                        
 
                                         {selectedTour.paymentStatus === 'Chưa thanh toán' && (
                                             <button

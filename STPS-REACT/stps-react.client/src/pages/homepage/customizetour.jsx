@@ -551,18 +551,7 @@ const Customizetour = () => {
                         </div>
                     )}
 
-                    {/* Nhập tên tour */}
-                    <div className="mb-3">
-                        <label htmlFor="tourName" className="form-label">Tên tour</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="tourName"
-                            value={tourName}
-                            onChange={(e) => setTourName(e.target.value)}
-                            placeholder="Nhập tên tour tùy chỉnh"
-                        />
-                    </div>
+                    
 
                     {locationTour.length === 0 && (
                         <button className="btn btn-primary mt-4" onClick={() => setShowModal1(true)}>➕ Chọn địa điểm Tour</button>
@@ -572,11 +561,7 @@ const Customizetour = () => {
                         <div className="location-card" key={locationT.tourId || locationT.id}>
                             <h2 className="text-primary">{locationT.tourName || locationT.province}</h2>
                             <p><strong>Điểm đến: </strong>{locationT.tourName || locationT.province}</p>
-                            <p><strong>Phương tiện: </strong> {locationT.transportation || "Xe du lịch"}</p>
-                            <p><strong>Giá vé Người lớn: </strong> {locationT.adultPrice || getTotalAdultPrice()}</p>
-                            <p><strong>Giá vé Trẻ em: </strong> {locationT.childPrice || getTotalChildPrice()}</p>
-                            <p><strong>Thời gian: </strong> {locationT.duration ? locationT.duration + " ngày" : getTotalTime()}</p>
-                            <button className="btn btn-sm btn-outline-danger mt-2" onClick={() => removeLocationTour(locationT.tourId || locationT.id)}>Xóa tour</button>
+                            <button className="btn btn-sm btn-outline-danger mt-2" onClick={() => removeLocationTour(locationT.tourId || locationT.id)}>Xóa lựa chọn</button>
                         </div>
                     ))}
 
@@ -750,15 +735,7 @@ const Customizetour = () => {
                                                 {/* Hiển thị chi tiết nếu có */}
                                                 {dest.details && dest.details.length > 0 && (
                                                     <div className="destination-details mt-2">
-                                                        <h6>Chi tiết:</h6>
-                                                        <ul className="list-group list-group-flush">
-                                                            {dest.details.map((detail, detailIndex) => (
-                                                                <li key={`detail-${detailIndex}`} className="list-group-item d-flex justify-content-between px-0">
-                                                                    <span>{detail.featureType}:</span>
-                                                                    <span className="text-primary">{detail.featureValue}</span>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
+                                                        
                                                     </div>
                                                 )}
                                             </div>

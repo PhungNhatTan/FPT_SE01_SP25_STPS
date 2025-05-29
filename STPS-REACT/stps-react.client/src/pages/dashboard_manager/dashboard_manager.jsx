@@ -104,16 +104,6 @@ const DashboardManager = () => {
                     <ul className="menu-items">
                         <li className="menu-item">
                             <button
-                                className={`menu-link ${activeTab === 'Dashboard' ? 'active' : ''}`}
-                                onClick={() => { setActiveTab('Dashboard'); }}
-                                title="Tổng quan"
-                            >
-                                <span className="menu-icon"><FaTachometerAlt /></span>
-                                <span className="menu-text">Tổng quan</span>
-                            </button>
-                        </li>
-                        <li className="menu-item">
-                            <button
                                 className={`menu-link ${activeTab === 'ManageLocations' ? 'active' : ''}`}
                                 onClick={() => { setActiveTab('ManageLocations'); setCurrentPage('LocationList'); }}
                                 title="Quản lý địa điểm"
@@ -130,26 +120,6 @@ const DashboardManager = () => {
                             >
                                 <span className="menu-icon"><FaBlog /></span>
                                 <span className="menu-text">Blogs</span>
-                            </button>
-                        </li>
-                        <li className="menu-item">
-                            <button
-                                className={`menu-link ${activeTab === 'ManageUsers' ? 'active' : ''}`}
-                                onClick={() => { setActiveTab('ManageUsers'); }}
-                                title="Quản lý người dùng"
-                            >
-                                <span className="menu-icon"><FaUsers /></span>
-                                <span className="menu-text">Người dùng</span>
-                            </button>
-                        </li>
-                        <li className="menu-item">
-                            <button
-                                className={`menu-link ${activeTab === 'ManageBookings' ? 'active' : ''}`}
-                                onClick={() => { setActiveTab('ManageBookings'); }}
-                                title="Quản lý đặt tour"
-                            >
-                                <span className="menu-icon"><FaTicketAlt /></span>
-                                <span className="menu-text">Đặt tour</span>
                             </button>
                         </li>
                     </ul>
@@ -175,15 +145,8 @@ const DashboardManager = () => {
                         {activeTab === 'ManageBookings' && 'Quản lý đặt tour'}
                     </div>
                     <div className="header-actions">
-                        <div className="search-box">
-                            <FaSearch className="search-icon" />
-                            <input type="text" placeholder="Tìm kiếm..." />
-                        </div>
                         <div className="user-menu">
-                            <button className="notification-btn">
-                                <FaBell />
-                                <span className="badge">3</span>
-                            </button>
+                            <div className="user-role">Manager</div>
                             <div className="avatar">
                                 <FaUserCircle />
                             </div>

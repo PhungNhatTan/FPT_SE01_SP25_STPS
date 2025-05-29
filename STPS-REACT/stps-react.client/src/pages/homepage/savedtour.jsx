@@ -233,12 +233,7 @@ const SavedTour = () => {
                                             </p>
                                         </div>
                                         <div className="buttons mt-3">
-                                            <button
-                                                className="btn btn-primary me-2"
-                                                onClick={() => handleViewTour(tour)}
-                                            >
-                                                Xem chi tiết
-                                            </button>
+                                            
                                             <button
                                                 className="btn btn-danger"
                                                 onClick={() => handleDeleteTour(tour.customTourId, index)}

@@ -64,11 +64,9 @@ const ModernDashboard = () => {
   // Get page title based on active tab
   const getPageTitle = () => {
     switch (activeTab) {
-      case 'ManagerAccount': return 'Quản lý tài khoản quản lý';
       case 'UserAccount': return 'Quản lý tài khoản người dùng';
       case 'TourismCompany': return 'Quản lý công ty du lịch';
       case 'Statistic': return 'Thống kê';
-      case 'AlgorithmSettings': return 'Cài đặt thuật toán';
       default: return 'Dashboard';
     }
   };
@@ -135,32 +133,13 @@ const ModernDashboard = () => {
 
         <div className="sidebar-menu">
           <div className="menu-section">
-            <div className="menu-title">Tổng quan</div>
-            <ul className="menu-items">
-              <li className="menu-item">
-                <button
-                  className={`menu-link ${activeTab === 'Dashboard' ? 'active' : ''}`}
-                  onClick={() => { setActiveTab('Dashboard'); setCurrentPage('Dashboard'); }}
-                >
-                  <span className="menu-icon"><FaTachometerAlt /></span>
-                  <span className="menu-text">Dashboard</span>
-                </button>
-              </li>
-            </ul>
+            
           </div>
 
           <div className="menu-section">
             <div className="menu-title">Quản lý</div>
             <ul className="menu-items">
-              <li className="menu-item">
-                <button
-                  className={`menu-link ${activeTab === 'ManagerAccount' ? 'active' : ''}`}
-                  onClick={() => { setActiveTab('ManagerAccount'); setCurrentPage('ManagerAccountList'); }}
-                >
-                  <span className="menu-icon"><FaUserCog /></span>
-                  <span className="menu-text">Tài khoản quản lý</span>
-                </button>
-              </li>
+              
               <li className="menu-item">
                 <button
                   className={`menu-link ${activeTab === 'UserAccount' ? 'active' : ''}`}
@@ -194,15 +173,7 @@ const ModernDashboard = () => {
                   <span className="menu-text">Thống kê</span>
                 </button>
               </li>
-              <li className="menu-item">
-                <button
-                  className={`menu-link ${activeTab === 'AlgorithmSettings' ? 'active' : ''}`}
-                  onClick={() => { setActiveTab('AlgorithmSettings'); setCurrentPage('AlgorithmSettings'); }}
-                >
-                  <span className="menu-icon"><FaCogs /></span>
-                  <span className="menu-text">Cài đặt thuật toán</span>
-                </button>
-              </li>
+              
             </ul>
           </div>
         </div>
@@ -222,14 +193,7 @@ const ModernDashboard = () => {
           <h1 className="page-title">{getPageTitle()}</h1>
 
           <div className="header-actions">
-            <div className="search-bar">
-              <span className="search-icon"><FaSearch /></span>
-              <input
-                type="text"
-                className="search-input"
-                placeholder="Tìm kiếm..."
-              />
-            </div>
+            
 
             <div className="user-menu">
               <button

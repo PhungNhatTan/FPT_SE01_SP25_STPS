@@ -70,9 +70,6 @@ const Homepage = () => {
             </header>
             <section className="background">
                 <img src={banner} alt="Gotour Background" />
-                <div className="background-overlay">
-                    <SearchBox />
-                </div>
             </section>
             <br />
 
