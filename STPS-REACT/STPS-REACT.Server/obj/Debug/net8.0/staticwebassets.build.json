@@ -1,24 +1,1670 @@
 {
   "Version": 1,
-  "Hash": "fX/Ba6JO4ol0HKvy99z+J75CU5jgHGYfJvn6KhxgAI8=",
-  "Source": "STPS-REACT.Server",
-  "BasePath": "_content/STPS-REACT.Server",
+  "Hash": "lMDvaRcODzwMSJ/kpk9pLAzf7Aejj+EZFbNLLSE/Jxs=",
+  "Source": "BookTour",
+  "BasePath": "_content/BookTour",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
     {
-      "Identity": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\stps-react.client\\stps-react.client.esproj",
-      "Version": 2,
-      "Source": "stps-react.client",
-      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
-      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+      "Name": "BookTour\\wwwroot",
+      "Source": "BookTour",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "Pattern": "**"
     }
   ],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\images\\payment-qr.svg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "images/payment-qr#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kaa0a6td69",
+      "Integrity": "5JnHHJnFRtSX++SzeVXSHSilKMAMNA4ol6j8RIq4p+0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\payment-qr.svg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\images\\qr-code.svg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "images/qr-code#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kaa0a6td69",
+      "Integrity": "5JnHHJnFRtSX++SzeVXSHSilKMAMNA4ol6j8RIq4p+0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\qr-code.svg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\_DSC1560_97224d35.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/_DSC1560_97224d35#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vukeb3hq76",
+      "Integrity": "6TeaXM6Ar0fF6p2Wm2bcTtpvqk97WzP8bstbjnSOGZU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\_DSC1560_97224d35.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\_DSC1560_caefe946.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/_DSC1560_caefe946#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vukeb3hq76",
+      "Integrity": "6TeaXM6Ar0fF6p2Wm2bcTtpvqk97WzP8bstbjnSOGZU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\_DSC1560_caefe946.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\5f7819e24cd56b506e6cf4c9aaff4a28_5199373b.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/5f7819e24cd56b506e6cf4c9aaff4a28_5199373b#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lk9s328tp6",
+      "Integrity": "i/UCfJEl8VrlLt6iYdp7Pshs0VeoV+w6fESiQCp9+5Y=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\5f7819e24cd56b506e6cf4c9aaff4a28_5199373b.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\pngtree-graduating-college-student-holding-a-graduation-certificate-picture-image_1494797_3104c091.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/pngtree-graduating-college-student-holding-a-graduation-certificate-picture-image_1494797_3104c091#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "37qhzs06xe",
+      "Integrity": "3xEGBQ6S2WJLsIXxxmdXPYe91HB8CP8K4uPkhTVSk2w=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\pngtree-graduating-college-student-holding-a-graduation-certificate-picture-image_1494797_3104c091.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_0e40ff69.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_0e40ff69#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ava266t3m5",
+      "Integrity": "ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_0e40ff69.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_222cf04d.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_222cf04d#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ava266t3m5",
+      "Integrity": "ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_222cf04d.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_506a7900.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_506a7900#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ava266t3m5",
+      "Integrity": "ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_506a7900.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_588048ae.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_588048ae#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ava266t3m5",
+      "Integrity": "ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_588048ae.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_5bbf5457.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_5bbf5457#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ava266t3m5",
+      "Integrity": "ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_5bbf5457.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_6a12dde0.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_6a12dde0#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ava266t3m5",
+      "Integrity": "ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_6a12dde0.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_74880b3d.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_74880b3d#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ava266t3m5",
+      "Integrity": "ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_74880b3d.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_e60774fe.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_e60774fe#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ava266t3m5",
+      "Integrity": "ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_e60774fe.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533836204006_1b9ec31b993916097f36185af95521f6_248b30ca.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/z6533836204006_1b9ec31b993916097f36185af95521f6_248b30ca#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "p8uvl4il4f",
+      "Integrity": "JzCKHlE21B7ugX6uuG0kDAZyw8HmRacQa2s81sIKOU0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\z6533836204006_1b9ec31b993916097f36185af95521f6_248b30ca.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533836204006_1b9ec31b993916097f36185af95521f6_5fdf573f.jpg",
+      "SourceId": "BookTour",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\",
+      "BasePath": "_content/BookTour",
+      "RelativePath": "uploads/z6533836204006_1b9ec31b993916097f36185af95521f6_5fdf573f#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "p8uvl4il4f",
+      "Integrity": "JzCKHlE21B7ugX6uuG0kDAZyw8HmRacQa2s81sIKOU0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\z6533836204006_1b9ec31b993916097f36185af95521f6_5fdf573f.jpg"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "images/payment-qr.kaa0a6td69.svg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\images\\payment-qr.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8876"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5JnHHJnFRtSX++SzeVXSHSilKMAMNA4ol6j8RIq4p+0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 16 May 2025 06:25:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kaa0a6td69"
+        },
+        {
+          "Name": "label",
+          "Value": "images/payment-qr.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5JnHHJnFRtSX++SzeVXSHSilKMAMNA4ol6j8RIq4p+0="
+        }
+      ]
+    },
+    {
+      "Route": "images/payment-qr.svg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\images\\payment-qr.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8876"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5JnHHJnFRtSX++SzeVXSHSilKMAMNA4ol6j8RIq4p+0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 16 May 2025 06:25:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5JnHHJnFRtSX++SzeVXSHSilKMAMNA4ol6j8RIq4p+0="
+        }
+      ]
+    },
+    {
+      "Route": "images/qr-code.kaa0a6td69.svg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\images\\qr-code.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8876"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5JnHHJnFRtSX++SzeVXSHSilKMAMNA4ol6j8RIq4p+0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 16 May 2025 06:18:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kaa0a6td69"
+        },
+        {
+          "Name": "label",
+          "Value": "images/qr-code.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5JnHHJnFRtSX++SzeVXSHSilKMAMNA4ol6j8RIq4p+0="
+        }
+      ]
+    },
+    {
+      "Route": "images/qr-code.svg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\images\\qr-code.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8876"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5JnHHJnFRtSX++SzeVXSHSilKMAMNA4ol6j8RIq4p+0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 16 May 2025 06:18:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5JnHHJnFRtSX++SzeVXSHSilKMAMNA4ol6j8RIq4p+0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/_DSC1560_97224d35.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\_DSC1560_97224d35.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1546190"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6TeaXM6Ar0fF6p2Wm2bcTtpvqk97WzP8bstbjnSOGZU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 May 2025 10:09:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6TeaXM6Ar0fF6p2Wm2bcTtpvqk97WzP8bstbjnSOGZU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/_DSC1560_97224d35.vukeb3hq76.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\_DSC1560_97224d35.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1546190"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6TeaXM6Ar0fF6p2Wm2bcTtpvqk97WzP8bstbjnSOGZU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 May 2025 10:09:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vukeb3hq76"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/_DSC1560_97224d35.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6TeaXM6Ar0fF6p2Wm2bcTtpvqk97WzP8bstbjnSOGZU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/_DSC1560_caefe946.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\_DSC1560_caefe946.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1546190"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6TeaXM6Ar0fF6p2Wm2bcTtpvqk97WzP8bstbjnSOGZU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 May 2025 13:53:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6TeaXM6Ar0fF6p2Wm2bcTtpvqk97WzP8bstbjnSOGZU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/_DSC1560_caefe946.vukeb3hq76.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\_DSC1560_caefe946.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1546190"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6TeaXM6Ar0fF6p2Wm2bcTtpvqk97WzP8bstbjnSOGZU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 May 2025 13:53:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vukeb3hq76"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/_DSC1560_caefe946.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6TeaXM6Ar0fF6p2Wm2bcTtpvqk97WzP8bstbjnSOGZU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/5f7819e24cd56b506e6cf4c9aaff4a28_5199373b.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\5f7819e24cd56b506e6cf4c9aaff4a28_5199373b.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "219960"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"i/UCfJEl8VrlLt6iYdp7Pshs0VeoV+w6fESiQCp9+5Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 May 2025 13:54:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-i/UCfJEl8VrlLt6iYdp7Pshs0VeoV+w6fESiQCp9+5Y="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/5f7819e24cd56b506e6cf4c9aaff4a28_5199373b.lk9s328tp6.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\5f7819e24cd56b506e6cf4c9aaff4a28_5199373b.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "219960"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"i/UCfJEl8VrlLt6iYdp7Pshs0VeoV+w6fESiQCp9+5Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 17 May 2025 13:54:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lk9s328tp6"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/5f7819e24cd56b506e6cf4c9aaff4a28_5199373b.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-i/UCfJEl8VrlLt6iYdp7Pshs0VeoV+w6fESiQCp9+5Y="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/pngtree-graduating-college-student-holding-a-graduation-certificate-picture-image_1494797_3104c091.37qhzs06xe.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\pngtree-graduating-college-student-holding-a-graduation-certificate-picture-image_1494797_3104c091.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "466891"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3xEGBQ6S2WJLsIXxxmdXPYe91HB8CP8K4uPkhTVSk2w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 06:50:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "37qhzs06xe"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/pngtree-graduating-college-student-holding-a-graduation-certificate-picture-image_1494797_3104c091.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3xEGBQ6S2WJLsIXxxmdXPYe91HB8CP8K4uPkhTVSk2w="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/pngtree-graduating-college-student-holding-a-graduation-certificate-picture-image_1494797_3104c091.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\pngtree-graduating-college-student-holding-a-graduation-certificate-picture-image_1494797_3104c091.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "466891"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3xEGBQ6S2WJLsIXxxmdXPYe91HB8CP8K4uPkhTVSk2w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 06:50:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3xEGBQ6S2WJLsIXxxmdXPYe91HB8CP8K4uPkhTVSk2w="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_0e40ff69.ava266t3m5.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_0e40ff69.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:37:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ava266t3m5"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_0e40ff69.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_0e40ff69.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_0e40ff69.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:37:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_222cf04d.ava266t3m5.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_222cf04d.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:51:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ava266t3m5"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_222cf04d.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_222cf04d.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_222cf04d.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:51:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_506a7900.ava266t3m5.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_506a7900.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:57:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ava266t3m5"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_506a7900.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_506a7900.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_506a7900.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:57:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_588048ae.ava266t3m5.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_588048ae.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:37:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ava266t3m5"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_588048ae.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_588048ae.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_588048ae.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:37:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_5bbf5457.ava266t3m5.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_5bbf5457.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 08:02:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ava266t3m5"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_5bbf5457.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_5bbf5457.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_5bbf5457.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 08:02:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_6a12dde0.ava266t3m5.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_6a12dde0.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 08:02:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ava266t3m5"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_6a12dde0.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_6a12dde0.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_6a12dde0.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 08:02:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_74880b3d.ava266t3m5.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_74880b3d.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:51:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ava266t3m5"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_74880b3d.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_74880b3d.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_74880b3d.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:51:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_e60774fe.ava266t3m5.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_e60774fe.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 06:55:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ava266t3m5"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_e60774fe.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533827011595_6f60fbb6688763b7a22cfd57597b577c_e60774fe.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_e60774fe.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "226904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 06:55:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ei7bRAHLAnLUYz0yija85Hp16Skv531Z4sdMQPRRbZg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533836204006_1b9ec31b993916097f36185af95521f6_248b30ca.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533836204006_1b9ec31b993916097f36185af95521f6_248b30ca.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "135907"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JzCKHlE21B7ugX6uuG0kDAZyw8HmRacQa2s81sIKOU0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:47:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JzCKHlE21B7ugX6uuG0kDAZyw8HmRacQa2s81sIKOU0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533836204006_1b9ec31b993916097f36185af95521f6_248b30ca.p8uvl4il4f.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533836204006_1b9ec31b993916097f36185af95521f6_248b30ca.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "135907"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JzCKHlE21B7ugX6uuG0kDAZyw8HmRacQa2s81sIKOU0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:47:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p8uvl4il4f"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/z6533836204006_1b9ec31b993916097f36185af95521f6_248b30ca.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JzCKHlE21B7ugX6uuG0kDAZyw8HmRacQa2s81sIKOU0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533836204006_1b9ec31b993916097f36185af95521f6_5fdf573f.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533836204006_1b9ec31b993916097f36185af95521f6_5fdf573f.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "135907"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JzCKHlE21B7ugX6uuG0kDAZyw8HmRacQa2s81sIKOU0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:47:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JzCKHlE21B7ugX6uuG0kDAZyw8HmRacQa2s81sIKOU0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/z6533836204006_1b9ec31b993916097f36185af95521f6_5fdf573f.p8uvl4il4f.jpg",
+      "AssetFile": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533836204006_1b9ec31b993916097f36185af95521f6_5fdf573f.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "135907"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JzCKHlE21B7ugX6uuG0kDAZyw8HmRacQa2s81sIKOU0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 07:47:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p8uvl4il4f"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/z6533836204006_1b9ec31b993916097f36185af95521f6_5fdf573f.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JzCKHlE21B7ugX6uuG0kDAZyw8HmRacQa2s81sIKOU0="
+        }
+      ]
+    }
+  ]
 }

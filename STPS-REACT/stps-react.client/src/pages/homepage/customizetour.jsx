@@ -551,7 +551,7 @@ const Customizetour = () => {
                         </div>
                     )}
 
-                    {/* Nhập tên tour 
+                    {/* Nhập tên tour */}
                     <div className="mb-3">
                         <label htmlFor="tourName" className="form-label">Tên tour</label>
                         <input
@@ -562,7 +562,7 @@ const Customizetour = () => {
                             onChange={(e) => setTourName(e.target.value)}
                             placeholder="Nhập tên tour tùy chỉnh"
                         />
-                    </div> */}
+                    </div>
 
                     {locationTour.length === 0 && (
                         <button className="btn btn-primary mt-4" onClick={() => setShowModal1(true)}>➕ Chọn địa điểm Tour</button>
@@ -572,7 +572,11 @@ const Customizetour = () => {
                         <div className="location-card" key={locationT.tourId || locationT.id}>
                             <h2 className="text-primary">{locationT.tourName || locationT.province}</h2>
                             <p><strong>Điểm đến: </strong>{locationT.tourName || locationT.province}</p>
-                            <button className="btn btn-sm btn-outline-danger mt-2" onClick={() => removeLocationTour(locationT.tourId || locationT.id)}>Xóa lựa chọn</button>
+                            <p><strong>Phương tiện: </strong> {locationT.transportation || "Xe du lịch"}</p>
+                            <p><strong>Giá vé Người lớn: </strong> {locationT.adultPrice || getTotalAdultPrice()}</p>
+                            <p><strong>Giá vé Trẻ em: </strong> {locationT.childPrice || getTotalChildPrice()}</p>
+                            <p><strong>Thời gian: </strong> {locationT.duration ? locationT.duration + " ngày" : getTotalTime()}</p>
+                            <button className="btn btn-sm btn-outline-danger mt-2" onClick={() => removeLocationTour(locationT.tourId || locationT.id)}>Xóa tour</button>
                         </div>
                     ))}
 
@@ -734,16 +738,16 @@ const Customizetour = () => {
                                             <div className="timeline-content">
                                                 <div className="d-flex justify-content-between align-items-center">
                                                     <h5>{dest.destinationName}</h5>
-                                                    {/* <span className={`badge ${destinationPrice > 0 ? 'bg-success' : 'bg-secondary'}`}>
+                                                    <span className={`badge ${destinationPrice > 0 ? 'bg-success' : 'bg-secondary'}`}>
                                                         {destinationPrice > 0 ? destinationPrice.toLocaleString("vi-VN") + " VNĐ" : "Miễn phí"}
-                                                    </span> */}
+                                                    </span>
                                                 </div>
                                                 {dest.cityName && <p className="text-muted">Thành phố: {dest.cityName}</p>}
                                                 {dest.description && (
                                                     <p className="timeline-description">{dest.description}</p>
                                                 )}
 
-                                                {/* Hiển thị chi tiết nếu có 
+                                                {/* Hiển thị chi tiết nếu có */}
                                                 {dest.details && dest.details.length > 0 && (
                                                     <div className="destination-details mt-2">
                                                         <h6>Chi tiết:</h6>
@@ -756,7 +760,7 @@ const Customizetour = () => {
                                                             ))}
                                                         </ul>
                                                     </div>
-                                                )} */}
+                                                )}
                                             </div>
                                         </div>
                                     );

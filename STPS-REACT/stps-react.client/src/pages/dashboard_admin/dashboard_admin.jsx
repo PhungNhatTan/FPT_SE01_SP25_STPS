@@ -3,11 +3,12 @@ import Header from './header_dashboard';
 import ManagerAccountList from './manageraccountlist'; // Import danh sách tài khoản quản lý
 import UserManagement from './UserManagement'; // Import component quản lý người dùng mới
 import Statistic from './statistic'; // Import thống kê
+import AdminRevenueStatistics from './AdminRevenueStatistics'; // Import thống kê doanh thu admin
 import AlgorithmSettings from './algorithmsettings'; // Import cài đặt thuật toán
 import AddAccount from './addaccount'; // Import thêm tài khoản
 import UpdateAccount from './updateaccount'; // Import cập nhật tài khoản
 import AccountDetail from './accountdetail'; // Import chi tiết tài khoản
-import { FaUserCog, FaUsers, FaBuilding, FaChartBar, FaCogs, FaBars, FaSignOutAlt } from 'react-icons/fa';
+import { FaUserCog, FaUsers, FaBuilding, FaChartBar, FaCogs, FaBars, FaSignOutAlt, FaMoneyBillWave } from 'react-icons/fa';
 import "./style/modern-admin-dashboard.css"; // Đường dẫn tới CSS mới
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TourismCompanyList from './tourismcompanylist';
@@ -68,6 +69,9 @@ const DashboardAdmin = () => {
         if (currentPage === 'Statistic') {
             return <Statistic />;
         }
+        if (currentPage === 'AdminRevenueStatistics') {
+            return <AdminRevenueStatistics />;
+        }
         if (currentPage === 'AlgorithmSettings') {
             return <AlgorithmSettings />;
         }
@@ -117,6 +121,14 @@ const DashboardAdmin = () => {
                                 onClick={() => { setActiveTab('Statistic'); setCurrentPage('Statistic'); }}
                             >
                                 <FaChartBar className="nav-icon" /> Thống kê
+                            </button>
+                        </li>
+                        <li className="nav-item">
+                            <button
+                                className={`nav-link ${activeTab === 'AdminRevenueStatistics' ? 'active' : ''}`}
+                                onClick={() => { setActiveTab('AdminRevenueStatistics'); setCurrentPage('AdminRevenueStatistics'); }}
+                            >
+                                <FaMoneyBillWave className="nav-icon" /> Thống kê doanh thu
                             </button>
                         </li>
                         <li className="nav-item">

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TourServices } from '../../services/TourSevices';
+import { getCompanyByUserId } from '../../services/TourismCompanyService';
+import { getUserIdFromToken } from '../../utils/JwtHelper';
 
 const UpdateTour = ({ tourId, onCancel }) => {
     const [form, setForm] = useState({
@@ -12,13 +14,37 @@ const UpdateTour = ({ tourId, onCancel }) => {
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [userCompany, setUserCompany] = useState(null);
+    const [currentTour, setCurrentTour] = useState(null);
     const tourService = new TourServices();
 
     useEffect(() => {
         if (tourId) {
             fetchTour();
         }
+        fetchUserCompany();
     }, [tourId]);
+
+    const fetchUserCompany = async () => {
+        try {
+            const userId = getUserIdFromToken();
+            console.log('UpdateTour - User ID:', userId);
+            if (userId) {
+                const response = await getCompanyByUserId(parseInt(userId));
+                console.log('UpdateTour - Company response:', response);
+                if (response.data.success) {
+                    console.log('UpdateTour - User company:', response.data.data);
+                    setUserCompany(response.data.data);
+                } else {
+                    console.log('UpdateTour - No company found for user');
+                }
+            } else {
+                console.log('UpdateTour - No user ID found');
+            }
+        } catch (err) {
+            console.error('UpdateTour - Error fetching user company:', err);
+        }
+    };
 
     const fetchTour = async () => {
         setLoading(true);
@@ -26,6 +52,8 @@ const UpdateTour = ({ tourId, onCancel }) => {
         try {
             const res = await tourService.getTourById(tourId);
             const t = res.data.data;
+            console.log('UpdateTour - Current tour:', t);
+            setCurrentTour(t);
             setForm({
                 tourName: t.tourName || '',
                 duration: t.duration || '',
@@ -35,6 +63,7 @@ const UpdateTour = ({ tourId, onCancel }) => {
                 transportation: t.transportation || '',
             });
         } catch (err) {
+            console.error('UpdateTour - Error fetching tour:', err);
             setError('Không thể tải thông tin tour!');
         }
         setLoading(false);
@@ -46,10 +75,27 @@ const UpdateTour = ({ tourId, onCancel }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        console.log('UpdateTour - Submit check:');
+        console.log('- User company:', userCompany);
+        console.log('- Current tour:', currentTour);
+        console.log('- Tour company ID:', currentTour?.tourismCompanyId);
+        console.log('- User company ID:', userCompany?.id);
+
+        // Check if user has permission to edit this tour
+        // Tạm thời comment để debug
+        /*
+        if (userCompany && currentTour && currentTour.tourismCompanyId !== userCompany.id) {
+            console.log('UpdateTour - Permission denied');
+            setError('Bạn không có quyền chỉnh sửa tour này!');
+            return;
+        }
+        */
+
         setLoading(true);
         setError('');
         try {
-            await tourService.updateTour(tourId, {
+            const updateData = {
                 tourId: tourId,
                 tourName: form.tourName,
                 description: form.description,
@@ -58,12 +104,20 @@ const UpdateTour = ({ tourId, onCancel }) => {
                 adultPrice: parseFloat(form.adultPrice),
                 childPrice: parseFloat(form.childPrice),
                 isActive: true,
-                isFeatured: false
-            });
+                isFeatured: false,
+                tourismCompanyId: userCompany?.id || currentTour?.tourismCompanyId // Keep existing company ID
+            };
+
+            console.log('UpdateTour - Update data:', updateData);
+            const response = await tourService.updateTour(tourId, updateData);
+            console.log('UpdateTour - Update response:', response);
+
             alert('Cập nhật tour thành công!');
             onCancel(); // Quay lại danh sách
         } catch (err) {
-            setError('Cập nhật tour thất bại!');
+            console.error('UpdateTour - Error updating tour:', err);
+            console.error('UpdateTour - Error details:', err.response);
+            setError(`Cập nhật tour thất bại: ${err.response?.data?.message || err.message}`);
         }
         setLoading(false);
     };
@@ -71,6 +125,20 @@ const UpdateTour = ({ tourId, onCancel }) => {
     return (
         <div>
             <h2>Cập nhật Tour</h2>
+
+            {/* Debug info */}
+            {userCompany && (
+                <div className="alert alert-info mb-3">
+                    <strong>Công ty:</strong> {userCompany.companyName} (ID: {userCompany.id})
+                </div>
+            )}
+            {currentTour && (
+                <div className="alert alert-secondary mb-3">
+                    <strong>Tour:</strong> {currentTour.tourName} |
+                    <strong> Company ID:</strong> {currentTour.tourismCompanyId || 'null'}
+                </div>
+            )}
+
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label className="form-label">Tên Tour</label>

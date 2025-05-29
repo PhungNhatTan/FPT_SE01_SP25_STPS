@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace BookTour.Models
+namespace STPS_REACT.Server.Models
 {
     public class Tour
     {
@@ -32,6 +32,12 @@ namespace BookTour.Models
 
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
+        // Foreign Key to TourismCompany
+        [ForeignKey("TourismCompany")]
+        public int? TourismCompanyId { get; set; }
+
+        // Navigation Properties
+        public virtual TourismCompany TourismCompany { get; set; }
         public virtual ICollection<TourDestination> TourDestinations { get; set; }
         public virtual ICollection<TourImage> TourImages { get; set; }
         public virtual ICollection<TourSchedule> TourSchedules { get; set; }

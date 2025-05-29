@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:52329",
 "RedirectUrl": "",
 "LaunchCommand": "npm run dev",
-"WorkingDirectory": "C:\\Users\\DELL\\Desktop\\STPS\\STPS-REACT\\STPS-REACT.Server\\..\\stps-react.client",
+"WorkingDirectory": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\STPS-REACT.Server\\..\\stps-react.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

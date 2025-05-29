@@ -8,6 +8,8 @@ import MTourDetail from './mtourdetail';
 import AddPromotion from './addpromotion';
 import UpdatePromotion from './updatepromotion';
 import MPromotionDetail from './mpromotiondetail';
+import RevenueStatistics from './RevenueStatistics';
+
 import {
   FaPlane,
   FaPercent,
@@ -17,7 +19,8 @@ import {
   FaBell,
   FaUserCircle,
   FaBars,
-  FaTachometerAlt
+  FaTachometerAlt,
+  FaDollarSign
 } from 'react-icons/fa';
 import logo from "../../assets/weblogo.jpg";
 import "../../style/simple-sidebar.css"; // Sử dụng CSS mới cho sidebar
@@ -39,9 +42,14 @@ const ManagePage = () => {
 
     // Handle logout
     const handleLogout = () => {
-        // Implement logout logic here
-        alert('Đăng xuất thành công');
-        // Redirect to login page or home page
+        // Xóa tất cả thông tin người dùng khỏi localStorage
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('userId');
+
+        console.log("User logged out, all user data removed from localStorage");
+
+        // Chuyển hướng về trang chủ
         window.location.href = '/';
     };
 
@@ -89,6 +97,10 @@ const ManagePage = () => {
         if (activeTab === 'ThongKe') {
             return <Statistic />;
         }
+        if (activeTab === 'DoanhThu') {
+            return <RevenueStatistics />;
+        }
+
         return null;
     };
 
@@ -149,6 +161,17 @@ const ManagePage = () => {
                                 <span className="menu-text">Thống kê</span>
                             </button>
                         </li>
+                        <li className="menu-item">
+                            <button
+                                className={`menu-link ${activeTab === 'DoanhThu' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('DoanhThu')}
+                                title="Doanh thu"
+                            >
+                                <span className="menu-icon"><FaDollarSign /></span>
+                                <span className="menu-text">Doanh thu</span>
+                            </button>
+                        </li>
+
                     </ul>
                 </div>
 
@@ -169,6 +192,8 @@ const ManagePage = () => {
                         {activeTab === 'Tour' && 'Quản lý Tour'}
                         {activeTab === 'KhuyenMai' && 'Quản lý Khuyến mãi'}
                         {activeTab === 'ThongKe' && 'Thống kê'}
+                        {activeTab === 'DoanhThu' && 'Thống kê Doanh thu'}
+
                     </div>
                     <div className="header-actions">
                         <div className="search-box">

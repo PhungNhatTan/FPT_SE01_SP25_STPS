@@ -1,0 +1,89 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\images\\payment-qr.svg",
+      "PackagePath": "staticwebassets\\images\\payment-qr.svg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\images\\qr-code.svg",
+      "PackagePath": "staticwebassets\\images\\qr-code.svg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\5f7819e24cd56b506e6cf4c9aaff4a28_5199373b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\5f7819e24cd56b506e6cf4c9aaff4a28_5199373b.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\_DSC1560_97224d35.jpg",
+      "PackagePath": "staticwebassets\\uploads\\_DSC1560_97224d35.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\_DSC1560_caefe946.jpg",
+      "PackagePath": "staticwebassets\\uploads\\_DSC1560_caefe946.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\pngtree-graduating-college-student-holding-a-graduation-certificate-picture-image_1494797_3104c091.jpg",
+      "PackagePath": "staticwebassets\\uploads\\pngtree-graduating-college-student-holding-a-graduation-certificate-picture-image_1494797_3104c091.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_0e40ff69.jpg",
+      "PackagePath": "staticwebassets\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_0e40ff69.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_222cf04d.jpg",
+      "PackagePath": "staticwebassets\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_222cf04d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_506a7900.jpg",
+      "PackagePath": "staticwebassets\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_506a7900.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_588048ae.jpg",
+      "PackagePath": "staticwebassets\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_588048ae.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_5bbf5457.jpg",
+      "PackagePath": "staticwebassets\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_5bbf5457.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_6a12dde0.jpg",
+      "PackagePath": "staticwebassets\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_6a12dde0.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_74880b3d.jpg",
+      "PackagePath": "staticwebassets\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_74880b3d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_e60774fe.jpg",
+      "PackagePath": "staticwebassets\\uploads\\z6533827011595_6f60fbb6688763b7a22cfd57597b577c_e60774fe.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533836204006_1b9ec31b993916097f36185af95521f6_248b30ca.jpg",
+      "PackagePath": "staticwebassets\\uploads\\z6533836204006_1b9ec31b993916097f36185af95521f6_248b30ca.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\OneDrive\\Desktop\\Project_STPS_FINAL\\BookTourApi\\wwwroot\\uploads\\z6533836204006_1b9ec31b993916097f36185af95521f6_5fdf573f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\z6533836204006_1b9ec31b993916097f36185af95521f6_5fdf573f.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BookTour.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BookTour.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BookTour.props",
+      "PackagePath": "build\\BookTour.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BookTour.props",
+      "PackagePath": "buildMultiTargeting\\BookTour.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BookTour.props",
+      "PackagePath": "buildTransitive\\BookTour.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

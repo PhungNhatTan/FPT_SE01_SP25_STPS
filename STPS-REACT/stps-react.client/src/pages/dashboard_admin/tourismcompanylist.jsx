@@ -6,6 +6,7 @@ import {
   updateCompany,
   deleteCompany
 } from '../../services/TourismCompanyService';
+import { getUsers } from '../../services/UserService';
 import { UTIL_VARIABLE } from '../../utils/UtilVariable';
 import { FaBuilding, FaEdit, FaTrash, FaSearch } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
@@ -13,6 +14,7 @@ import './style/modern-dashboard.css';
 
 function TourismCompanyList() {
   const [companies, setCompanies] = useState([]);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalMode, setModalMode] = useState('add'); // 'add' or 'edit'
@@ -24,13 +26,30 @@ function TourismCompanyList() {
     representativeName: '',
     email: '',
     phoneNumber: '',
-    taxCode: ''
+    taxCode: '',
+    userId: '' // Add userId field
   });
   const [formErrors, setFormErrors] = useState({});
 
   useEffect(() => {
     fetchCompanies();
+    fetchUsers();
   }, []);
+
+  const fetchUsers = async () => {
+    try {
+      const response = await getUsers();
+      if (response.data && response.data.data) {
+        // Filter users with Tourism Company role
+        const tourismCompanyUsers = response.data.data.filter(user =>
+          user.roles && user.roles.some(role => role.roleName === 'Tourism Company')
+        );
+        setUsers(tourismCompanyUsers);
+      }
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  };
 
   const fetchCompanies = async () => {
     try {
@@ -103,10 +122,11 @@ function TourismCompanyList() {
       setLoading(true);
 
       if (modalMode === 'add') {
-        // Chuyển đổi companyId thành số nguyên
+        // Chuyển đổi companyId và userId thành số nguyên
         const createData = {
           ...formData,
-          companyId: parseInt(formData.companyId)
+          companyId: parseInt(formData.companyId),
+          userId: parseInt(formData.userId)
         };
 
         console.log('Creating new company with data:', createData);
@@ -169,7 +189,8 @@ function TourismCompanyList() {
       representativeName: '',
       email: '',
       phoneNumber: '',
-      taxCode: ''
+      taxCode: '',
+      userId: ''
     });
     setFormErrors({});
     setModalMode('add');
@@ -308,6 +329,28 @@ function TourismCompanyList() {
             </div>
             <div className="modal-body">
               <form onSubmit={handleSubmit}>
+                {modalMode === 'add' && (
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="userId">Người dùng</label>
+                    <select
+                      id="userId"
+                      name="userId"
+                      value={formData.userId}
+                      onChange={handleInputChange}
+                      className={`form-control ${formErrors.userId ? 'error' : ''}`}
+                      required
+                    >
+                      <option value="">Chọn người dùng</option>
+                      {users.map(user => (
+                        <option key={user.userId} value={user.userId}>
+                          {user.fullName} ({user.username})
+                        </option>
+                      ))}
+                    </select>
+                    {formErrors.userId && <div className="form-error">{formErrors.userId}</div>}
+                  </div>
+                )}
+
                 <div className="form-group">
                   <label className="form-label" htmlFor="companyId">Mã công ty</label>
                   <input

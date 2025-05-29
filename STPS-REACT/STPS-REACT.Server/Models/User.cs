@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace BookTour.Models
+namespace STPS_REACT.Server.Models
 {
     public class User
     {
@@ -33,5 +33,8 @@ namespace BookTour.Models
         public virtual ICollection<SavedTour> SavedTours { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
         public virtual ICollection<CustomTour> CustomTours { get; set; }
+
+        // Navigation Property for TourismCompany (1-1 relationship)
+        public virtual TourismCompany TourismCompany { get; set; }
     }
 }

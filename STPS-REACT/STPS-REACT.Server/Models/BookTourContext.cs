@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace BookTour.Models
+namespace STPS_REACT.Server.Models
 {
     public class BookTourContext : DbContext
     {
@@ -26,6 +26,9 @@ namespace BookTour.Models
         public DbSet<CustomTour> CustomTours { get; set; }
         public DbSet<CustomTourDestination> CustomTourDestinations { get; set; }
         public DbSet<TourismCompany> TourismCompanies { get; set; }
+        public DbSet<PaymentTransaction> PaymentTransactions { get; set; }
+        public DbSet<RevenueTransaction> RevenueTransactions { get; set; }
+        public DbSet<RefundRequest> RefundRequests { get; set; }
 
         public DbSet<Voucher> Voucher { get; set; }
 
@@ -36,9 +39,58 @@ namespace BookTour.Models
             modelBuilder.Entity<UserRole>()
       .HasKey(ur => new { ur.UserId, ur.RoleId });
 
+            // Configure relationships
+            ConfigureRelationships(modelBuilder);
 
             // Seed data
             SeedData(modelBuilder);
+        }
+
+        private void ConfigureRelationships(ModelBuilder modelBuilder)
+        {
+            // User - TourismCompany (1:1)
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.TourismCompany)
+                .WithOne(tc => tc.User)
+                .HasForeignKey<TourismCompany>(tc => tc.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // TourismCompany - Tour (1:n)
+            modelBuilder.Entity<Tour>()
+                .HasOne(t => t.TourismCompany)
+                .WithMany(tc => tc.Tours)
+                .HasForeignKey(t => t.TourismCompanyId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Payment and Revenue Relationships
+
+            // Booking - PaymentTransaction (1:n)
+            modelBuilder.Entity<PaymentTransaction>()
+                .HasOne(pt => pt.Booking)
+                .WithMany(b => b.PaymentTransactions)
+                .HasForeignKey(pt => pt.BookingId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Booking - RevenueTransaction (1:n)
+            modelBuilder.Entity<RevenueTransaction>()
+                .HasOne(rt => rt.Booking)
+                .WithMany(b => b.RevenueTransactions)
+                .HasForeignKey(rt => rt.BookingId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // TourismCompany - RevenueTransaction (1:n)
+            modelBuilder.Entity<RevenueTransaction>()
+                .HasOne(rt => rt.TourismCompany)
+                .WithMany(tc => tc.RevenueTransactions)
+                .HasForeignKey(rt => rt.TourismCompanyId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Booking - RefundRequest (1:1)
+            modelBuilder.Entity<RefundRequest>()
+                .HasOne(rr => rr.Booking)
+                .WithOne(b => b.RefundRequest)
+                .HasForeignKey<RefundRequest>(rr => rr.BookingId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
         private void SeedData(ModelBuilder modelBuilder)
@@ -54,8 +106,11 @@ namespace BookTour.Models
 
 
             modelBuilder.Entity<UserRole>().HasData(
-                new UserRole { UserId = 1, RoleId = 1 },
-                new UserRole { UserId = 2, RoleId = 2 }
+                new UserRole { UserId = 1, RoleId = 4 }, // User 1 has Tourism Company role
+                new UserRole { UserId = 2, RoleId = 4 }, // User 2 has Tourism Company role
+                new UserRole { UserId = 3, RoleId = 4 }, // User 3 has Tourism Company role
+                new UserRole { UserId = 4, RoleId = 1 }, // User 4 has User role
+                new UserRole { UserId = 5, RoleId = 1 }  // User 5 has User role
             );
             // Seed Users
             modelBuilder.Entity<User>().HasData(
@@ -130,16 +185,16 @@ namespace BookTour.Models
 
             // Seed Tours
             modelBuilder.Entity<Tour>().HasData(
-                new Tour { TourId = 1, TourName = "Tour Hà Nội", Description = "Khám phá vẻ đẹp của Hà Nội với tour trọn gói. Tham quan các địa điểm nổi tiếng như Hồ Gươm, Văn Miếu, Hoàng thành Thăng Long và trải nghiệm văn hóa ẩm thực đường phố Hà Nội.", Duration = 3, Transportation = "Xe du lịch", AdultPrice = 4990000, ChildPrice = 4990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
-                new Tour { TourId = 2, TourName = "Tour Đà Nẵng", Description = "Khám phá vẻ đẹp của Đà Nẵng với tour trọn gói. Tham quan Bà Nà Hills, Cầu Rồng, bãi biển Mỹ Khê và Ngũ Hành Sơn. Trải nghiệm ẩm thực đặc sắc của miền Trung.", Duration = 4, Transportation = "Xe du lịch", AdultPrice = 5990000, ChildPrice = 5990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
-                new Tour { TourId = 3, TourName = "Tour Huế", Description = "Khám phá vẻ đẹp của Huế với tour trọn gói. Tham quan Đại Nội, các lăng tẩm vua Nguyễn, chùa Thiên Mụ và thưởng thức ẩm thực cung đình Huế.", Duration = 2, Transportation = "Xe du lịch", AdultPrice = 3990000, ChildPrice = 3990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
-                new Tour { TourId = 4, TourName = "Tour Nha Trang", Description = "Khám phá vẻ đẹp của Nha Trang với tour trọn gói. Tham quan Vinpearl Land, vịnh Nha Trang, Tháp Bà Ponagar và tắm biển tại các bãi biển đẹp nhất Nha Trang.", Duration = 5, Transportation = "Xe du lịch", AdultPrice = 6990000, ChildPrice = 6990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
-                new Tour { TourId = 5, TourName = "Tour Hồ Chí Minh", Description = "Khám phá vẻ đẹp của Hồ Chí Minh với tour trọn gói. Tham quan Nhà thờ Đức Bà, Bưu điện Trung tâm, Chợ Bến Thành, Dinh Độc Lập và trải nghiệm cuộc sống sôi động của thành phố.", Duration = 3, Transportation = "Xe du lịch", AdultPrice = 5500000, ChildPrice = 4500000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
-                new Tour { TourId = 6, TourName = "Tour Sapa", Description = "Khám phá vẻ đẹp của Sapa với tour trọn gói. Chinh phục Fansipan, tham quan các bản làng dân tộc, ngắm ruộng bậc thang và trải nghiệm văn hóa vùng cao.", Duration = 4, Transportation = "Xe du lịch", AdultPrice = 5990000, ChildPrice = 4990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
-                new Tour { TourId = 7, TourName = "Tour Hạ Long", Description = "Khám phá vẻ đẹp của Vịnh Hạ Long với tour trọn gói. Tham quan các hang động, đảo đá và trải nghiệm đêm trên vịnh Hạ Long.", Duration = 3, Transportation = "Xe du lịch + Tàu", AdultPrice = 5990000, ChildPrice = 4990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
-                new Tour { TourId = 8, TourName = "Tour Hội An", Description = "Khám phá vẻ đẹp của Hội An với tour trọn gói. Tham quan phố cổ, làng nghề truyền thống và trải nghiệm không khí cổ kính của Hội An.", Duration = 2, Transportation = "Xe du lịch", AdultPrice = 3990000, ChildPrice = 3490000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
-                new Tour { TourId = 9, TourName = "Tour Đà Lạt", Description = "Khám phá vẻ đẹp của Đà Lạt với tour trọn gói. Tham quan các điểm du lịch nổi tiếng và trải nghiệm khí hậu mát mẻ của thành phố ngàn hoa.", Duration = 4, Transportation = "Xe du lịch", AdultPrice = 5490000, ChildPrice = 4490000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
-                new Tour { TourId = 10, TourName = "Tour Phú Quốc", Description = "Khám phá vẻ đẹp của Phú Quốc với tour trọn gói. Tham quan các bãi biển đẹp, làng chài và trải nghiệm hoạt động lặn biển ngắm san hô.", Duration = 5, Transportation = "Máy bay + Xe du lịch", AdultPrice = 8990000, ChildPrice = 7990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
+                new Tour { TourId = 1, TourName = "Tour Hà Nội", Description = "Khám phá vẻ đẹp của Hà Nội với tour trọn gói. Tham quan các địa điểm nổi tiếng như Hồ Gươm, Văn Miếu, Hoàng thành Thăng Long và trải nghiệm văn hóa ẩm thực đường phố Hà Nội.", Duration = 3, Transportation = "Xe du lịch", AdultPrice = 4990000, ChildPrice = 4990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, TourismCompanyId = 1 },
+                new Tour { TourId = 2, TourName = "Tour Đà Nẵng", Description = "Khám phá vẻ đẹp của Đà Nẵng với tour trọn gói. Tham quan Bà Nà Hills, Cầu Rồng, bãi biển Mỹ Khê và Ngũ Hành Sơn. Trải nghiệm ẩm thực đặc sắc của miền Trung.", Duration = 4, Transportation = "Xe du lịch", AdultPrice = 5990000, ChildPrice = 5990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, TourismCompanyId = 1 },
+                new Tour { TourId = 3, TourName = "Tour Huế", Description = "Khám phá vẻ đẹp của Huế với tour trọn gói. Tham quan Đại Nội, các lăng tẩm vua Nguyễn, chùa Thiên Mụ và thưởng thức ẩm thực cung đình Huế.", Duration = 2, Transportation = "Xe du lịch", AdultPrice = 3990000, ChildPrice = 3990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, TourismCompanyId = 2 },
+                new Tour { TourId = 4, TourName = "Tour Nha Trang", Description = "Khám phá vẻ đẹp của Nha Trang với tour trọn gói. Tham quan Vinpearl Land, vịnh Nha Trang, Tháp Bà Ponagar và tắm biển tại các bãi biển đẹp nhất Nha Trang.", Duration = 5, Transportation = "Xe du lịch", AdultPrice = 6990000, ChildPrice = 6990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, TourismCompanyId = 2 },
+                new Tour { TourId = 5, TourName = "Tour Hồ Chí Minh", Description = "Khám phá vẻ đẹp của Hồ Chí Minh với tour trọn gói. Tham quan Nhà thờ Đức Bà, Bưu điện Trung tâm, Chợ Bến Thành, Dinh Độc Lập và trải nghiệm cuộc sống sôi động của thành phố.", Duration = 3, Transportation = "Xe du lịch", AdultPrice = 5500000, ChildPrice = 4500000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, TourismCompanyId = 3 },
+                new Tour { TourId = 6, TourName = "Tour Sapa", Description = "Khám phá vẻ đẹp của Sapa với tour trọn gói. Chinh phục Fansipan, tham quan các bản làng dân tộc, ngắm ruộng bậc thang và trải nghiệm văn hóa vùng cao.", Duration = 4, Transportation = "Xe du lịch", AdultPrice = 5990000, ChildPrice = 4990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, TourismCompanyId = 3 },
+                new Tour { TourId = 7, TourName = "Tour Hạ Long", Description = "Khám phá vẻ đẹp của Vịnh Hạ Long với tour trọn gói. Tham quan các hang động, đảo đá và trải nghiệm đêm trên vịnh Hạ Long.", Duration = 3, Transportation = "Xe du lịch + Tàu", AdultPrice = 5990000, ChildPrice = 4990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, TourismCompanyId = 1 },
+                new Tour { TourId = 8, TourName = "Tour Hội An", Description = "Khám phá vẻ đẹp của Hội An với tour trọn gói. Tham quan phố cổ, làng nghề truyền thống và trải nghiệm không khí cổ kính của Hội An.", Duration = 2, Transportation = "Xe du lịch", AdultPrice = 3990000, ChildPrice = 3490000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, TourismCompanyId = 2 },
+                new Tour { TourId = 9, TourName = "Tour Đà Lạt", Description = "Khám phá vẻ đẹp của Đà Lạt với tour trọn gói. Tham quan các điểm du lịch nổi tiếng và trải nghiệm khí hậu mát mẻ của thành phố ngàn hoa.", Duration = 4, Transportation = "Xe du lịch", AdultPrice = 5490000, ChildPrice = 4490000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, TourismCompanyId = 3 },
+                new Tour { TourId = 10, TourName = "Tour Phú Quốc", Description = "Khám phá vẻ đẹp của Phú Quốc với tour trọn gói. Tham quan các bãi biển đẹp, làng chài và trải nghiệm hoạt động lặn biển ngắm san hô.", Duration = 5, Transportation = "Máy bay + Xe du lịch", AdultPrice = 8990000, ChildPrice = 7990000, IsActive = true, IsFeatured = true, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, TourismCompanyId = 1 }
             );
 
             // Seed TourDestinations (Tour Hà Nội)
@@ -327,7 +382,11 @@ namespace BookTour.Models
         RepresentativeName = "Nguyen Van A",
         Email = "contact@asiatravel.com",
         PhoneNumber = "0909123456",
-        TaxCode = "0101234567"
+        TaxCode = "0101234567",
+        BankName = "Vietcombank",
+        BankAccountNumber = "1234567890",
+        BankAccountHolderName = "ASIA TRAVEL CO LTD",
+        UserId = 1
     },
     new TourismCompany
     {
@@ -336,7 +395,11 @@ namespace BookTour.Models
         RepresentativeName = "Tran Thi B",
         Email = "info@viettourist.vn",
         PhoneNumber = "0912345678",
-        TaxCode = "0207654321"
+        TaxCode = "0207654321",
+        BankName = "Techcombank",
+        BankAccountNumber = "2345678901",
+        BankAccountHolderName = "VIETTOURIST JSC",
+        UserId = 2
     },
     new TourismCompany
     {
@@ -345,7 +408,11 @@ namespace BookTour.Models
         RepresentativeName = "Le Van C",
         Email = "greenjourney@gmail.com",
         PhoneNumber = "0988998877",
-        TaxCode = "0304567890"
+        TaxCode = "0304567890",
+        BankName = "BIDV",
+        BankAccountNumber = "3456789012",
+        BankAccountHolderName = "GREEN JOURNEY",
+        UserId = 3
     }
 );
 

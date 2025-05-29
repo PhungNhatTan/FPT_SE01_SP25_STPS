@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../../style/TourList.css";
-import { tourData } from "./data/tourData";
+import "../../style/tourlist.css";
 import Header from "./header";
+import { TourServices } from "../../services/TourSevices";
+import TOUR_DEFAULT_IMAGE from "../../assets/images/tour_default.jpg";
 
 const TourList = () => {
     const navigate = useNavigate();
@@ -12,18 +13,18 @@ const TourList = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [minPrice, setMinPrice] = useState(0);
-
-    const maxTourPrice = Math.max(...tourData.map(tour => {
-        const price = tour.priceald ? parseInt(tour.priceald.replace(/\D/g, ""), 10) : 0;
-        return price;
-    }));
-    const [maxPrice, setMaxPrice] = useState(maxTourPrice);
+    const [maxPrice, setMaxPrice] = useState(10000000);
+    const [duration, setDuration] = useState("");
 
     const [selectedRegions, setSelectedRegions] = useState([]);
     const [selectedTypes, setSelectedTypes] = useState([]);
+    const [sortOrder, setSortOrder] = useState(null);
 
-    const [sortOrder, setSortOrder] = useState(null); // State cho sắp xếp theo giá
+    const [tours, setTours] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
+    const tourService = new TourServices();
     const dropdownRef = useRef(null);
 
     const handleClickOutside = (event) => {
@@ -34,10 +35,54 @@ const TourList = () => {
 
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
+        fetchTours();
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
+
+    const fetchTours = async () => {
+        setLoading(true);
+        setError("");
+        try {
+            const response = await tourService.getAllTours();
+            if (response.data && response.data.success) {
+                setTours(response.data.data || []);
+            } else {
+                setError("Không thể tải danh sách tour");
+            }
+        } catch (err) {
+            console.error("Lỗi khi tải danh sách tour:", err);
+            setError("Không thể tải danh sách tour");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleSearch = async () => {
+        setLoading(true);
+        setError("");
+        try {
+            const searchParams = {
+                destination: searchTerm,
+                minPrice: minPrice || null,
+                maxPrice: maxPrice || null,
+                duration: duration ? parseInt(duration) : null
+            };
+
+            const response = await tourService.searchTours(searchParams);
+            if (response.data && response.data.success) {
+                setTours(response.data.data || []);
+            } else {
+                setError("Không tìm thấy tour phù hợp");
+            }
+        } catch (err) {
+            console.error("Lỗi khi tìm kiếm tour:", err);
+            setError("Lỗi khi tìm kiếm tour");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const handleRegionChange = (e) => {
         const value = e.target.value;
@@ -55,27 +100,22 @@ const TourList = () => {
 
     const handleSort = (order) => {
         setSortOrder(order);
+
+        // Sắp xếp danh sách tour theo giá
+        const sortedTours = [...tours];
+        if (order === "asc") {
+            sortedTours.sort((a, b) => a.adultPrice - b.adultPrice);
+        } else if (order === "desc") {
+            sortedTours.sort((a, b) => b.adultPrice - a.adultPrice);
+        }
+        setTours(sortedTours);
     };
 
-    // Lọc và sắp xếp dữ liệu tour
-    const filteredTours = tourData.filter(tour => {
-        const priceald = tour.priceald ? parseInt(tour.priceald.replace(/\D/g, ""), 10) : 0;
-
-        const matchesSearch = tour.name.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesPrice = (minPrice ? priceald >= minPrice : true) &&
-            (maxPrice ? priceald <= maxPrice : true);
-        const matchesRegion = selectedRegions.length === 0 || selectedRegions.includes(tour.region);
-        const matchesType = selectedTypes.length === 0 || selectedTypes.includes(tour.type);
-
-        return matchesSearch && matchesPrice && matchesRegion && matchesType;
-    }).sort((a, b) => {
-        if (sortOrder === "asc") {
-            return (a.priceald ? parseInt(a.priceald.replace(/\D/g, ""), 10) : 0) - (b.priceald ? parseInt(b.priceald.replace(/\D/g, ""), 10) : 0);
-        }
-        if (sortOrder === "desc") {
-            return (b.priceald ? parseInt(b.priceald.replace(/\D/g, ""), 10) : 0) - (a.priceald ? parseInt(a.priceald.replace(/\D/g, ""), 10) : 0);
-        }
-        return 0; // No sorting if no sort order is set
+    // Lọc dữ liệu tour theo loại và khu vực (client-side filtering)
+    const filteredTours = tours.filter(tour => {
+        // Thêm logic lọc theo loại và khu vực nếu cần
+        // Hiện tại chỉ hiển thị tất cả tour từ API
+        return true;
     });
 
     return (
@@ -84,48 +124,59 @@ const TourList = () => {
                 <Header />
             </header>
 
-            <div className="search-bar d-flex justify-content-between align-items-center p-3">
-                <input
-                    type="text"
-                    className="form-control search-input"
-                    placeholder="Địa điểm"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <input type="date" className="form-control search-input" />
-                <input type="date" className="form-control search-input" />
-                <div className="search-input-group d-flex align-items-center gap-2">
-                    <div className="position-relative" ref={dropdownRef}>
-                        <button className="form-control text-start" onClick={() => setIsOpen(!isOpen)}>
-                            {adults} người lớn, {children} trẻ em
-                        </button>
-                        {isOpen && (
-                            <div className="dropdown-menu show p-3" style={{ width: "250px" }}>
-                                <div className="d-flex justify-content-between align-items-center mb-2">
-                                    <span>Người lớn</span>
-                                    <div>
-                                        <button className="btn btn-outline-secondary btn-sm"
-                                            onClick={() => setAdults(Math.max(1, adults - 1))}>-</button>
-                                        <span className="mx-2">{adults}</span>
-                                        <button className="btn btn-outline-secondary btn-sm"
-                                            onClick={() => setAdults(adults + 1)}>+</button>
-                                    </div>
-                                </div>
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <span>Trẻ em</span>
-                                    <div>
-                                        <button className="btn btn-outline-secondary btn-sm"
-                                            onClick={() => setChildren(Math.max(0, children - 1))}>-</button>
-                                        <span className="mx-2">{children}</span>
-                                        <button className="btn btn-outline-secondary btn-sm"
-                                            onClick={() => setChildren(children + 1)}>+</button>
-                                    </div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-12">
+                        <div className="search-bar">
+                            <input
+                                type="text"
+                                className="form-control search-input"
+                                placeholder="Địa điểm"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                            <input
+                                type="number"
+                                className="form-control search-input"
+                                placeholder="Số ngày"
+                                value={duration}
+                                onChange={(e) => setDuration(e.target.value)}
+                            />
+                            <div className="search-input-group">
+                                <div className="position-relative w-100" ref={dropdownRef}>
+                                    <button className="form-control text-start w-100" onClick={() => setIsOpen(!isOpen)}>
+                                        {adults} người lớn, {children} trẻ em
+                                    </button>
+                                    {isOpen && (
+                                        <div className="dropdown-menu show p-3" style={{ width: "100%" }}>
+                                            <div className="d-flex justify-content-between align-items-center mb-2">
+                                                <span>Người lớn</span>
+                                                <div>
+                                                    <button className="btn btn-outline-secondary btn-sm"
+                                                        onClick={() => setAdults(Math.max(1, adults - 1))}>-</button>
+                                                    <span className="mx-2">{adults}</span>
+                                                    <button className="btn btn-outline-secondary btn-sm"
+                                                        onClick={() => setAdults(adults + 1)}>+</button>
+                                                </div>
+                                            </div>
+                                            <div className="d-flex justify-content-between align-items-center">
+                                                <span>Trẻ em</span>
+                                                <div>
+                                                    <button className="btn btn-outline-secondary btn-sm"
+                                                        onClick={() => setChildren(Math.max(0, children - 1))}>-</button>
+                                                    <span className="mx-2">{children}</span>
+                                                    <button className="btn btn-outline-secondary btn-sm"
+                                                        onClick={() => setChildren(children + 1)}>+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
-                        )}
+                            <button className="btn btn-primary" onClick={handleSearch}>Tìm kiếm</button>
+                        </div>
                     </div>
                 </div>
-                <button className="btn btn-primary">Tìm kiếm</button>
             </div>
 
             <div className="row mt-3">
@@ -145,7 +196,7 @@ const TourList = () => {
                             placeholder="Max"
                             step={100000}
                             value={maxPrice}
-                            onChange={(e) => setMaxPrice(Math.min(maxTourPrice, Number(e.target.value)))}
+                            onChange={(e) => setMaxPrice(Number(e.target.value))}
                         />
                     </div>
 
@@ -191,26 +242,46 @@ const TourList = () => {
                         </div>
                     </div>
 
-                    {filteredTours.map((tour) => (
-                        <div key={tour.id} className="card mb-3 tour-card">
-                            <div className="row g-0">
-                                <div className="col-md-4">
-                                    <img src={tour.image} className="img-fluid tour-image" alt={tour.name} />
-                                </div>
-                                <div className="col-md-8">
-                                    <div className="card-body">
-                                        <h5 className="card-title"><strong>{tour.name}</strong></h5>
-                                        <p className="card-text"><i className="bi bi-geo-alt-fill"></i> {tour.location}</p>
-                                        <p className="card-text">Giá vé người lớn: {tour.priceald}</p>
-                                        <p className="card-text">Giá vé trẻ em: {tour.pricechil}</p>
-                                        <button className="btn btn-primary" onClick={() => navigate(`/tour/${tour.id}`)}>Xem thêm</button>
+                    {loading ? (
+                        <div className="text-center my-5">
+                            <div className="spinner-border text-primary" role="status">
+                                <span className="visually-hidden">Đang tải...</span>
+                            </div>
+                            <p className="mt-2">Đang tải danh sách tour...</p>
+                        </div>
+                    ) : error ? (
+                        <div className="alert alert-danger" role="alert">
+                            {error}
+                        </div>
+                    ) : filteredTours.length > 0 ? (
+                        filteredTours.map((tour) => (
+                            <div key={tour.tourId} className="card mb-3 tour-card">
+                                <div className="row g-0">
+                                    <div className="col-md-4">
+                                        <img
+                                            src={tour.primaryImageUrl || TOUR_DEFAULT_IMAGE}
+                                            className="img-fluid tour-image"
+                                            alt={tour.tourName}
+                                            style={{ height: "200px", objectFit: "cover", width: "100%" }}
+                                        />
+                                    </div>
+                                    <div className="col-md-8">
+                                        <div className="card-body">
+                                            <h5 className="card-title"><strong>{tour.tourName}</strong></h5>
+                                            <p className="card-text"><i className="bi bi-geo-alt-fill"></i> {tour.description?.substring(0, 100)}...</p>
+                                            <p className="card-text">Thời gian: {tour.duration} ngày</p>
+                                            <p className="card-text">Phương tiện: {tour.transportation}</p>
+                                            <p className="card-text">Giá vé người lớn: {tour.adultPrice?.toLocaleString()} VND</p>
+                                            <p className="card-text">Giá vé trẻ em: {tour.childPrice?.toLocaleString()} VND</p>
+                                            <button className="btn btn-primary" onClick={() => navigate(`/tour/${tour.tourId}`)}>Xem thêm</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-
-                    {filteredTours.length === 0 && <p className="text-muted">Không có tour phù hợp.</p>}
+                        ))
+                    ) : (
+                        <p className="text-center text-muted my-5">Không có tour phù hợp.</p>
+                    )}
                 </div>
             </div>
         </div>

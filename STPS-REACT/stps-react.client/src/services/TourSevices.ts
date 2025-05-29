@@ -8,6 +8,7 @@ var URL_GET_TOUR_DETAILS = BASE_URL + `/Tours`;
 var URL_BOOK = BASE_URL + `/Tours/Book`;
 var URL_HISTORY = BASE_URL + `/Tours/BookingHistory`;
 var URL_SEARCH = BASE_URL + `/Tours/Search`;
+var URL_TOURS_BY_COMPANY = BASE_URL + `/Tours/Company`;
 
 export class TourServices {
     async getTourFeatured() {
@@ -16,6 +17,12 @@ export class TourServices {
 
     async getTourById(tourId) {
         return await axios.get(`${URL_GET_TOUR_DETAILS}/${tourId}`);
+    }
+
+    // New method: Get tours by company ID
+    async getToursByCompanyId(companyId) {
+        console.log(`Getting tours for company ID: ${companyId}`);
+        return await axios.get(`${URL_TOURS_BY_COMPANY}/${companyId}`);
     }
 
     async getTourHistory(userId) {

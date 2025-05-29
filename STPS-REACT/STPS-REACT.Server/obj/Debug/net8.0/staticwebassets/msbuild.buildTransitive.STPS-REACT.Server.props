@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\STPS-REACT.Server.props" />
-</Project>

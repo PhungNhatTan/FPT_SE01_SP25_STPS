@@ -1,4 +1,4 @@
-﻿namespace BookTour.Models
+﻿namespace STPS_REACT.Server.Models
 {
     public class UserRole
     {

@@ -23,6 +23,13 @@ console.log('Tourism Companies API URL:', API_URL);
 
 export const getCompanies = () => axios.get(API_URL);
 export const getCompanyById = (id: number) => axios.get(`${API_URL}/${id}`);
+
+// New API: Get company by user ID
+export const getCompanyByUserId = (userId: number) => {
+  console.log(`Calling GET ${API_URL}/User/${userId}`);
+  return axios.get(`${API_URL}/User/${userId}`);
+};
+
 export const createCompany = (data: any) => {
   console.log(`Calling POST ${API_URL} with data:`, data);
   return axios.post(API_URL, data);

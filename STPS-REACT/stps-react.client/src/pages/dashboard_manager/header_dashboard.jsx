@@ -10,9 +10,16 @@ const HeaderDashboard = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
+        // Xóa tất cả thông tin người dùng khỏi localStorage
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        localStorage.removeItem('userId');
+
+        console.log("User logged out, all user data removed from localStorage");
+
         setDropdownOpen(false);
+
+        // Chuyển hướng về trang chủ
         window.location.href = '/';
     };
 

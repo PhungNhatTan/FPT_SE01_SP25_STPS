@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { TourServices } from "../../services/TourSevices";
+import { getCompanyByUserId } from "../../services/TourismCompanyService";
+import { getUserIdFromToken } from "../../utils/JwtHelper";
 import "../../style/simple-sidebar.css";
 
 const MTourList = ({ onAddTour, onEditTour, onViewDetail }) => {
@@ -7,20 +9,64 @@ const MTourList = ({ onAddTour, onEditTour, onViewDetail }) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [userCompany, setUserCompany] = useState(null);
     const tourService = new TourServices();
 
     useEffect(() => {
-        fetchTours();
+        fetchUserCompanyAndTours();
     }, []);
 
-    const fetchTours = async () => {
+    const fetchUserCompanyAndTours = async () => {
         setLoading(true);
         setError("");
         try {
-            const res = await tourService.getAllTours();
-            setTourList(res.data.data || []);
+            // Check token first
+            const token = localStorage.getItem('token');
+            console.log("Token exists:", !!token);
+            console.log("Token value:", token ? token.substring(0, 50) + '...' : 'null');
+
+            // First get user's company
+            const userId = getUserIdFromToken();
+            console.log("User ID from token:", userId);
+            console.log("User ID type:", typeof userId);
+
+            if (userId) {
+                console.log("Fetching company for user:", userId);
+                const companyResponse = await getCompanyByUserId(parseInt(userId));
+                console.log("Company response:", companyResponse);
+
+                if (companyResponse.data.success) {
+                    const company = companyResponse.data.data;
+                    console.log("User company:", company);
+                    setUserCompany(company);
+
+                    // Then get tours for this company
+                    console.log("Fetching tours for company ID:", company.id);
+                    try {
+                        const toursResponse = await tourService.getToursByCompanyId(company.id);
+                        console.log("Tours response:", toursResponse);
+                        setTourList(toursResponse.data.data || []);
+                    } catch (tourError) {
+                        console.error("Error fetching tours by company:", tourError);
+                        // Fallback: try to get all tours and filter by company
+                        console.log("Fallback: Getting all tours");
+                        const allToursResponse = await tourService.getAllTours();
+                        const allTours = allToursResponse.data.data || [];
+                        const companyTours = allTours.filter(tour => tour.tourismCompanyId === company.id);
+                        console.log("Filtered company tours:", companyTours);
+                        setTourList(companyTours);
+                    }
+                } else {
+                    console.log("Company response failed:", companyResponse.data);
+                    setError("Bạn chưa có công ty du lịch. Vui lòng liên hệ admin để được cấp quyền.");
+                }
+            } else {
+                setError("Không thể lấy thông tin người dùng. Vui lòng đăng nhập lại.");
+            }
         } catch (err) {
-            setError("Không thể tải danh sách tour");
+            console.error("Error fetching data:", err);
+            console.error("Error details:", err.response);
+            setError(`Không thể tải danh sách tour: ${err.message}`);
         }
         setLoading(false);
     };
@@ -28,10 +74,13 @@ const MTourList = ({ onAddTour, onEditTour, onViewDetail }) => {
     const handleDelete = async (id) => {
         if (window.confirm("Bạn có chắc chắn muốn xóa tour này?")) {
             try {
+                setLoading(true);
                 await tourService.deleteTour(id);
-                setTourList(tourList.filter((tour) => tour.tourId !== id));
+                fetchUserCompanyAndTours(); // Refresh the list
             } catch (err) {
                 alert("Xóa tour thất bại!");
+            } finally {
+                setLoading(false);
             }
         }
     };
@@ -49,6 +98,12 @@ const MTourList = ({ onAddTour, onEditTour, onViewDetail }) => {
 
     return (
         <div>
+            {userCompany && (
+                <div className="alert alert-info mb-3">
+                    <strong>Công ty:</strong> {userCompany.companyName} |
+                    <strong> Đại diện:</strong> {userCompany.representativeName}
+                </div>
+            )}
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <div className="card-title">Danh sách Tour</div>
                 <div className="d-flex gap-3">

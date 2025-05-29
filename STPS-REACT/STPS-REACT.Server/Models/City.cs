@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BookTour.Models
+namespace STPS_REACT.Server.Models
 {
     public class City
     {
