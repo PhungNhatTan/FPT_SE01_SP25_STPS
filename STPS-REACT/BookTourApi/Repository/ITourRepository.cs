@@ -19,5 +19,7 @@ namespace BookTour.Repository
         Task<Tour> AddTourAsync(Tour tour);
         Task<Tour> UpdateTourAsync(Tour tour);
         Task<bool> DeleteTourAsync(int id);
+
+        Task<bool> AddTourImageAsync(TourImage tourImage, bool forInsert = true);
     }
 }

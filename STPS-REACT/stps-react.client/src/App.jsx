@@ -30,6 +30,9 @@ import ModernDashboard from "./pages/dashboard_admin/ModernDashboard";
 import DashboardManager from "./pages/dashboard_manager/dashboard_manager";
 import Login from "./pages/homepage/Login";
 import Register from "./pages/homepage/register";
+import BookingStatus from "./pages/homepage/BookingStatus";
+import BookingManagement from "./pages/managepage/bookingmanagement";
+import CompanyPaymentStatus from "./pages/homepage/CompanyPaymentStatus";
 
 function App() {
   return (
@@ -65,6 +68,8 @@ function App() {
       <Route path="/dashboard-admin-old" element={<DashboardAdmin />} />
 
       <Route path="/dashboard-manager" element={<DashboardManager />} />
+      <Route path="/booking-status" element={<BookingStatus />} />
+        <Route path="/company-payment-status" element={<CompanyPaymentStatus />} />
     </Routes>
   );
 }

@@ -5,6 +5,7 @@ import "../../style/tourlist.css";
 import Header from "./header";
 import { TourServices } from "../../services/TourSevices";
 import TOUR_DEFAULT_IMAGE from "../../assets/images/tour_default.jpg";
+import {getFullImageUrl} from "../../utils/ImageHelper";
 
 const TourList = () => {
     const navigate = useNavigate();
@@ -259,7 +260,7 @@ const TourList = () => {
                                 <div className="row g-0">
                                     <div className="col-md-4">
                                         <img
-                                            src={tour.primaryImageUrl || TOUR_DEFAULT_IMAGE}
+                                            src={getFullImageUrl(tour.primaryImageUrl) || TOUR_DEFAULT_IMAGE}
                                             className="img-fluid tour-image"
                                             alt={tour.tourName}
                                             style={{ height: "200px", objectFit: "cover", width: "100%" }}

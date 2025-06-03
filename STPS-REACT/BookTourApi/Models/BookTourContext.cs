@@ -39,6 +39,11 @@ namespace BookTour.Models
             modelBuilder.Entity<UserRole>()
       .HasKey(ur => new { ur.UserId, ur.RoleId });
 
+            // Store PaymentTransactionStatus as string
+            modelBuilder.Entity<PaymentTransaction>()
+                .Property(pt => pt.Status)
+                .HasConversion<string>();
+
             // Configure relationships
             ConfigureRelationships(modelBuilder);
 

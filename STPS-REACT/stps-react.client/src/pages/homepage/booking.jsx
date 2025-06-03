@@ -4,6 +4,8 @@ import { TourServices } from "../../services/TourSevices";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaUser, FaCalendarAlt, FaMoneyBillWave, FaInfoCircle } from 'react-icons/fa';
+import PaymentModal from "../../components/PaymentModal";
+import PaymentService from "../../services/PaymentService";
 
 const BookingPopup = ({ priceAdult, priceChild, tourId, onClose }) => {
     // State cho các bước đặt tour
@@ -205,6 +207,10 @@ const BookingPopup = ({ priceAdult, priceChild, tourId, onClose }) => {
         setStep(step - 1);
     };
 
+    // Add state for payment modal
+    const [paymentModalVisible, setPaymentModalVisible] = useState(false);
+    const [paymentData, setPaymentData] = useState(null);
+
     const bookNow = async () => {
         if (!tourId && tourId !== 0) {
             toast.error("Không tìm thấy thông tin tour");
@@ -221,8 +227,6 @@ const BookingPopup = ({ priceAdult, priceChild, tourId, onClose }) => {
             return;
         }
 
-        console.log("Booking with tourId:", tourId, "type:", typeof tourId);
-
         try {
             let bookingDate;
 
@@ -235,17 +239,6 @@ const BookingPopup = ({ priceAdult, priceChild, tourId, onClose }) => {
             } else {
                 bookingDate = new Date().toISOString().split('T')[0];
             }
-
-            console.log("Booking date:", bookingDate);
-            console.log("Tour ID:", tourId);
-            console.log("Adults:", adults);
-            console.log("Children:", children);
-            console.log("Adult Price:", adultPriceValue);
-            console.log("Child Price:", childPriceValue);
-            console.log("Total Price:", totalPrice);
-            console.log("Passengers:", passengerInfo);
-            console.log("Contact Info:", contactInfo);
-            console.log("Payment Method:", paymentMethod);
 
             // Chuẩn bị thông tin hành khách
             const passengers = passengerInfo.map(p => ({
@@ -285,19 +278,35 @@ const BookingPopup = ({ priceAdult, priceChild, tourId, onClose }) => {
             console.log("Booking response:", response);
 
             if (response && response.data && response.data.success) {
-                toast.success(
-                    <div>
-                        <strong>Đặt tour thành công!</strong>
-                        <p>Thông tin đặt tour sẽ được gửi đến email của bạn.</p>
-                    </div>,
-                    { autoClose: 3000 }
-                );
+                if (paymentMethod === "bankTransfer") {
+                    try {
+                        // Create payment QR and get VNPay URL
+                        const paymentResponse = await PaymentService.createPaymentQR(
+                            response.data.data.bookingId,
+                            totalPrice,
+                            `Payment for tour booking #${response.data.data.bookingId}`
+                        );
 
-                console.log("Booking successful. Email confirmation will be sent by the server.");
+                        // The redirect will happen automatically in PaymentService
+                        // No need to handle it here as the page will be redirected
+                    } catch (error) {
+                        console.error("Payment error:", error);
+                        toast.error("Không thể tạo mã thanh toán. Vui lòng thử lại sau.");
+                    }
+                } else {
+                    // For other payment methods, show success message
+                    toast.success(
+                        <div>
+                            <strong>Đặt tour thành công!</strong>
+                            <p>Thông tin đặt tour sẽ được gửi đến email của bạn.</p>
+                        </div>,
+                        { autoClose: 3000 }
+                    );
 
-                setTimeout(() => {
-                    onClose();
-                }, 3000);
+                    setTimeout(() => {
+                        onClose();
+                    }, 3000);
+                }
             } else {
                 toast.error(
                     <div>
@@ -590,17 +599,17 @@ const BookingPopup = ({ priceAdult, priceChild, tourId, onClose }) => {
                             <h3><FaMoneyBillWave /> Phương thức thanh toán</h3>
 
                             <div className="payment-options">
-                                <div className="payment-option">
-                                    <input
-                                        type="radio"
-                                        id="creditCard"
-                                        name="paymentMethod"
-                                        value="creditCard"
-                                        checked={paymentMethod === "creditCard"}
-                                        onChange={() => setPaymentMethod("creditCard")}
-                                    />
-                                    <label htmlFor="creditCard">Thẻ tín dụng/Ghi nợ</label>
-                                </div>
+                                {/*<div className="payment-option">*/}
+                                {/*    <input*/}
+                                {/*        type="radio"*/}
+                                {/*        id="creditCard"*/}
+                                {/*        name="paymentMethod"*/}
+                                {/*        value="creditCard"*/}
+                                {/*        checked={paymentMethod === "creditCard"}*/}
+                                {/*        onChange={() => setPaymentMethod("creditCard")}*/}
+                                {/*    />*/}
+                                {/*    <label htmlFor="creditCard">Thẻ tín dụng/Ghi nợ</label>*/}
+                                {/*</div>*/}
 
                                 <div className="payment-option">
                                     <input
@@ -611,20 +620,20 @@ const BookingPopup = ({ priceAdult, priceChild, tourId, onClose }) => {
                                         checked={paymentMethod === "bankTransfer"}
                                         onChange={() => setPaymentMethod("bankTransfer")}
                                     />
-                                    <label htmlFor="bankTransfer">Chuyển khoản ngân hàng</label>
+                                    <label htmlFor="bankTransfer">VN Pay</label>
                                 </div>
 
-                                <div className="payment-option">
-                                    <input
-                                        type="radio"
-                                        id="momo"
-                                        name="paymentMethod"
-                                        value="momo"
-                                        checked={paymentMethod === "momo"}
-                                        onChange={() => setPaymentMethod("momo")}
-                                    />
-                                    <label htmlFor="momo">Ví MoMo</label>
-                                </div>
+                                {/*<div className="payment-option">*/}
+                                {/*    <input*/}
+                                {/*        type="radio"*/}
+                                {/*        id="momo"*/}
+                                {/*        name="paymentMethod"*/}
+                                {/*        value="momo"*/}
+                                {/*        checked={paymentMethod === "momo"}*/}
+                                {/*        onChange={() => setPaymentMethod("momo")}*/}
+                                {/*    />*/}
+                                {/*    <label htmlFor="momo">Ví MoMo</label>*/}
+                                {/*</div>*/}
                             </div>
                         </div>
 
@@ -645,6 +654,18 @@ const BookingPopup = ({ priceAdult, priceChild, tourId, onClose }) => {
             <div className="popup-content">
                 {renderStep()}
             </div>
+            {paymentData && (
+                <PaymentModal
+                    visible={paymentModalVisible}
+                    onClose={() => {
+                        setPaymentModalVisible(false);
+                        onClose();
+                    }}
+                    bookingId={paymentData.bookingId}
+                    amount={totalPrice}
+                    tourName={`Tour Booking #${paymentData.bookingId}`}
+                />
+            )}
             <ToastContainer />
         </div>
     );

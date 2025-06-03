@@ -46,6 +46,17 @@ export class RefundService {
             throw error;
         }
     }
+
+    // Xác nhận hoàn tiền (Admin)
+    async processRefund(refundRequestId) {
+        try {
+            const response = await axios.post(`${API_BASE_URL}/Refund/process/${refundRequestId}`);
+            return response.data;
+        } catch (error) {
+            console.error('Error processing refund:', error);
+            throw error;
+        }
+    }
 }
 
 export default new RefundService();

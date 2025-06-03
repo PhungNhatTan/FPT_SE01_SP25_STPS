@@ -210,7 +210,6 @@ namespace BookTour.Service.Impl
             };
         }
     }
-
     public class ValidationResult
     {
         public bool IsValid { get; set; }

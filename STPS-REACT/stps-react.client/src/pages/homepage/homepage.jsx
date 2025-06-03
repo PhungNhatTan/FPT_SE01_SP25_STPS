@@ -10,6 +10,7 @@ import { TourServices } from "../../services/TourSevices";
 import TOUR_DEFAULT_IMAGE from "../../assets/images/tour_default.jpg";
 import DESTINATION_DEFAULT_IMAGE from "../../assets/images/des_default.jpeg";
 import { DesnitionService } from "../../services/DesnitionService";
+import {getFullImageUrl} from "../../utils/ImageHelper";
 
 
 const SearchBox = () => {
@@ -104,7 +105,7 @@ const Homepage = () => {
                     {listTourFeatured.map(tour => (
                         <div className="blog-item tour-item" key={tour.id}>
                             <Link to={`/tour/${tour.tourId}`}>
-                                <img src={tour.primaryImageUrl ? tour.primaryImageUrl : TOUR_DEFAULT_IMAGE}
+                                <img src={tour.primaryImageUrl ? getFullImageUrl(tour.primaryImageUrl) : TOUR_DEFAULT_IMAGE}
                                     alt={tour.tourName}
                                     onError={(e) => {
 
@@ -138,7 +139,7 @@ const Homepage = () => {
                     ))} */}
 
 
-                    {listDesnition.slice(0, 10).map(location => (
+                    {listDesnition.slice(0, 8).map(location => (
                         <div className="blog-item" key={location.id}>
                             <Link to={`/location/${location.destinationId}`}>
                                 {/* <img src={location.primaryImageUrl} alt="Khuyến mãi" /> */}
@@ -166,7 +167,7 @@ const Homepage = () => {
                     </button>
                 </div>
                 <div className="blog-list">
-                    {blogsData.slice(0, 10).map(blog => (
+                    {blogsData.slice(0, 8).map(blog => (
                         <div className="blog-item" key={blog.id}>
                             <Link to={`/blog/${blog.id}`}>
                                 <img src={blog.image} alt={blog.title} />

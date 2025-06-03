@@ -9,7 +9,8 @@ namespace BookTour.Service
         Task<RevenueTransaction> CreateRevenueTransaction(Booking booking, string transactionType);
         Task<RevenueStatisticsResponse> GetCompanyRevenue(int companyId, DateTime? fromDate = null, DateTime? toDate = null);
         Task<AdminRevenueStatisticsResponse> GetAdminRevenueStatistics(DateTime? fromDate = null, DateTime? toDate = null);
-        Task<List<RevenueTransaction>> GetPendingRevenueTransfers();
+        Task<List<RevenueTransaction>> GetPendingRevenueTransfers(int companyId);
         Task<bool> ProcessRevenueTransfer(int revenueTransactionId);
+        Task<bool> CompleteCompanyRevenue(int companyId);
     }
 }

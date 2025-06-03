@@ -25,6 +25,7 @@ import UpdateAccount from './updateaccount';
 import AccountDetail from './accountdetail';
 import TourismCompanyList from './tourismcompanylist';
 import './style/modern-dashboard.css';
+import Refundrequestlist from "./refundrequestlist";
 
 const ModernDashboard = () => {
   // State
@@ -66,6 +67,7 @@ const ModernDashboard = () => {
     switch (activeTab) {
       case 'UserAccount': return 'Quản lý tài khoản người dùng';
       case 'TourismCompany': return 'Quản lý công ty du lịch';
+      case 'RefundRequest': return 'Yêu cầu hoàn tiền';
       case 'Statistic': return 'Thống kê';
       default: return 'Dashboard';
     }
@@ -114,6 +116,9 @@ const ModernDashboard = () => {
     if (currentPage === 'TourismCompanyList') {
       return <TourismCompanyList />;
     }
+    if(currentPage === "RefundRequest"){
+      return <Refundrequestlist />;
+    }
     return null;
   };
 
@@ -156,6 +161,15 @@ const ModernDashboard = () => {
                 >
                   <span className="menu-icon"><FaBuilding /></span>
                   <span className="menu-text">Công ty du lịch</span>
+                </button>
+              </li>
+              <li className="menu-item">
+                <button
+                    className={`menu-link ${activeTab === 'RefundRequest' ? 'active' : ''}`}
+                    onClick={() => { setActiveTab('RefundRequest'); setCurrentPage('RefundRequest'); }}
+                >
+                  <span className="menu-icon"><FaEnvelope /></span>
+                  <span className="menu-text">Yêu cầu hoàn tiền</span>
                 </button>
               </li>
             </ul>

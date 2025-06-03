@@ -999,7 +999,7 @@ namespace BookTour.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("BookingId")
+                    b.Property<int?>("BookingId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -1019,6 +1019,13 @@ namespace BookTour.Migrations
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("VnpayTransactionId")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("TransactionId");
 
@@ -1183,7 +1190,7 @@ namespace BookTour.Migrations
                             ReviewId = 1,
                             Comment = "Tour rất tuyệt vời, hướng dẫn viên nhiệt tình, các điểm tham quan đều rất đẹp!",
                             Rating = 5,
-                            ReviewDate = new DateTime(2025, 5, 23, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(8746),
+                            ReviewDate = new DateTime(2025, 5, 28, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6916),
                             TourId = 1,
                             UserId = 1
                         },
@@ -1192,7 +1199,7 @@ namespace BookTour.Migrations
                             ReviewId = 2,
                             Comment = "Tôi rất hài lòng với chuyến đi này, chỉ tiếc là thời gian hơi ngắn.",
                             Rating = 4,
-                            ReviewDate = new DateTime(2025, 5, 18, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(8770),
+                            ReviewDate = new DateTime(2025, 5, 23, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6922),
                             TourId = 1,
                             UserId = 2
                         },
@@ -1201,7 +1208,7 @@ namespace BookTour.Migrations
                             ReviewId = 3,
                             Comment = "Đà Nẵng quá đẹp, đặc biệt là Bà Nà Hills và Cầu Vàng. Sẽ quay lại lần nữa!",
                             Rating = 5,
-                            ReviewDate = new DateTime(2025, 5, 21, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(8779),
+                            ReviewDate = new DateTime(2025, 5, 26, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6957),
                             TourId = 2,
                             UserId = 3
                         },
@@ -1210,7 +1217,7 @@ namespace BookTour.Migrations
                             ReviewId = 4,
                             Comment = "Tour được tổ chức rất chuyên nghiệp, hướng dẫn viên vui tính và am hiểu lịch sử.",
                             Rating = 4,
-                            ReviewDate = new DateTime(2025, 5, 13, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(8787),
+                            ReviewDate = new DateTime(2025, 5, 18, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6959),
                             TourId = 2,
                             UserId = 4
                         },
@@ -1219,7 +1226,7 @@ namespace BookTour.Migrations
                             ReviewId = 5,
                             Comment = "Huế có quá nhiều di tích lịch sử đẹp, ẩm thực cũng rất ngon. Rất đáng để đi!",
                             Rating = 5,
-                            ReviewDate = new DateTime(2025, 5, 20, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(8798),
+                            ReviewDate = new DateTime(2025, 5, 25, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6960),
                             TourId = 3,
                             UserId = 5
                         },
@@ -1228,7 +1235,7 @@ namespace BookTour.Migrations
                             ReviewId = 6,
                             Comment = "Tour được tổ chức tốt, chỉ tiếc là thời tiết không ủng hộ.",
                             Rating = 4,
-                            ReviewDate = new DateTime(2025, 5, 8, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(8805),
+                            ReviewDate = new DateTime(2025, 5, 13, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6962),
                             TourId = 3,
                             UserId = 1
                         });
@@ -1358,7 +1365,7 @@ namespace BookTour.Migrations
                             TourId = 1,
                             AdultPrice = 4990000m,
                             ChildPrice = 4990000m,
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5177),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6530),
                             Description = "Khám phá vẻ đẹp của Hà Nội với tour trọn gói. Tham quan các địa điểm nổi tiếng như Hồ Gươm, Văn Miếu, Hoàng thành Thăng Long và trải nghiệm văn hóa ẩm thực đường phố Hà Nội.",
                             Duration = 3,
                             IsActive = true,
@@ -1366,14 +1373,14 @@ namespace BookTour.Migrations
                             TourName = "Tour Hà Nội",
                             TourismCompanyId = 1,
                             Transportation = "Xe du lịch",
-                            UpdatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5179)
+                            UpdatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6530)
                         },
                         new
                         {
                             TourId = 2,
                             AdultPrice = 5990000m,
                             ChildPrice = 5990000m,
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5190),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6534),
                             Description = "Khám phá vẻ đẹp của Đà Nẵng với tour trọn gói. Tham quan Bà Nà Hills, Cầu Rồng, bãi biển Mỹ Khê và Ngũ Hành Sơn. Trải nghiệm ẩm thực đặc sắc của miền Trung.",
                             Duration = 4,
                             IsActive = true,
@@ -1381,14 +1388,14 @@ namespace BookTour.Migrations
                             TourName = "Tour Đà Nẵng",
                             TourismCompanyId = 1,
                             Transportation = "Xe du lịch",
-                            UpdatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5192)
+                            UpdatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6534)
                         },
                         new
                         {
                             TourId = 3,
                             AdultPrice = 3990000m,
                             ChildPrice = 3990000m,
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5200),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6537),
                             Description = "Khám phá vẻ đẹp của Huế với tour trọn gói. Tham quan Đại Nội, các lăng tẩm vua Nguyễn, chùa Thiên Mụ và thưởng thức ẩm thực cung đình Huế.",
                             Duration = 2,
                             IsActive = true,
@@ -1396,14 +1403,14 @@ namespace BookTour.Migrations
                             TourName = "Tour Huế",
                             TourismCompanyId = 2,
                             Transportation = "Xe du lịch",
-                            UpdatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5202)
+                            UpdatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6538)
                         },
                         new
                         {
                             TourId = 4,
                             AdultPrice = 6990000m,
                             ChildPrice = 6990000m,
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5210),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6541),
                             Description = "Khám phá vẻ đẹp của Nha Trang với tour trọn gói. Tham quan Vinpearl Land, vịnh Nha Trang, Tháp Bà Ponagar và tắm biển tại các bãi biển đẹp nhất Nha Trang.",
                             Duration = 5,
                             IsActive = true,
@@ -1411,14 +1418,14 @@ namespace BookTour.Migrations
                             TourName = "Tour Nha Trang",
                             TourismCompanyId = 2,
                             Transportation = "Xe du lịch",
-                            UpdatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5211)
+                            UpdatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6541)
                         },
                         new
                         {
                             TourId = 5,
                             AdultPrice = 5500000m,
                             ChildPrice = 4500000m,
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5219),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6544),
                             Description = "Khám phá vẻ đẹp của Hồ Chí Minh với tour trọn gói. Tham quan Nhà thờ Đức Bà, Bưu điện Trung tâm, Chợ Bến Thành, Dinh Độc Lập và trải nghiệm cuộc sống sôi động của thành phố.",
                             Duration = 3,
                             IsActive = true,
@@ -1426,14 +1433,14 @@ namespace BookTour.Migrations
                             TourName = "Tour Hồ Chí Minh",
                             TourismCompanyId = 3,
                             Transportation = "Xe du lịch",
-                            UpdatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5242)
+                            UpdatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6544)
                         },
                         new
                         {
                             TourId = 6,
                             AdultPrice = 5990000m,
                             ChildPrice = 4990000m,
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5272),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6547),
                             Description = "Khám phá vẻ đẹp của Sapa với tour trọn gói. Chinh phục Fansipan, tham quan các bản làng dân tộc, ngắm ruộng bậc thang và trải nghiệm văn hóa vùng cao.",
                             Duration = 4,
                             IsActive = true,
@@ -1441,14 +1448,14 @@ namespace BookTour.Migrations
                             TourName = "Tour Sapa",
                             TourismCompanyId = 3,
                             Transportation = "Xe du lịch",
-                            UpdatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5273)
+                            UpdatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6547)
                         },
                         new
                         {
                             TourId = 7,
                             AdultPrice = 5990000m,
                             ChildPrice = 4990000m,
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5280),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6550),
                             Description = "Khám phá vẻ đẹp của Vịnh Hạ Long với tour trọn gói. Tham quan các hang động, đảo đá và trải nghiệm đêm trên vịnh Hạ Long.",
                             Duration = 3,
                             IsActive = true,
@@ -1456,14 +1463,14 @@ namespace BookTour.Migrations
                             TourName = "Tour Hạ Long",
                             TourismCompanyId = 1,
                             Transportation = "Xe du lịch + Tàu",
-                            UpdatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5283)
+                            UpdatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6550)
                         },
                         new
                         {
                             TourId = 8,
                             AdultPrice = 3990000m,
                             ChildPrice = 3490000m,
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5293),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6553),
                             Description = "Khám phá vẻ đẹp của Hội An với tour trọn gói. Tham quan phố cổ, làng nghề truyền thống và trải nghiệm không khí cổ kính của Hội An.",
                             Duration = 2,
                             IsActive = true,
@@ -1471,14 +1478,14 @@ namespace BookTour.Migrations
                             TourName = "Tour Hội An",
                             TourismCompanyId = 2,
                             Transportation = "Xe du lịch",
-                            UpdatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5297)
+                            UpdatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6554)
                         },
                         new
                         {
                             TourId = 9,
                             AdultPrice = 5490000m,
                             ChildPrice = 4490000m,
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5312),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6556),
                             Description = "Khám phá vẻ đẹp của Đà Lạt với tour trọn gói. Tham quan các điểm du lịch nổi tiếng và trải nghiệm khí hậu mát mẻ của thành phố ngàn hoa.",
                             Duration = 4,
                             IsActive = true,
@@ -1486,14 +1493,14 @@ namespace BookTour.Migrations
                             TourName = "Tour Đà Lạt",
                             TourismCompanyId = 3,
                             Transportation = "Xe du lịch",
-                            UpdatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5317)
+                            UpdatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6557)
                         },
                         new
                         {
                             TourId = 10,
                             AdultPrice = 8990000m,
                             ChildPrice = 7990000m,
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5330),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6559),
                             Description = "Khám phá vẻ đẹp của Phú Quốc với tour trọn gói. Tham quan các bãi biển đẹp, làng chài và trải nghiệm hoạt động lặn biển ngắm san hô.",
                             Duration = 5,
                             IsActive = true,
@@ -1501,7 +1508,7 @@ namespace BookTour.Migrations
                             TourName = "Tour Phú Quốc",
                             TourismCompanyId = 1,
                             Transportation = "Máy bay + Xe du lịch",
-                            UpdatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(5333)
+                            UpdatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6560)
                         });
                 });
 
@@ -2112,7 +2119,7 @@ namespace BookTour.Migrations
                         {
                             UserId = 1,
                             Address = "Hà Nội",
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(4265),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6344),
                             Email = "user1@example.com",
                             FullName = "Nguyễn Văn A",
                             Password = "hashed_password_here",
@@ -2123,7 +2130,7 @@ namespace BookTour.Migrations
                         {
                             UserId = 2,
                             Address = "Hồ Chí Minh",
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(4273),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6347),
                             Email = "user2@example.com",
                             FullName = "Trần Thị B",
                             Password = "hashed_password_here",
@@ -2134,7 +2141,7 @@ namespace BookTour.Migrations
                         {
                             UserId = 3,
                             Address = "Đà Nẵng",
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(4278),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6349),
                             Email = "user3@example.com",
                             FullName = "Lê Văn C",
                             Password = "hashed_password_here",
@@ -2145,7 +2152,7 @@ namespace BookTour.Migrations
                         {
                             UserId = 4,
                             Address = "Huế",
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(4283),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6350),
                             Email = "user4@example.com",
                             FullName = "Phạm Thị D",
                             Password = "hashed_password_here",
@@ -2156,7 +2163,7 @@ namespace BookTour.Migrations
                         {
                             UserId = 5,
                             Address = "Nha Trang",
-                            CreatedAt = new DateTime(2025, 5, 28, 21, 8, 1, 302, DateTimeKind.Local).AddTicks(4288),
+                            CreatedAt = new DateTime(2025, 6, 2, 22, 36, 41, 90, DateTimeKind.Local).AddTicks(6352),
                             Email = "user5@example.com",
                             FullName = "Hoàng Văn E",
                             Password = "hashed_password_here",
@@ -2332,8 +2339,7 @@ namespace BookTour.Migrations
                     b.HasOne("BookTour.Models.Booking", "Booking")
                         .WithMany("PaymentTransactions")
                         .HasForeignKey("BookingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Booking");
                 });

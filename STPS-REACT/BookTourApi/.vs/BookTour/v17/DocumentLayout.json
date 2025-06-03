@@ -1,0 +1,262 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\controllers\\tourismcompaniescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:controllers\\tourismcompaniescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\service\\itourismcompanyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:service\\itourismcompanyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\service\\impl\\tourismcompanyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:service\\impl\\tourismcompanyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\models\\paymenttransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:models\\paymenttransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\service\\impl\\revenueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:service\\impl\\revenueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\controllers\\revenuecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:controllers\\revenuecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\service\\irevenueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:service\\irevenueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\service\\impl\\refundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:service\\impl\\refundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\service\\impl\\revenuebackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:service\\impl\\revenuebackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\service\\ipaymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:service\\ipaymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\service\\impl\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:service\\impl\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|c:\\users\\admin\\onedrive\\desktop\\stps_fin\\fpt_se01_sp25_stps\\stps-react\\booktourapi\\utils\\fee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D602E95E-E6E1-4260-8658-3C5A4C8A2E44}|BookTour.csproj|solutionrelative:utils\\fee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TourismCompaniesController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Controllers\\TourismCompaniesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TourismCompaniesController.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Controllers\\TourismCompaniesController.cs",
+              "RelativeToolTip": "Controllers\\TourismCompaniesController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAADwv0AAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T15:36:10.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TourismCompanyService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\Impl\\TourismCompanyService.cs",
+              "RelativeDocumentMoniker": "Service\\Impl\\TourismCompanyService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\Impl\\TourismCompanyService.cs",
+              "RelativeToolTip": "Service\\Impl\\TourismCompanyService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA0AAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T15:35:36.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PaymentTransaction.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Models\\PaymentTransaction.cs",
+              "RelativeDocumentMoniker": "Models\\PaymentTransaction.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Models\\PaymentTransaction.cs",
+              "RelativeToolTip": "Models\\PaymentTransaction.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAcwCkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T15:34:21.198Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BookingController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Controllers\\BookingController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BookingController.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Controllers\\BookingController.cs",
+              "RelativeToolTip": "Controllers\\BookingController.cs",
+              "ViewState": "AQIAAHsAAAAAAAAAAAArwG0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T15:32:26.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-02T13:08:38.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ITourismCompanyService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\ITourismCompanyService.cs",
+              "RelativeDocumentMoniker": "Service\\ITourismCompanyService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\ITourismCompanyService.cs",
+              "RelativeToolTip": "Service\\ITourismCompanyService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T15:36:02.924Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IRevenueService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\IRevenueService.cs",
+              "RelativeDocumentMoniker": "Service\\IRevenueService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\IRevenueService.cs",
+              "RelativeToolTip": "Service\\IRevenueService.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAcwBAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T15:24:37.325Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RevenueController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Controllers\\RevenueController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RevenueController.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Controllers\\RevenueController.cs",
+              "RelativeToolTip": "Controllers\\RevenueController.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAkwCMAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T15:23:28.684Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RevenueBackgroundService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\Impl\\RevenueBackgroundService.cs",
+              "RelativeDocumentMoniker": "Service\\Impl\\RevenueBackgroundService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\Impl\\RevenueBackgroundService.cs",
+              "RelativeToolTip": "Service\\Impl\\RevenueBackgroundService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T15:23:20.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentController.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "Controllers\\PaymentController.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAQwDcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T13:03:44.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IPaymentService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\IPaymentService.cs",
+              "RelativeDocumentMoniker": "Service\\IPaymentService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\IPaymentService.cs",
+              "RelativeToolTip": "Service\\IPaymentService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T13:03:35.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Fee.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Utils\\Fee.cs",
+              "RelativeDocumentMoniker": "Utils\\Fee.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Utils\\Fee.cs",
+              "RelativeToolTip": "Utils\\Fee.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T12:41:47.772Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PaymentService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\Impl\\PaymentService.cs",
+              "RelativeDocumentMoniker": "Service\\Impl\\PaymentService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\Impl\\PaymentService.cs",
+              "RelativeToolTip": "Service\\Impl\\PaymentService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T12:40:58.287Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RefundService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\Impl\\RefundService.cs",
+              "RelativeDocumentMoniker": "Service\\Impl\\RefundService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\Impl\\RefundService.cs",
+              "RelativeToolTip": "Service\\Impl\\RefundService.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAUwHUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T12:40:47.178Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RevenueService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\Impl\\RevenueService.cs",
+              "RelativeDocumentMoniker": "Service\\Impl\\RevenueService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\STPS_FIN\\FPT_SE01_SP25_STPS\\STPS-REACT\\BookTourApi\\Service\\Impl\\RevenueService.cs",
+              "RelativeToolTip": "Service\\Impl\\RevenueService.cs",
+              "ViewState": "AQIAAD8BAAAAAAAAAAAAAEwBAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T12:40:00.559Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

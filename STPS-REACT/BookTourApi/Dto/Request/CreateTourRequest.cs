@@ -11,6 +11,7 @@ namespace BookTour.Dto.Request
         public bool IsActive { get; set; } = true;
         public bool IsFeatured { get; set; } = false;
         public int? TourismCompanyId { get; set; } // Add TourismCompanyId
+        public string? ImageUrl { get; set; }
     }
 
     public class UpdateTourRequest
@@ -25,5 +26,6 @@ namespace BookTour.Dto.Request
         public bool IsActive { get; set; } = true;
         public bool IsFeatured { get; set; } = false;
         public int? TourismCompanyId { get; set; } // Add TourismCompanyId
+        public string? ImageUrl { get; set; }
     }
 }

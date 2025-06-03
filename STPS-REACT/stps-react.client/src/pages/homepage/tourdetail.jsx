@@ -8,6 +8,7 @@ import BookingPopup from "./booking";
 import { TourServices } from "../../services/TourSevices";
 import TOUR_DEFAULT_IMAGE from "../../assets/images/tour_default.jpg";
 import DESTINATION_DEFAULT_IMAGE from "../../assets/images/des_default.jpeg";
+import {getFullImageUrl} from "../../utils/ImageHelper";
 
 
 const TourDetail = () => {
@@ -60,7 +61,7 @@ const TourDetail = () => {
 
             {/* Showcase */}
             <section className="showcase">
-                <img src={tour.image} alt={tour.name} className="img-fluid w-100" style={{ height: "300px", objectFit: "cover" }} />
+                <img src={tourDetails?.imageCover ? getFullImageUrl(tourDetails?.imageCover) : tour.image } alt={tourDetails?.tourName } className="img-fluid w-100" style={{ height: "300px", objectFit: "cover" }} />
             </section>
             {/* Nội dung */}
             <div className="container">

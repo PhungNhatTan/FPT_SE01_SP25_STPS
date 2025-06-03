@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { TourServices } from '../../services/TourSevices';
 import { getCompanyByUserId } from '../../services/TourismCompanyService';
 import { getUserIdFromToken } from '../../utils/JwtHelper';
+import {getFullImageUrl} from "../../utils/ImageHelper";
 
 const UpdateTour = ({ tourId, onCancel }) => {
     const [form, setForm] = useState({
@@ -16,6 +17,8 @@ const UpdateTour = ({ tourId, onCancel }) => {
     const [error, setError] = useState('');
     const [userCompany, setUserCompany] = useState(null);
     const [currentTour, setCurrentTour] = useState(null);
+    const [image, setImage] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
     const tourService = new TourServices();
 
     useEffect(() => {
@@ -95,21 +98,22 @@ const UpdateTour = ({ tourId, onCancel }) => {
         setLoading(true);
         setError('');
         try {
-            const updateData = {
-                tourId: tourId,
-                tourName: form.tourName,
-                description: form.description,
-                duration: parseInt(form.duration),
-                transportation: form.transportation,
-                adultPrice: parseFloat(form.adultPrice),
-                childPrice: parseFloat(form.childPrice),
-                isActive: true,
-                isFeatured: false,
-                tourismCompanyId: userCompany?.id || currentTour?.tourismCompanyId // Keep existing company ID
-            };
+            const formData = new FormData();
+            formData.append('tourId', tourId);
+            formData.append('tourName', form.tourName);
+            formData.append('description', form.description);
+            formData.append('duration', form.duration);
+            formData.append('transportation', form.transportation);
+            formData.append('adultPrice', form.adultPrice);
+            formData.append('childPrice', form.childPrice);
+            formData.append('isActive', true);
+            formData.append('isFeatured', false);
+            formData.append('tourismCompanyId', userCompany?.id || currentTour?.tourismCompanyId);
+            if (image) {
+                formData.append('image', image);
+            }
 
-            console.log('UpdateTour - Update data:', updateData);
-            const response = await tourService.updateTour(tourId, updateData);
+            const response = await tourService.updateTour(tourId, formData);
             console.log('UpdateTour - Update response:', response);
 
             alert('Cập nhật tour thành công!');
@@ -164,6 +168,35 @@ const UpdateTour = ({ tourId, onCancel }) => {
                     <label className="form-label">Giá vé trẻ em</label>
                     <input type="number" className="form-control" name="childPrice" value={form.childPrice} onChange={handleChange} required />
                 </div>
+                <div className="mb-3">
+                    <label className="form-label">Ảnh đại diện mới (tối đa 2MB)</label>
+                    <input type="file" className="form-control" accept="image/*"
+                        onChange={e => {
+                            const file = e.target.files[0];
+                            if (file) {
+                                if (file.size > 2 * 1024 * 1024) {
+                                    setError('Ảnh đại diện không được vượt quá 2MB!');
+                                    setImage(null);
+                                    setImagePreview(null);
+                                    return;
+                                }
+                                setError('');
+                                setImage(file);
+                                setImagePreview(URL.createObjectURL(file));
+                            }
+                        }}
+                    />
+                </div>
+                {imagePreview && (
+                    <div className="mb-3">
+                        <img src={imagePreview} alt="Ảnh đại diện mới" style={{ maxWidth: '200px', maxHeight: '200px' }} className="mx-auto" />
+                    </div>
+                )}
+                {currentTour?.imageCover && !imagePreview && (
+                    <div className="mb-3">
+                        <img src={getFullImageUrl(currentTour?.imageCover)} alt="Ảnh đại diện"  style={{ maxWidth: '200px', maxHeight: '200px' }} />
+                    </div>
+                )}
                 {error && <p className="text-danger">{error}</p>}
                 <button type="submit" className="btn btn-success me-2" disabled={loading}>{loading ? 'Đang lưu...' : 'Lưu'}</button>
                 <button type="button" className="btn btn-secondary" onClick={onCancel}>Hủy</button>

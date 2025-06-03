@@ -402,8 +402,18 @@ namespace BookTour.Service.Impl
                 };
                 var created = await _tourRepository.AddTourAsync(tour);
 
-                // Lấy lại tour từ DB để đảm bảo các navigation property được load
                 var loadedTour = await _tourRepository.GetTourByIdAsync(created.TourId);
+
+                if (!string.IsNullOrEmpty(request.ImageUrl) && loadedTour != null)
+                {
+                    var tourImage = new TourImage
+                    {
+                        TourId = loadedTour.TourId,
+                        ImageUrl = request.ImageUrl,
+                        IsPrimary = true
+                    };
+                    await _tourRepository.AddTourImageAsync(tourImage);
+                }
 
                 return ApiResponse<TourResponse>.SuccessResponse(MapToTourResponse(loadedTour), "Thêm tour thành công");
             }
@@ -431,6 +441,17 @@ namespace BookTour.Service.Impl
                 tour.TourismCompanyId = request.TourismCompanyId; // Add TourismCompanyId
                 tour.UpdatedAt = DateTime.Now;
                 var updated = await _tourRepository.UpdateTourAsync(tour);
+
+                if (!string.IsNullOrEmpty(request.ImageUrl))
+                {
+                    var tourImage = new TourImage
+                    {
+                        TourId = tour.TourId,
+                        ImageUrl = request.ImageUrl,
+                        IsPrimary = true
+                    };
+                    await _tourRepository.AddTourImageAsync(tourImage, false);
+                }
                 return ApiResponse<TourResponse>.SuccessResponse(MapToTourResponse(updated), "Cập nhật tour thành công");
             }
             catch (Exception ex)

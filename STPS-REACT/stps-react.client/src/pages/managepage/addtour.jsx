@@ -16,6 +16,8 @@ const AddTour = ({ onCancel }) => {
     const [error, setError] = useState('');
     const [userCompany, setUserCompany] = useState(null);
     const [loadingCompany, setLoadingCompany] = useState(true);
+    const [image, setImage] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
     const tourService = new TourServices();
 
     // Load user's company on component mount
@@ -56,6 +58,21 @@ const AddTour = ({ onCancel }) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            if (file.size > 2 * 1024 * 1024) { // 2MB
+                setError('Ảnh đại diện không được vượt quá 2MB!');
+                setImage(null);
+                setImagePreview(null);
+                return;
+            }
+            setError('');
+            setImage(file);
+            setImagePreview(URL.createObjectURL(file));
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -68,20 +85,22 @@ const AddTour = ({ onCancel }) => {
         setLoading(true);
         setError('');
         try {
-            const tourData = {
-                tourName: form.tourName,
-                description: form.description,
-                duration: parseInt(form.duration),
-                transportation: form.transportation,
-                adultPrice: parseFloat(form.adultPrice),
-                childPrice: parseFloat(form.childPrice),
-                isActive: true,
-                isFeatured: false,
-                tourismCompanyId: userCompany.id // Add company ID
-            };
+            const formData = new FormData();
+            formData.append('tourName', form.tourName);
+            formData.append('description', form.description);
+            formData.append('duration', form.duration);
+            formData.append('transportation', form.transportation);
+            formData.append('adultPrice', form.adultPrice);
+            formData.append('childPrice', form.childPrice);
+            formData.append('isActive', true);
+            formData.append('isFeatured', false);
+            formData.append('tourismCompanyId', userCompany.id);
+            if (image) {
+                formData.append('image', image);
+            }
 
-            console.log('AddTour - Submitting tour data:', tourData);
-            const response = await tourService.addTour(tourData);
+            console.log('AddTour - Submitting tour data:', formData);
+            const response = await tourService.addTour(formData);
             console.log('AddTour - Response:', response);
 
             alert('Thêm tour thành công!');
@@ -162,6 +181,15 @@ const AddTour = ({ onCancel }) => {
                     <label className="form-label">Giá vé trẻ em</label>
                     <input type="number" className="form-control" name="childPrice" value={form.childPrice} onChange={handleChange} required />
                 </div>
+                <div className="mb-3">
+                    <label className="form-label">Ảnh đại diện (tối đa 2MB)</label>
+                    <input type="file" className="form-control" accept="image/*" onChange={handleImageChange} />
+                </div>
+                    {imagePreview && (
+                        <div className="mb-3">
+                            <img src={imagePreview} alt="Ảnh đại diện" style={{ maxWidth: '200px', maxHeight: '200px' }} className="mx-auto" />
+                        </div>
+                    )}
                 {error && <p className="text-danger">{error}</p>}
                 <button type="submit" className="btn btn-success me-2" disabled={loading}>{loading ? 'Đang lưu...' : 'Lưu'}</button>
                 <button type="button" className="btn btn-secondary" onClick={onCancel}>Hủy</button>

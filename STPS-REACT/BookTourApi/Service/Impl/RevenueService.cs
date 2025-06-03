@@ -121,13 +121,13 @@ namespace BookTour.Service
             }
         }
 
-        public async Task<List<RevenueTransaction>> GetPendingRevenueTransfers()
+        public async Task<List<RevenueTransaction>> GetPendingRevenueTransfers(int companyId)
         {
             return await _context.RevenueTransactions
                 .Include(rt => rt.TourismCompany)
                 .Include(rt => rt.Booking)
                 .ThenInclude(b => b.Tour)
-                .Where(rt => rt.Status == "Pending")
+                .Where(rt => rt.TourismCompanyId == companyId && rt.Status == "Pending")
                 .OrderBy(rt => rt.ScheduledDate)
                 .ToListAsync();
         }
@@ -316,6 +316,28 @@ namespace BookTour.Service
                     TourName = rt.Booking.Tour.TourName
                 })
                 .ToList();
+        }
+
+        public async Task<bool> CompleteCompanyRevenue(int companyId)
+        {
+           var listUpdate = await _context.RevenueTransactions
+              .Include(rt => rt.TourismCompany)
+              .Include(rt => rt.Booking)
+              .ThenInclude(b => b.Tour)
+              .Where(rt => rt.TourismCompanyId == companyId && rt.Status == "Pending")
+              .ToListAsync();
+
+            if (!listUpdate.Any()) return false;
+
+            foreach (var transaction in listUpdate)
+            {
+                transaction.Status = "Completed";
+                transaction.ProcessedDate = DateTime.Now;
+            }
+
+            await _context.SaveChangesAsync();
+            return true;
+
         }
     }
 }

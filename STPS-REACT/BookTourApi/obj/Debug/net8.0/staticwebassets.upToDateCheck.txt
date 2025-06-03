@@ -3,6 +3,10 @@ wwwroot\images\qr-code.svg
 wwwroot\uploads\_DSC1560_97224d35.jpg
 wwwroot\uploads\_DSC1560_caefe946.jpg
 wwwroot\uploads\5f7819e24cd56b506e6cf4c9aaff4a28_5199373b.jpg
+wwwroot\uploads\68e6bec1-1d5a-4fb0-8842-9f682b316c69-.jpeg
+wwwroot\uploads\6f0c2763-4288-4ee2-b1a5-928a822e4e4e-.jpg
+wwwroot\uploads\a3f0315e-afe7-42b2-ac98-048c6207774c-.jpeg
+wwwroot\uploads\baba5fd4-082c-4629-8352-3fc3f0046209-.jpg
 wwwroot\uploads\danang_5015465e.jpg
 wwwroot\uploads\danang_b3227712.jpg
 wwwroot\uploads\pngtree-graduating-college-student-holding-a-graduation-certificate-picture-image_1494797_3104c091.jpg

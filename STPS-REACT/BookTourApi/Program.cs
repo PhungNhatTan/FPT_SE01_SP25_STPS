@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using VNPAY.NET;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -80,6 +81,13 @@ builder.Services.AddScoped<IRefundService, RefundService>();
 
 // Background Services
 builder.Services.AddHostedService<RevenueBackgroundService>();
+
+// Add VNPay service
+builder.Services.AddSingleton<IVnpay, Vnpay>();
+
+// Add services to the container
+builder.Services.AddScoped<IBookingService, BookingService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -10,6 +10,52 @@ import { TourServices } from "../../services/TourSevices";
 import PaymentQRModal from "../../components/PaymentQRModal";
 import CancelBookingModal from "../../components/CancelBookingModal";
 import RefundService from "../../services/RefundService";
+import { BookingServices } from "../../services/BookingServices";
+import PaymentService from "../../services/PaymentService";
+import Select from 'react-select';
+
+const customSelectStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    width: '100%',
+    minHeight: '38px',
+    borderColor: state.isFocused ? '#86b7fe' : '#ced4da',
+    boxShadow: state.isFocused ? '0 0 0 0.2rem rgba(13,110,253,.25)' : null,
+    '&:hover': { borderColor: '#86b7fe' },
+    fontSize: '1rem'
+  }),
+  container: (provided) => ({
+    ...provided,
+    width: '100%'
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: '1rem',
+    backgroundColor: state.isSelected
+      ? '#0d6efd'
+      : state.isFocused
+      ? '#e7f1ff'
+      : 'white',
+    color: state.isSelected ? 'white' : '#212529',
+    padding: '8px 12px'
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    display: 'flex',
+    alignItems: 'center'
+  }),
+  menu: (provided) => ({
+    ...provided,
+    zIndex: 9999,
+    position: 'absolute'
+  }),
+  menuPortal: (provided) => ({
+    ...provided,
+    zIndex: 9999
+  })
+};
 
 const History = () => {
     // const [tours, setTours] = useState(tourHistoryData); // removed
@@ -49,6 +95,13 @@ const History = () => {
     const [showCancelModal, setShowCancelModal] = useState(false);
     const [bookingCanCancel, setBookingCanCancel] = useState({});
     const _tourService = new TourServices();
+    const bookingService = new BookingServices();
+    const [showRefundModal, setShowRefundModal] = useState(false);
+    const [refundBankList, setRefundBankList] = useState([]);
+    const [refundBank, setRefundBank] = useState('');
+    const [refundAccountName, setRefundAccountName] = useState('');
+    const [refundAccountNumber, setRefundAccountNumber] = useState('');
+    const [refundBooking, setRefundBooking] = useState(null);
 
     useEffect(() => {
         const fetchTourData = async () => {
@@ -91,9 +144,19 @@ const History = () => {
     }, [navigate]);
 
     // Payment handlers
-    const handlePayment = (booking) => {
-        setSelectedBooking(booking);
-        setShowPaymentModal(true);
+    const handlePayment = async (tour) => {
+        const paymentResponse = await PaymentService.createPaymentQR(
+            tour.bookingId,
+            tour.totalAmount,
+            `Payment for tour: ${tour.tourName}`
+        );
+
+        if (paymentResponse.success && paymentResponse.data.paymentUrl) {
+            // Step 3: Redirect to VNPay payment page
+            window.location.href = paymentResponse.data.paymentUrl;
+        } else {
+            throw new Error('Failed to create payment URL');
+        }
     };
 
     const handlePaymentSuccess = () => {
@@ -113,46 +176,62 @@ const History = () => {
     };
 
     // Cancel handlers
-    const handleCancel = (booking) => {
-        setSelectedBooking(booking);
-        setShowCancelModal(true);
-    };
+    const handleCancel = async (booking) => {
+        // Check if tour date is more than 5 days away
+        const tourDate = new Date(booking.tourDate);
+        const today = new Date();
+        const daysUntilTour = (tourDate - today) / (1000 * 60 * 60 * 24);
 
-    const handleCancelSuccess = () => {
-        // Refresh booking history
-        const userId = localStorage.getItem('userId');
-        if (userId) {
-            const fetchTourData = async () => {
-                try {
-                    const dataResponse = await _tourService.getTourHistory(userId);
-                    const bookings = dataResponse.data.data;
-                    setHitoryTour(bookings);
-
-                    // Update cancel status
-                    const cancelStatus = {};
-                    for (const booking of bookings) {
-                        try {
-                            const canCancelResponse = await RefundService.canCancelBooking(booking.bookingId);
-                            cancelStatus[booking.bookingId] = canCancelResponse.data.canCancel;
-                        } catch (error) {
-                            cancelStatus[booking.bookingId] = false;
-                        }
-                    }
-                    setBookingCanCancel(cancelStatus);
-                } catch (error) {
-                    console.error("Error refreshing booking history:", error);
-                }
-            };
-            fetchTourData();
+        if (daysUntilTour <= 5) {
+            alert("Cannot cancel booking. Tour starts in less than 5 days.");
+            return;
         }
+
+        // Fetch bank list if not already loaded
+        if (refundBankList.length === 0) {
+            try {
+                const res = await fetch('https://api.vietqr.io/v2/banks');
+                const data = await res.json();
+                if (data.code === "00") setRefundBankList(data.data);
+            } catch (e) {
+                alert("Không thể tải danh sách ngân hàng!");
+            }
+        }
+        setRefundBooking(booking);
+        setShowRefundModal(true);
     };
+
+    const canCancelBooking = (booking) => {
+        // Check if payment was made
+        if (booking.paymentStatus !== 'Đã thanh toán') {
+            return false;
+        }
+
+        // Check if booking is already cancelled
+        if (booking.status === 'Đã hủy') {
+            return false;
+        }
+
+        // Check if tour date is more than 5 days away
+        const tourDate = new Date(booking.tourDate);
+        const today = new Date();
+        const daysUntilTour = (tourDate - today) / (1000 * 60 * 60 * 24);
+
+        return daysUntilTour > 5;
+    };
+
+    const bankOptions = refundBankList.map(bank => ({
+        value: bank.bin,
+        label: bank.code + "-" + bank.name,
+        logo: bank.logo
+    }));
 
     return (
         <>
             <header className="header">
                 <Header />
             </header>
-            <div className="container history-container">
+            <div className="">
                 <div className="row">
                     <div className="col-md-12 text-center my-4">
                         <h2>Lịch sử đặt tour</h2>
@@ -186,85 +265,74 @@ const History = () => {
                         </div>
                     </div> */}
 
-                    <div className="col-md-5">
-                        <div className="list-group">
-                            {Array.isArray(hitoryTour) && hitoryTour.map((tour) => (
-                                <div
-                                    key={tour.bookingId}
-                                    className={`list-group-item tour-item ${selectedTour?.bookingId === tour.bookingId ? "active" : ""}`}
-                                    onClick={() => handleSelectTour(tour)}
-                                    style={{ cursor: 'pointer' }}
-                                >
-                                    <h5>{tour.tourName}</h5>
-                                    <p>
-                                        <strong>Ngày đi:</strong> {tour.tourDate} - <strong>Ngày về:</strong> {tour.tourDate}
-                                    </p>
-                                    <p>
-                                        <strong>Người lớn:</strong> {tour.adultCount} | <strong>Trẻ em:</strong> {tour.childCount}
-                                    </p>
-                                    <p>
-                                        <strong>Giá vé Người lớn:</strong> {tour.adultPrice ? tour.adultPrice.toLocaleString() : (tour.totalAmount / tour.adultCount).toLocaleString()} VND
-                                    </p>
-                                    <p>
-                                        <strong>Giá vé Trẻ em:</strong> {tour.childPrice ? tour.childPrice.toLocaleString() : (tour.childCount > 0 ? (tour.totalAmount * 0.7 / tour.childCount).toLocaleString() : "0")} VND
-                                    </p>
-                                    <p>
-                                        <strong>Tổng tiền:</strong> {tour.totalAmount.toLocaleString()} VND
-                                    </p>
-                                    <p>
-                                        <strong>Trạng thái:</strong>
-                                        <span className={` ${
-                                            tour.paymentStatus === 'Đã thanh toán' ? 'bg-success' :
-                                            tour.paymentStatus === 'Chưa thanh toán' ? 'bg-warning' : 'bg-secondary'
-                                        }`}>
-                                            
-                                            {tour.paymentStatus}
-                                        </span>
-                                        <span className={` ${
-                                            tour.status === 'Đã xác nhận' ? 'bg-success' :
-                                            tour.status === 'Đã hủy' ? 'bg-danger' : 'bg-info'
-                                        }`}>
-                                            {tour.status}
-                                        </span>
-                                    </p>
-
-                                    {/* Action buttons */}
-                                    <div className="mt-2">
-                                        {tour.paymentStatus === 'Chưa thanh toán' && (
-                                            <button
-                                                className="btn btn-primary btn-sm me-2"
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    handlePayment(tour);
-                                                }}
-                                            >
-                                                Thanh toán
-                                            </button>
-                                        )}
-
-                                        {tour.paymentStatus === 'Đã thanh toán' &&
-                                         tour.status !== 'Đã hủy' &&
-                                         bookingCanCancel[tour.bookingId] && (
-                                            <button
-                                                className="btn btn-danger btn-sm me-2"
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    handleCancel(tour);
-                                                }}
-                                            >
-                                                Hủy tour
-                                            </button>
-                                        )}
-
-                                        
-                                    </div>
-                                </div>
-                            ))}
+                    <div className="col-12">
+                        <div className="table-responsive">
+                            <table className="table table-striped table-hover align-middle">
+                                <thead className="table-dark">
+                                    <tr>
+                                        <th>Tên Tour</th>
+                                        <th>Ngày đi</th>
+                                        <th>Người lớn</th>
+                                        <th>Trẻ em</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Thanh toán</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {Array.isArray(hitoryTour) && hitoryTour.map((tour) => (
+                                        <tr
+                                            key={tour.bookingId}
+                                            className={selectedTour?.bookingId === tour.bookingId ? "table-primary" : ""}
+                                            style={{ cursor: 'pointer' }}
+                                            onClick={() => handleSelectTour(tour)}
+                                        >
+                                            <td>{tour.tourName}</td>
+                                            <td>{tour.tourDate}</td>
+                                            <td>{tour.adultCount}</td>
+                                            <td>{tour.childCount}</td>
+                                            <td>{tour.totalAmount.toLocaleString()} VND</td>
+                                            <td>
+                                                <span className={`p-2 text-white ${tour.paymentStatus === 'Đã thanh toán' ? 'bg-success' : tour.paymentStatus === 'Chưa thanh toán' ? 'bg-warning text-dark' : 'bg-secondary'}`}>
+                                                    {tour.paymentStatus}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span className={`p-2 text-white ${tour.status === 'Đã xác nhận' ? 'bg-success' : tour.status === 'Đã hủy' ? 'bg-danger' : tour.status === 'Yêu cầu hủy tour' ? 'bg-warning text-dark' : 'bg-info'}`}>
+                                                    {tour.status}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                {tour.paymentStatus === 'Chưa thanh toán' && (
+                                                    <button
+                                                        className="btn btn-primary btn-sm me-2"
+                                                        onClick={e => { e.stopPropagation(); handlePayment(tour); }}
+                                                    >
+                                                        Thanh toán
+                                                    </button>
+                                                )}
+                                                {tour.paymentStatus === 'Đã thanh toán' &&
+                                                    tour.status !== 'Đã hủy' &&
+                                                    tour.status !== 'Yêu cầu hủy tour' &&
+                                                    canCancelBooking(tour) && (
+                                                        <button
+                                                            className="btn btn-warning btn-sm"
+                                                            onClick={e => { e.stopPropagation(); handleCancel(tour); }}
+                                                        >
+                                                            Yêu cầu hủy
+                                                        </button>
+                                                    )}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
                     {/* Chi tiết tour */}
-                    <div className="col-md-7">
+                    <div className="col-md-12">
                         {selectedTour ? (
                             <div className="card tour-detail">
                                 <div className="card-body">
@@ -276,7 +344,7 @@ const History = () => {
                                     <p><strong>Tổng tiền:</strong> {selectedTour.totalAmount.toLocaleString()} VND</p>
                                     <p>
                                         <strong>Trạng thái thanh toán:</strong>
-                                        <span className={` ${
+                                        <span className={`p-2 text-white ${
                                             selectedTour.paymentStatus === 'Đã thanh toán' ? 'bg-success' :
                                             selectedTour.paymentStatus === 'Chưa thanh toán' ? 'bg-warning' : 'bg-secondary'
                                         }`}>
@@ -285,17 +353,16 @@ const History = () => {
                                     </p>
                                     <p>
                                         <strong>Trạng thái tour:</strong>
-                                        <span className={` ${
+                                        <span className={`p-2 text-white ${
                                             selectedTour.status === 'Đã xác nhận' ? 'bg-success' :
-                                            selectedTour.status === 'Đã hủy' ? 'bg-danger' : 'bg-info'
+                                            selectedTour.status === 'Đã hủy' ? 'bg-danger' :
+                                            selectedTour.status === 'Yêu cầu hủy tour' ? 'bg-warning' : 'bg-info'
                                         }`}>
                                             {selectedTour.status}
                                         </span>
                                     </p>
 
                                     <div className="mt-3">
-                                        
-
                                         {selectedTour.paymentStatus === 'Chưa thanh toán' && (
                                             <button
                                                 className="btn btn-primary me-2"
@@ -307,12 +374,13 @@ const History = () => {
 
                                         {selectedTour.paymentStatus === 'Đã thanh toán' &&
                                          selectedTour.status !== 'Đã hủy' &&
-                                         bookingCanCancel[selectedTour.bookingId] && (
+                                         selectedTour.status !== 'Yêu cầu hủy tour' &&
+                                         canCancelBooking(selectedTour) && (
                                             <button
-                                                className="btn btn-danger"
+                                                className="btn btn-warning"
                                                 onClick={() => handleCancel(selectedTour)}
                                             >
-                                                Hủy tour
+                                                Yêu cầu hủy tour
                                             </button>
                                         )}
                                     </div>
@@ -321,7 +389,7 @@ const History = () => {
                         ) : (
                             <div className="alert alert-info">
                                 <h5>Chọn một tour từ danh sách để xem chi tiết</h5>
-                                <p>Bạn có thể xem thông tin chi tiết, thanh toán hoặc hủy tour từ danh sách bên trái.</p>
+                                <p>Bạn có thể xem thông tin chi tiết, thanh toán hoặc yêu cầu hủy tour từ danh sách bên trái.</p>
                             </div>
                         )}
                     </div>
@@ -336,13 +404,94 @@ const History = () => {
                 onPaymentSuccess={handlePaymentSuccess}
             />
 
-            {/* Cancel Modal */}
-            <CancelBookingModal
-                booking={selectedBooking}
-                isOpen={showCancelModal}
-                onClose={() => setShowCancelModal(false)}
-                onCancelSuccess={handleCancelSuccess}
-            />
+            {showRefundModal && (
+                <div className="modal show d-block" tabIndex="-1" style={{background: "rgba(0,0,0,0.5)"}}>
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Vui lòng điền các thông tin dưới để chúng tôi có thể tiến hành hoàn trả tiền cho bạn</h5>
+                                <button type="button" className="btn-close" onClick={() => setShowRefundModal(false)}></button>
+                            </div>
+                            <div className="modal-body">
+                                <div className="alert alert-warning">
+                                    Lưu ý tiền hoàn trả sẽ trừ đi 10% phí cam kết so với số tiền bạn đặt ban đầu
+                                </div>
+                                <div className="mb-3 d-flex align-items-center" style={{ gap: 8 }}>
+                                    <label className="form-label mb-0" style={{ whiteSpace: 'nowrap', minWidth: 120 }}>Ngân hàng</label>
+                                    <div style={{ flex: 1 }}>
+                                        <Select
+                                            options={bankOptions}
+                                            value={bankOptions.find(opt => opt.value === refundBank)}
+                                            onChange={opt => setRefundBank(opt?.value || '')}
+                                            placeholder="Chọn ngân hàng..."
+                                            isSearchable
+                                            styles={customSelectStyles}
+                                            menuPortalTarget={document.body}
+                                            formatOptionLabel={option => (
+                                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                    <img
+                                                        src={option.logo}
+                                                        alt=""
+                                                        style={{
+                                                            width: 28,
+                                                            height: 28,
+                                                            objectFit: 'contain',
+                                                            marginRight: 10,
+                                                            borderRadius: 4,
+                                                            background: '#fff',
+                                                            border: '1px solid #eee'
+                                                        }}
+                                                        onError={(e) => e.target.style.display = 'none'}
+                                                    />
+                                                    <span>{option.label}</span>
+                                                </div>
+                                            )}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="mb-3 d-flex align-items-center" style={{ gap: 8 }}>
+                                    <label className="form-label mb-0" style={{ whiteSpace: 'nowrap', minWidth: 120 }}>Tên chủ tài khoản</label>
+                                    <input className="form-control" style={{ flex: 1 }} value={refundAccountName} onChange={e => setRefundAccountName(e.target.value)} />
+                                </div>
+                                <div className="mb-3 d-flex align-items-center" style={{ gap: 8 }}>
+                                    <label className="form-label mb-0" style={{ whiteSpace: 'nowrap', minWidth: 120 }}>Số tài khoản</label>
+                                    <input className="form-control" style={{ flex: 1 }} value={refundAccountNumber} onChange={e => setRefundAccountNumber(e.target.value)} />
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={async () => {
+                                        if (!refundBank || !refundAccountName || !refundAccountNumber) {
+                                            alert("Vui lòng nhập đầy đủ thông tin hoàn tiền!");
+                                            return;
+                                        }
+                                        var refundRequest = {
+                                            customerBankName : refundBank,
+                                            customerBankAccount: refundAccountNumber,
+                                            customerAccountHolderName: refundAccountName
+                                        }
+                                        const response = await bookingService.cancelBooking(refundBooking.bookingId, refundRequest);
+                                        if (response.data) {
+                                            alert("Cancellation request submitted successfully. Our staff will review your request.");
+                                            setShowRefundModal(false);
+                                            // Refresh the booking list
+                                            const userId = localStorage.getItem('userId');
+                                            if (userId) {
+                                                const dataResponse = await _tourService.getTourHistory(userId);
+                                                setHitoryTour(dataResponse.data.data);
+                                            }
+                                        }
+                                    }}
+                                >
+                                    Xác nhận hoàn tiền
+                                </button>
+                                <button className="btn btn-secondary" onClick={() => setShowRefundModal(false)}>Đóng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 };

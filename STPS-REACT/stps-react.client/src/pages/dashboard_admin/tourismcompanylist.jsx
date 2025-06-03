@@ -11,6 +11,9 @@ import { UTIL_VARIABLE } from '../../utils/UtilVariable';
 import { FaBuilding, FaEdit, FaTrash, FaSearch } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
 import './style/modern-dashboard.css';
+import { FaMoneyBill } from "react-icons/fa6";
+import PaymentService from "../../services/PaymentService";
+import axios from 'axios';
 
 function TourismCompanyList() {
   const [companies, setCompanies] = useState([]);
@@ -20,6 +23,15 @@ function TourismCompanyList() {
   const [modalMode, setModalMode] = useState('add'); // 'add' or 'edit'
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  
+  // Payment modal states
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [qrData, setQrData] = useState(null);
+  const [qrLoading, setQrLoading] = useState(false);
+  const [pendingTransfers, setPendingTransfers] = useState([]);
+  const [selectedCompanyForPayment, setSelectedCompanyForPayment] = useState(null);
+  
   const [formData, setFormData] = useState({
     companyId: '',
     companyName: '',
@@ -68,6 +80,101 @@ function TourismCompanyList() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const fetchPendingTransfers = async (companyId) => {
+    try {
+      const response = await axios.get(`${UTIL_VARIABLE.REACT_BASE_URL}/Revenue/company/pending-transfers/${companyId}`);
+      if (response.data && response.data.success) {
+        setPendingTransfers(response.data.data);
+        return response.data.data;
+      }
+      return [];
+    } catch (error) {
+      console.error('Error fetching pending transfers:', error);
+      return [];
+    }
+  };
+
+  const generateQRCode = async (company, totalAmount) => {
+    try {
+      setQrLoading(true);
+      const response = await axios.post("https://api.vietqr.io/v2/generate", {
+        accountNo: company.bankAccountNumber,
+        accountName: company.bankAccountHolderName,
+        acqId: company.bankName,
+        amount: totalAmount,
+        addInfo: `Thanh toan doanh thu cho cong ty ${company.companyName}`,
+        format: "text",
+        template: "compact"
+      });
+      
+      if (response.data && response.data.code === "00") {
+        setQrData(response.data.data);
+      } else {
+        setQrData({ error: "Không thể tạo mã QR!" });
+      }
+    } catch (error) {
+      console.error('Error generating QR code:', error);
+      setQrData({ error: "Lỗi khi gọi API QR!" });
+    } finally {
+      setQrLoading(false);
+    }
+  };
+
+  const handlePaymentForCompany = async (company) => {
+    try {
+      setPaymentLoading(true);
+      setShowPaymentModal(true);
+      
+      // Fetch pending transfers
+      const transfers = await fetchPendingTransfers(company.id);
+      
+      // Calculate total amount
+      const totalAmount = transfers.reduce((sum, transfer) => sum + transfer.companyAmount, 0);
+      
+      // Generate QR code
+      if (totalAmount > 0) {
+        setSelectedCompanyForPayment(transfers[0].tourismCompany);
+        await generateQRCode(transfers[0].tourismCompany, totalAmount);
+      } else {
+        setQrData({ error: "Không có giao dịch nào cần thanh toán!" });
+      }
+    } catch (error) {
+      console.error('Error handling payment:', error);
+      alert('Có lỗi xảy ra khi tải thông tin thanh toán!');
+    } finally {
+      setPaymentLoading(false);
+    }
+  };
+
+  const handleCompletePayment = async () => {
+    if (!selectedCompanyForPayment) return;
+    
+    try {
+      // Call API to mark transfers as completed
+      const response = await axios.post(`${UTIL_VARIABLE.REACT_BASE_URL}/Revenue/company/complete-transfers/${selectedCompanyForPayment.id}`);
+      
+      if (response.data && response.data.success) {
+        alert("Đã hoàn thành chi trả thành công!");
+        setShowPaymentModal(false);
+        setQrData(null);
+        setPendingTransfers([]);
+        setSelectedCompanyForPayment(null);
+      } else {
+        alert("Có lỗi khi xác nhận hoàn thành chi trả!");
+      }
+    } catch (error) {
+      console.error('Error completing payment:', error);
+      alert("Lỗi khi xác nhận hoàn thành chi trả!");
+    }
+  };
+
+  const closePaymentModal = () => {
+    setShowPaymentModal(false);
+    setQrData(null);
+    setPendingTransfers([]);
+    setSelectedCompanyForPayment(null);
   };
 
   const handleInputChange = (e) => {
@@ -135,8 +242,6 @@ function TourismCompanyList() {
           console.log('Create company response:', response);
           alert('Thêm công ty du lịch mới thành công!');
         } catch (error) {
-          console.error('Error creating company:', error);
-          console.error('Error response:', error.response);
           alert(`Lỗi khi thêm công ty: ${error.response?.data?.message || error.message}`);
           throw error; // Re-throw để catch bên ngoài xử lý
         }
@@ -239,6 +344,10 @@ function TourismCompanyList() {
     company.taxCode?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const calculateTotalAmount = () => {
+    return pendingTransfers.reduce((sum, transfer) => sum + transfer.companyAmount, 0);
+  };
+
   return (
     <div className="card">
       <div className="card-header">
@@ -290,6 +399,13 @@ function TourismCompanyList() {
                   <td>
                     <div className="table-actions">
                       <button
+                          className="btn btn-icon btn-primary"
+                          onClick={() => handlePaymentForCompany(company)}
+                          title="Thanh toán chi phí"
+                      >
+                        <FaMoneyBill />
+                      </button>
+                      <button
                         className="btn btn-icon btn-primary"
                         onClick={() => openEditModal(company.id)}
                         title="Chỉnh sửa"
@@ -318,6 +434,75 @@ function TourismCompanyList() {
         </table>
       </div>
 
+      {/* Payment Modal */}
+      {showPaymentModal && (
+        <div className="modal-backdrop" onClick={closePaymentModal}>
+          <div className="modal-content" style={{maxWidth: '800px', maxHeight: '90vh', overflow: 'auto'}} onClick={e => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3 className="modal-title">Thanh toán doanh thu - {selectedCompanyForPayment?.companyName}</h3>
+              <button className="modal-close" onClick={closePaymentModal}>
+                <IoMdClose />
+              </button>
+            </div>
+            <div className="modal-body">
+              {/* QR Code Section */}
+              <div style={{textAlign: 'center', marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px'}}>
+                {qrLoading ? (
+                  <div>Đang tạo mã QR...</div>
+                ) : qrData?.error ? (
+                  <div style={{color: 'red'}}>{qrData.error}</div>
+                ) : qrData ? (
+                  <>
+                    <img src={qrData.qrDataURL} alt="QR code" style={{ maxWidth: 256, margin: "0 auto" }} />
+                    <div style={{marginTop: '1rem'}}>
+                      <strong>Số tài khoản:</strong> {selectedCompanyForPayment?.bankAccountNumber}<br />
+                      <strong>Chủ tài khoản:</strong> {selectedCompanyForPayment?.bankAccountHolderName}<br />
+                      <strong>Số tiền:</strong> {calculateTotalAmount().toLocaleString("vi-VN")} VND
+                    </div>
+                    <button
+                      className="btn btn-primary"
+                      style={{marginTop: '1rem'}}
+                      onClick={handleCompletePayment}
+                    >
+                      Đã hoàn thành chi trả
+                    </button>
+                  </>
+                ) : null}
+              </div>
+
+              {/* Pending Transfers List */}
+              <div>
+                <h4>Danh sách giao dịch chờ thanh toán</h4>
+                <div style={{maxHeight: '300px', overflow: 'auto'}}>
+                  {pendingTransfers.length > 0 ? (
+                    <ul style={{listStyle: 'none', padding: 0}}>
+                      {pendingTransfers.map(transfer => (
+                        <li key={transfer.revenueTransactionId} style={{border: '1px solid #eee', borderRadius: 6, marginBottom: 12, padding: 12}}>
+                          <div><strong>Tour:</strong> {transfer.booking?.tour?.tourName || 'N/A'}</div>
+                          <div><strong>Tổng tiền:</strong> {transfer.totalAmount.toLocaleString("vi-VN")} VND</div>
+                          <div><strong>Tiền thanh toán:</strong> {transfer.companyAmount.toLocaleString("vi-VN")} VND</div>
+                          <div><strong>Ngày khởi tạo:</strong> {new Date(transfer.scheduledDate).toLocaleDateString("vi-VN")}</div>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <div style={{textAlign: 'center', color: 'gray', margin: '1rem 0'}}>
+                      Không có giao dịch nào cần thanh toán
+                    </div>
+                  )}
+                </div>
+                {pendingTransfers.length > 0 && (
+                  <div style={{marginTop: '1rem', textAlign: 'right', fontWeight: 'bold'}}>
+                    Tổng cộng: {calculateTotalAmount().toLocaleString("vi-VN")} VND
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Existing Add/Edit Modal */}
       {showModal && (
         <div className="modal-backdrop" onClick={closeModal}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>

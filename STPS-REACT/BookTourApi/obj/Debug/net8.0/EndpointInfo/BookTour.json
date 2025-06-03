@@ -310,6 +310,111 @@
         }
       }
     },
+    "/api/Booking/{id}": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingDetailResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingDetailResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingDetailResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Booking/cancel/{bookingId}": {
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRefundRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRefundRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRefundRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Booking/company-bookings/{companyId}": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Cities": {
       "get": {
         "tags": [
@@ -1181,6 +1286,25 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentQRRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentQRRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentQRRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -1188,41 +1312,11 @@
         }
       }
     },
-    "/api/Payment/confirm/{bookingId}": {
-      "post": {
+    "/api/Payment/vnpay-callback": {
+      "get": {
         "tags": [
           "Payment"
         ],
-        "parameters": [
-          {
-            "name": "bookingId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ConfirmPaymentRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ConfirmPaymentRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ConfirmPaymentRequest"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -1404,6 +1498,29 @@
         }
       }
     },
+    "/api/Revenue/company/complete-transfers/{companyId}": {
+      "post": {
+        "tags": [
+          "Revenue"
+        ],
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Revenue/admin/statistics": {
       "get": {
         "tags": [
@@ -1434,10 +1551,21 @@
         }
       }
     },
-    "/api/Revenue/pending-transfers": {
+    "/api/Revenue/company/pending-transfers/{companyId}": {
       "get": {
         "tags": [
           "Revenue"
+        ],
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -1893,19 +2021,84 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/CreateTourRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTourRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTourRequest"
+                "type": "object",
+                "properties": {
+                  "TourName": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "Duration": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Transportation": {
+                    "type": "string"
+                  },
+                  "AdultPrice": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "ChildPrice": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "IsActive": {
+                    "type": "boolean"
+                  },
+                  "IsFeatured": {
+                    "type": "boolean"
+                  },
+                  "TourismCompanyId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "ImageUrl": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "TourName": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Duration": {
+                  "style": "form"
+                },
+                "Transportation": {
+                  "style": "form"
+                },
+                "AdultPrice": {
+                  "style": "form"
+                },
+                "ChildPrice": {
+                  "style": "form"
+                },
+                "IsActive": {
+                  "style": "form"
+                },
+                "IsFeatured": {
+                  "style": "form"
+                },
+                "TourismCompanyId": {
+                  "style": "form"
+                },
+                "ImageUrl": {
+                  "style": "form"
+                },
+                "image": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -2019,19 +2212,91 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateTourRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateTourRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateTourRequest"
+                "type": "object",
+                "properties": {
+                  "TourId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "TourName": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "Duration": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Transportation": {
+                    "type": "string"
+                  },
+                  "AdultPrice": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "ChildPrice": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "IsActive": {
+                    "type": "boolean"
+                  },
+                  "IsFeatured": {
+                    "type": "boolean"
+                  },
+                  "TourismCompanyId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "ImageUrl": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "TourId": {
+                  "style": "form"
+                },
+                "TourName": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Duration": {
+                  "style": "form"
+                },
+                "Transportation": {
+                  "style": "form"
+                },
+                "AdultPrice": {
+                  "style": "form"
+                },
+                "ChildPrice": {
+                  "style": "form"
+                },
+                "IsActive": {
+                  "style": "form"
+                },
+                "IsFeatured": {
+                  "style": "form"
+                },
+                "TourismCompanyId": {
+                  "style": "form"
+                },
+                "ImageUrl": {
+                  "style": "form"
+                },
+                "image": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -2270,125 +2535,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/api/Tours/Payment/CreateQR/{bookingId}": {
-      "post": {
-        "tags": [
-          "Tours"
-        ],
-        "parameters": [
-          {
-            "name": "bookingId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Tours/Payment/Confirm/{bookingId}": {
-      "post": {
-        "tags": [
-          "Tours"
-        ],
-        "parameters": [
-          {
-            "name": "bookingId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ConfirmPaymentRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ConfirmPaymentRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ConfirmPaymentRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Tours/Booking/CanCancel/{bookingId}": {
-      "get": {
-        "tags": [
-          "Tours"
-        ],
-        "parameters": [
-          {
-            "name": "bookingId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Tours/Booking/Cancel": {
-      "post": {
-        "tags": [
-          "Tours"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRefundRequestDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRefundRequestDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRefundRequestDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
@@ -3155,6 +3301,59 @@
         },
         "additionalProperties": false
       },
+      "BookingDetailResponse": {
+        "type": "object",
+        "properties": {
+          "bookingId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tourName": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "paymentStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "numberOfGuests": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tourDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "passengerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isRefund": {
+            "type": "boolean"
+          },
+          "refund": {
+            "$ref": "#/components/schemas/RefundHolder"
+          }
+        },
+        "additionalProperties": false
+      },
       "BookingEmailRequest": {
         "type": "object",
         "properties": {
@@ -3392,16 +3591,6 @@
         },
         "additionalProperties": false
       },
-      "ConfirmPaymentRequest": {
-        "type": "object",
-        "properties": {
-          "transactionId": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "CreateCustomTourRequest": {
         "required": [
           "destinationIds",
@@ -3434,12 +3623,27 @@
         },
         "additionalProperties": false
       },
+      "CreatePaymentQRRequest": {
+        "type": "object",
+        "properties": {
+          "moneyToPay": {
+            "type": "number",
+            "format": "double"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateRefundRequestDto": {
         "type": "object",
         "properties": {
           "bookingId": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "customerBankAccount": {
             "type": "string",
@@ -3455,47 +3659,6 @@
           },
           "reason": {
             "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateTourRequest": {
-        "type": "object",
-        "properties": {
-          "tourName": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "duration": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "transportation": {
-            "type": "string",
-            "nullable": true
-          },
-          "adultPrice": {
-            "type": "number",
-            "format": "double"
-          },
-          "childPrice": {
-            "type": "number",
-            "format": "double"
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "isFeatured": {
-            "type": "boolean"
-          },
-          "tourismCompanyId": {
-            "type": "integer",
-            "format": "int32",
             "nullable": true
           }
         },
@@ -3955,6 +4118,56 @@
           "passengerType": {
             "minLength": 1,
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RefundHolder": {
+        "type": "object",
+        "properties": {
+          "refundRequestId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "refundAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "refundStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "refundRequestDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "refundProcessedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "refundReason": {
+            "type": "string",
+            "nullable": true
+          },
+          "refundAdminNotes": {
+            "type": "string",
+            "nullable": true
+          },
+          "refundBankAccount": {
+            "type": "string",
+            "nullable": true
+          },
+          "refundBankName": {
+            "type": "string",
+            "nullable": true
+          },
+          "refundAccountHolderName": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -4420,51 +4633,6 @@
         "properties": {
           "email": {
             "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdateTourRequest": {
-        "type": "object",
-        "properties": {
-          "tourId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "tourName": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "duration": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "transportation": {
-            "type": "string",
-            "nullable": true
-          },
-          "adultPrice": {
-            "type": "number",
-            "format": "double"
-          },
-          "childPrice": {
-            "type": "number",
-            "format": "double"
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "isFeatured": {
-            "type": "boolean"
-          },
-          "tourismCompanyId": {
-            "type": "integer",
-            "format": "int32",
             "nullable": true
           }
         },

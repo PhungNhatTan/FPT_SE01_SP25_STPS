@@ -31,7 +31,7 @@ namespace BookTour.Repository.Impl
         public async Task<Tour> GetTourByIdAsync(int id)
         {
             return await _context.Tours
-                .Include(t => t.TourImages)
+                .Include(t => t.TourImages.Where(img => img.IsPrimary))
                 .Include(t => t.TourSchedules)
                 .Include(t => t.TourDestinations)
                     .ThenInclude(td => td.Destination)
@@ -126,6 +126,18 @@ namespace BookTour.Repository.Impl
             _context.Tours.Remove(tour);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<bool> AddTourImageAsync(TourImage tourImage, bool forInsert = true)
+        {
+            if (!forInsert)
+            {
+                await _context.TourImages
+                .Where(img => img.TourId == tourImage.TourId)
+                    .ExecuteDeleteAsync();
+            }
+            _context.TourImages.Add(tourImage);
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

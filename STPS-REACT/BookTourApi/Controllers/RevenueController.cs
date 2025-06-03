@@ -34,7 +34,24 @@ namespace BookTour.Controllers
                 return StatusCode(500, new { success = false, message = "Internal server error" });
             }
         }
-
+        [HttpPost("company/complete-transfers/{companyId}")]
+        public async Task<IActionResult> CompleteCompanyRevenue(int companyId)
+        {
+            try
+            {
+                var result = await _revenueService.CompleteCompanyRevenue(companyId);
+                return Ok(new { success = true, data = result });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { success = false, message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error getting revenue for company {companyId}");
+                return StatusCode(500, new { success = false, message = "Internal server error" });
+            }
+        }
         [HttpGet("admin/statistics")]
         public async Task<IActionResult> GetAdminRevenueStatistics([FromQuery] DateTime? fromDate, [FromQuery] DateTime? toDate)
         {
@@ -50,12 +67,12 @@ namespace BookTour.Controllers
             }
         }
 
-        [HttpGet("pending-transfers")]
-        public async Task<IActionResult> GetPendingRevenueTransfers()
+        [HttpGet("company/pending-transfers/{companyId}")]
+        public async Task<IActionResult> GetPendingRevenueTransfers(int companyId)
         {
             try
             {
-                var result = await _revenueService.GetPendingRevenueTransfers();
+                var result = await _revenueService.GetPendingRevenueTransfers(companyId);
                 return Ok(new { success = true, data = result });
             }
             catch (Exception ex)

@@ -191,12 +191,20 @@ export class TourServices {
         return await axios.get(`${URL_GET_TOUR_DETAILS}`);
     }
 
+    /**
+     * Add a new tour. Accepts either a plain object or FormData (for file upload).
+     * If sending an image, use FormData and append the image file with key 'image'.
+     */
     async addTour(tourData) {
-        return await axios.post(`${URL_GET_TOUR_DETAILS}`, tourData);
+        return await axios.post(`${URL_GET_TOUR_DETAILS}`, tourData, {
+            headers: { "Content-Type": "multipart/form-data" }
+        });
     }
 
     async updateTour(tourId, tourData) {
-        return await axios.put(`${URL_GET_TOUR_DETAILS}/${tourId}`, tourData);
+        return await axios.put(`${URL_GET_TOUR_DETAILS}/${tourId}`, tourData, {
+            headers: { "Content-Type": "multipart/form-data" }
+        });
     }
 
     async deleteTour(tourId) {

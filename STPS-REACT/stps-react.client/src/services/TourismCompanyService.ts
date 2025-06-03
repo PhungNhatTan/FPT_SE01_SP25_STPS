@@ -42,3 +42,4 @@ export const deleteCompany = (id: number) => {
   console.log(`Calling DELETE ${API_URL}/${id}`);
   return axios.delete(`${API_URL}/${id}`);
 };
+

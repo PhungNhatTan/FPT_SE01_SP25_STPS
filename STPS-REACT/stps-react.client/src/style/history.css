@@ -50,4 +50,7 @@
   .feedback-section textarea {
     resize: none;
   }
-  
+
+  table .table-dark th {
+      background-color: #333;
+  }

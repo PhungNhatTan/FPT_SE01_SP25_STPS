@@ -9,6 +9,7 @@ import AddPromotion from './addpromotion';
 import UpdatePromotion from './updatepromotion';
 import MPromotionDetail from './mpromotiondetail';
 import RevenueStatistics from './RevenueStatistics';
+import { Link } from "react-router-dom";
 
 import {
   FaPlane,
@@ -25,6 +26,7 @@ import {
 import logo from "../../assets/weblogo.jpg";
 import "../../style/simple-sidebar.css"; // Sử dụng CSS mới cho sidebar
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BookingManagement from "./bookingmanagement";
 
 const ManagePage = () => {
     const [activeTab, setActiveTab] = useState('Tour');
@@ -100,7 +102,9 @@ const ManagePage = () => {
         if (activeTab === 'DoanhThu') {
             return <RevenueStatistics />;
         }
-
+        if (activeTab === 'BookingTour') {
+            return <BookingManagement />;
+        }
         return null;
     };
 
@@ -151,7 +155,16 @@ const ManagePage = () => {
                                 <span className="menu-text">Doanh thu</span>
                             </button>
                         </li>
-
+                        <li className="menu-item">
+                            <button
+                                className={`menu-link ${activeTab === 'BookingTour' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('BookingTour')}
+                                title="Đặt tour"
+                            >
+                                <span className="menu-icon"><FaPlane /></span>
+                                <span className="menu-text">Đặt tour</span>
+                            </button>
+                        </li>
                     </ul>
                 </div>
 

@@ -1,6 +1,7 @@
 using BookTour.Dto.Request;
 using BookTour.Models;
 using BookTour.Service;
+using BookTour.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookTour.Service
@@ -43,14 +44,14 @@ namespace BookTour.Service
             if (existingRefund != null)
                 throw new InvalidOperationException("Refund request already exists");
 
-            // Calculate refund amounts
-            var refundAmount = booking.TotalAmount * 0.90m; // 90% to customer
-            var companyCompensation = booking.TotalAmount * 0.05m; // 5% to company
-            var adminFee = booking.TotalAmount * 0.05m; // 5% admin fee
+            // Refund logic using Fee constants
+            var refundAmount = booking.TotalAmount * Fee.CustomerRefundPercent;
+            var companyCompensation = booking.TotalAmount * Fee.CompanyCompensationPercent;
+            var adminFee = booking.TotalAmount * Fee.AdminRefundFeePercent;
 
             var refundRequest = new RefundRequest
             {
-                BookingId = request.BookingId,
+                BookingId = booking.BookingId,
                 CustomerBankAccount = request.CustomerBankAccount,
                 CustomerBankName = request.CustomerBankName,
                 CustomerAccountHolderName = request.CustomerAccountHolderName,
@@ -69,8 +70,6 @@ namespace BookTour.Service
 
             await _context.SaveChangesAsync();
 
-            await ProcessRefund(refundRequest.RefundRequestId);
-
             return refundRequest;
         }
 
@@ -86,14 +85,17 @@ namespace BookTour.Service
 
             try
             {
-                await _revenueService.CreateRevenueTransaction(refundRequest.Booking, "Refund");
 
                 refundRequest.Status = "Completed";
                 refundRequest.ProcessedDate = DateTime.Now;
-                refundRequest.AdminNotes = "Refund processed automatically";
-
+                refundRequest.AdminNotes = "Hoàn trả đặt tour";
+                _context.RefundRequests.Update(refundRequest);
                 await _context.SaveChangesAsync();
-
+                if(refundRequest.Booking != null)
+                {
+                    await CancelRevenueTransactionOfBooking(refundRequest.Booking);
+                    await CreateRevenueTransactionForRefund(refundRequest.Booking);
+                }
                 _logger.LogInformation($"Refund processed for booking {refundRequest.BookingId}");
                 return true;
             }
@@ -104,6 +106,20 @@ namespace BookTour.Service
                 await _context.SaveChangesAsync();
                 return false;
             }
+        }
+
+        private async Task CancelRevenueTransactionOfBooking(Booking booking)
+        {
+            var existingTransaction = await _context.RevenueTransactions
+              .FirstOrDefaultAsync(rt => rt.BookingId == booking.BookingId && rt.TransactionType == "Revenue");
+
+            if (existingTransaction == null)
+                return;
+
+            existingTransaction.Status = "Cancelled";
+            existingTransaction.ProcessedDate = DateTime.Now;
+            _context.RevenueTransactions.Update(existingTransaction);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<RefundRequest> GetRefundRequest(int bookingId)
@@ -121,6 +137,35 @@ namespace BookTour.Service
                 .Where(rr => rr.Status == "Pending")
                 .OrderBy(rr => rr.RequestDate)
                 .ToListAsync();
+        }
+
+        private async Task CreateRevenueTransactionForRefund(Booking booking)
+        {
+            var existingTransaction = await _context.RevenueTransactions
+                .FirstOrDefaultAsync(rt => rt.BookingId == booking.BookingId && rt.TransactionType == "Refund");
+
+            if (existingTransaction != null)
+                return;
+            decimal adminFee = booking.TotalAmount * Fee.AdminRefundFeePercent;
+            decimal companyAmount = booking.TotalAmount * Fee.CompanyCompensationPercent;
+            decimal customerRefund = booking.TotalAmount * Fee.CustomerRefundPercent;
+
+            var revenueTransaction = new RevenueTransaction
+            {
+                BookingId = booking.BookingId,
+                TourismCompanyId = booking.Tour.TourismCompanyId.Value,
+                TotalAmount = booking.TotalAmount,
+                AdminFee = adminFee,
+                CompanyAmount = companyAmount,
+                CustomerRefund = customerRefund,
+                TransactionType = "Refund",
+                Status = "Pending",
+                ScheduledDate = DateTime.Now, // Process refund immediately
+                Notes = $"Refund transaction for booking {booking.BookingId} - Customer: {customerRefund:C} VND, Company: {companyAmount:C} VND, Admin: {adminFee:C} VND"
+            };
+
+            _context.RevenueTransactions.Add(revenueTransaction);
+            await _context.SaveChangesAsync();
         }
     }
 }
